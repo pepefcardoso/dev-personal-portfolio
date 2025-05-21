@@ -7,6 +7,19 @@ import { File } from "lucide-react";
 const Hero = () => {
   const { t } = useTranslation();
 
+  // This will be the URL to your resume file
+  const resumeURL = "/resume.pdf"; // You'll need to place this file in the public folder
+
+  const handleResumeDownload = () => {
+    // Create an anchor element and trigger the download
+    const link = document.createElement('a');
+    link.href = resumeURL;
+    link.download = "John_Doe_Resume.pdf"; // Name of the file when downloaded
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       <div className="container px-4 mx-auto">
@@ -22,10 +35,12 @@ const Hero = () => {
               {t('hero.description')}
             </p>
             <div className="pt-4 flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                {t('hero.contactBtn')}
+              <Button size="lg" asChild className="gap-2">
+                <a href="#contact">
+                  {t('hero.contactBtn')}
+                </a>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2">
+              <Button size="lg" variant="outline" className="gap-2" onClick={handleResumeDownload}>
                 <File size={18} />
                 {t('hero.resumeBtn')}
               </Button>

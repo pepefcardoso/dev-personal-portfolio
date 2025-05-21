@@ -5,6 +5,9 @@ export default {
     skills: 'Skills',
     projects: 'Projects',
     contact: 'Contact',
+    blog: 'Blog',
+    testimonials: 'Testimonials',
+    timeline: 'Timeline',
   },
   hero: {
     name: 'John Doe',
@@ -36,6 +39,22 @@ export default {
     liveDemo: 'Live Demo',
     viewCode: 'View Code',
   },
+  timeline: {
+    title: 'Professional Timeline',
+    education: 'Education',
+    experience: 'Experience',
+  },
+  testimonials: {
+    title: 'Testimonials',
+    subtitle: 'What others say about my work',
+  },
+  blog: {
+    title: 'Blog & Articles',
+    subtitle: 'Thoughts, guides and more',
+    readMore: 'Read More',
+    published: 'Published',
+    minutes: 'min read',
+  },
   contact: {
     title: 'Get In Touch',
     subtitle: 'Have a project in mind or want to discuss potential opportunities? Feel free to reach out.',
@@ -53,5 +72,6 @@ export default {
   },
   footer: {
     copyright: 'All Rights Reserved',
+    downloadResume: 'Download Resume',
   },
 };
