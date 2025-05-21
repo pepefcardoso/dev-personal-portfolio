@@ -18,7 +18,7 @@ export default {
     title: 'About Me',
     bioTitle: 'My Journey',
     bio1: 'I am a passionate full stack developer with extensive experience building responsive web applications and services. With a strong foundation in both front-end and back-end technologies, I create seamless user experiences that are both functional and beautiful.',
-    bio2: 'My journey in web development began over 6 years ago, and I've worked with various companies and clients to deliver high-quality digital solutions that meet business needs while providing excellent user experiences.',
+    bio2: 'My journey in web development began over 6 years ago, and I\'ve worked with various companies and clients to deliver high-quality digital solutions that meet business needs while providing excellent user experiences.',
     skillsTitle: 'My Skills',
   },
   skills: {
@@ -49,7 +49,7 @@ export default {
     submitting: 'Sending...',
     connectTitle: 'Connect With Me',
     formSuccess: 'Message Sent!',
-    formSuccessMessage: 'Thank you for reaching out. I'll get back to you soon.',
+    formSuccessMessage: 'Thank you for reaching out. I\'ll get back to you soon.',
   },
   footer: {
     copyright: 'All Rights Reserved',
