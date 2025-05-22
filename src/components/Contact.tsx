@@ -1,41 +1,85 @@
 
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Mail } from "lucide-react";
+
+// Define form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Initialize react-hook-form with zod validation
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Replace these with your actual EmailJS service, template, and user IDs
+      const serviceId = "YOUR_EMAILJS_SERVICE_ID";
+      const templateId = "YOUR_EMAILJS_TEMPLATE_ID";
+      const userId = "YOUR_EMAILJS_USER_ID";
+      
+      // Prepare template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+      };
+      
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, userId);
+      
+      // Show success toast
       toast({
         title: t('contact.formSuccess'),
         description: t('contact.formSuccessMessage'),
       });
-      setFormData({ name: "", email: "", message: "" });
+      
+      // Reset form
+      form.reset();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -45,57 +89,80 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground mb-8">{t('contact.subtitle')}</p>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="block text-sm font-medium">
-                  {t('contact.nameLabel')}
-                </label>
-                <Input
-                  id="name"
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder={t('contact.namePlaceholder')}
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('contact.nameLabel')}</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder={t('contact.namePlaceholder')} 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium">
-                  {t('contact.emailLabel')}
-                </label>
-                <Input
-                  id="email"
+                
+                <FormField
+                  control={form.control}
                   name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder={t('contact.emailPlaceholder')}
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('contact.emailLabel')}</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder={t('contact.emailPlaceholder')} 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="message" className="block text-sm font-medium">
-                {t('contact.messageLabel')}
-              </label>
-              <Textarea
-                id="message"
+              
+              <FormField
+                control={form.control}
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={t('contact.messagePlaceholder')}
-                rows={5}
-                required
-                className="resize-none"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('contact.messageLabel')}</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder={t('contact.messagePlaceholder')}
+                        rows={5}
+                        className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div>
-              <Button type="submit" className="w-full md:w-auto" disabled={isSubmitting}>
-                {isSubmitting ? t('contact.submitting') : t('contact.submit')}
+              
+              <Button 
+                type="submit" 
+                className="w-full md:w-auto"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>{t('contact.submitting')}</>
+                ) : (
+                  <>
+                    <Mail className="mr-2" size={16} />
+                    {t('contact.submit')}
+                  </>
+                )}
               </Button>
-            </div>
-          </form>
+            </form>
+          </Form>
           
           <div className="mt-12 pt-12 border-t border-border">
             <h3 className="text-xl font-semibold mb-6">{t('contact.connectTitle')}</h3>

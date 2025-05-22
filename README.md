@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
 
-## Project info
+# Developer Portfolio
 
-**URL**: https://lovable.dev/projects/f3c48a2c-c7f3-4494-9c96-204bcd2d343c
+A modern, responsive developer portfolio built with React, TypeScript, Tailwind CSS, and Shadcn UI.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Responsive Design** - Looks great on all devices
+- **Dark/Light Mode** - Toggle between dark and light themes
+- **Multilingual Support** - Support for multiple languages
+- **Contact Form** - With EmailJS integration for seamless communication
+- **Downloadable Resume** - Easy access to your resume
+- **Project Showcase** - Display your best work
+- **Professional Timeline** - Show your career progression
+- **Testimonials** - Showcase feedback from colleagues
+- **Blog Section** - Share your thoughts and knowledge
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f3c48a2c-c7f3-4494-9c96-204bcd2d343c) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v16 or newer)
+- Yarn or npm
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/developer-portfolio.git
+cd developer-portfolio
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies
+```bash
+npm install
+# or
+yarn
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-**Use GitHub Codespaces**
+4. Open [http://localhost:5173](http://localhost:5173) to view the app in your browser
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Configuration
 
-## What technologies are used for this project?
+### Contact Form
 
-This project is built with:
+The contact form uses EmailJS. Follow the setup instructions in `src/components/EmailJSSetup.md`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Resume
 
-## How can I deploy this project?
+1. Add your resume PDF to the `public` folder as `resume.pdf`
+2. Update the name in the Footer.tsx file if needed
 
-Simply open [Lovable](https://lovable.dev/projects/f3c48a2c-c7f3-4494-9c96-204bcd2d343c) and click on Share -> Publish.
+### Personal Information
 
-## Can I connect a custom domain to my Lovable project?
+Update your personal information, skills, projects, and other content in the corresponding components.
 
-Yes, you can!
+## Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Build the project for production:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+npm run build
+# or
+yarn build
+```
+
+The build files will be in the `dist` directory, ready to be deployed to any static hosting service like Netlify, Vercel, GitHub Pages, etc.
+
+## Customization
+
+### Theme
+
+Customize the theme colors in the `tailwind.config.ts` file.
+
+### Content
+
+Update the content in the i18n localization files to change the text throughout the site.
+
+## License
+
+[MIT](LICENSE)
