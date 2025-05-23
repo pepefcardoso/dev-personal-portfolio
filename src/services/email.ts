@@ -7,7 +7,7 @@ export interface EmailData {
   message: string;
 }
 
-export const sendEmail = async (data: EmailData): Promise<emailjs.EmailJSResponseStatus> => {
+export const sendEmail = async (data: EmailData) => {
   // Replace these with your actual EmailJS service, template, and user IDs
   const serviceId = "YOUR_EMAILJS_SERVICE_ID";
   const templateId = "YOUR_EMAILJS_TEMPLATE_ID";
