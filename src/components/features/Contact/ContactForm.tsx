@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Mail } from "lucide-react";
-import { sendEmail } from "@/services/email";
+import { sendEmail, EmailData } from "@/services/email";
 
 // Define form validation schema
 const formSchema = z.object({
@@ -47,8 +47,14 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email using our service
-      await sendEmail(data);
+      // Send email using our service - ensure data is complete
+      const emailData: EmailData = {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      };
+      
+      await sendEmail(emailData);
       
       // Show success toast
       toast({
