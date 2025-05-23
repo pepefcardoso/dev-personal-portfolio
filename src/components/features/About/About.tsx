@@ -8,14 +8,19 @@ const About = () => {
   const { t } = useTranslation();
   
   const skills: Skill[] = [
-    { name: "React", level: 5, category: "frontend" },
-    { name: "TypeScript", level: 4, category: "languages" },
-    { name: "Node.js", level: 4, category: "backend" },
-    { name: "Next.js", level: 4, category: "frontend" },
-    { name: "CSS/Tailwind", level: 5, category: "frontend" },
-    { name: "GraphQL", level: 3, category: "backend" },
+    { name: "Flutter", level: 5, category: "frontend" },
+    { name: "Laravel", level: 4, category: "backend" },
+    { name: "C#", level: 4, category: "languages" },
+    { name: "JavaScript", level: 5, category: "languages" },
+    { name: "Vue", level: 4, category: "frontend" },
+    { name: "React", level: 3, category: "frontend" },
+    { name: "SQL", level: 4, category: "backend" },
+    { name: "Python", level: 3, category: "languages" },
     { name: "Git", level: 4, category: "tools" },
-    { name: "Docker", level: 3, category: "tools" },
+    { name: "Dart", level: 5, category: "languages" },
+    { name: "EFCore", level: 4, category: "backend" },
+    { name: "CSS", level: 4, category: "frontend" },
+    { name: "HTML", level: 5, category: "frontend" },
   ];
 
   const renderSkillLevel = (level: number) => {
@@ -36,23 +41,46 @@ const About = () => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container px-4 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('about.title')}</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">Sobre mim</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold">{t('about.bioTitle')}</h3>
+            <h3 className="text-xl font-semibold">Perfil profissional</h3>
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                {t('about.bio1')}
+                Sou desenvolvedor fullstack com proficiência em Flutter e Laravel, prática na criação e manutenção 
+                de aplicativos multiplataforma e API's. Atualmente trabalho com C# e JavaScript, 
+                utilizando EFCore, Vue e SQL, desenvolvendo aplicações de gerenciamento de atendimentos e 
+                relacionamentos com chat.
               </p>
               <p className="text-muted-foreground">
-                {t('about.bio2')}
+                Também possuo experiência com SQL em bancos de dados, Figma na criação de design, 
+                NextJs para projetos frontend e Python para análise de dados. Tenho conhecimento em 
+                metodologias ágeis, trabalho em equipe e comunicação eficiente.
               </p>
+            </div>
+            
+            <div className="pt-4">
+              <h3 className="text-xl font-semibold mb-3">Idiomas</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li className="flex justify-between">
+                  <span>Português Brasileiro</span>
+                  <span className="font-medium">Fluente/Nativo</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Inglês</span>
+                  <span className="font-medium">Intermediário</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Espanhol</span>
+                  <span className="font-medium">Básico</span>
+                </li>
+              </ul>
             </div>
           </div>
           
           <div id="skills">
-            <h3 className="text-xl font-semibold mb-6">{t('about.skillsTitle')}</h3>
+            <h3 className="text-xl font-semibold mb-6">Habilidades técnicas</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {skills.map((skill) => (
                 <Card key={skill.name} className="overflow-hidden border border-border/50">

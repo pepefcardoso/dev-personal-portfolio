@@ -21,9 +21,9 @@ import { sendEmail, EmailData } from "@/services/email";
 
 // Define form validation schema
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres." }),
+  email: z.string().email({ message: "Por favor, insira um endereço de e-mail válido." }),
+  message: z.string().min(10, { message: "Mensagem deve ter pelo menos 10 caracteres." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -58,8 +58,8 @@ const ContactForm = () => {
       
       // Show success toast
       toast({
-        title: t('contact.formSuccess'),
-        description: t('contact.formSuccessMessage'),
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Responderei em breve!",
       });
       
       // Reset form
@@ -67,8 +67,8 @@ const ContactForm = () => {
     } catch (error) {
       console.error("Error sending email:", error);
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
+        title: "Erro",
+        description: "Falha ao enviar mensagem. Por favor, tente novamente mais tarde.",
         variant: "destructive",
       });
     } finally {
@@ -85,10 +85,10 @@ const ContactForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('contact.nameLabel')}</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder={t('contact.namePlaceholder')} 
+                    placeholder="Seu nome completo" 
                     {...field} 
                   />
                 </FormControl>
@@ -102,11 +102,11 @@ const ContactForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('contact.emailLabel')}</FormLabel>
+                <FormLabel>E-mail</FormLabel>
                 <FormControl>
                   <Input 
                     type="email"
-                    placeholder={t('contact.emailPlaceholder')} 
+                    placeholder="seu.email@exemplo.com" 
                     {...field} 
                   />
                 </FormControl>
@@ -121,10 +121,10 @@ const ContactForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('contact.messageLabel')}</FormLabel>
+              <FormLabel>Mensagem</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder={t('contact.messagePlaceholder')}
+                  placeholder="Escreva sua mensagem aqui..."
                   rows={5}
                   className="resize-none"
                   {...field}
@@ -141,11 +141,11 @@ const ContactForm = () => {
           disabled={isSubmitting}
         >
           {isSubmitting ? (
-            <>{t('contact.submitting')}</>
+            <>Enviando...</>
           ) : (
             <>
               <Mail className="mr-2" size={16} />
-              {t('contact.submit')}
+              Enviar mensagem
             </>
           )}
         </Button>

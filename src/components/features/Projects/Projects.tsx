@@ -12,42 +12,84 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: "project1",
-      title: "E-commerce Platform",
-      description: "A fully functional e-commerce platform with payment integration, user authentication, and order management.",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Site Sorveteria Belatto",
+      description: "Website para sorveteria com informações sobre os produtos, localização e contato.",
+      tags: ["HTML", "CSS", "JavaScript"],
       image: "",
-      demoUrl: "#",
-      codeUrl: "#",
+      demoUrl: "https://github.com/pepefcardoso/Site-Sorveteria-Belatto",
+      codeUrl: "https://github.com/pepefcardoso/Site-Sorveteria-Belatto",
       featured: true,
     },
     {
       id: "project2",
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team features.",
-      tags: ["Next.js", "Firebase", "Tailwind CSS"],
+      title: "Projeto Figma Site de Receitas e Notícias",
+      description: "Design de interface para site de receitas e notícias desenvolvido no Figma.",
+      tags: ["Figma", "UI/UX", "Design"],
       image: "",
-      demoUrl: "#",
-      codeUrl: "#",
+      codeUrl: "https://github.com/pepefcardoso/Projeto-Figma-Site-de-Receitas-e-Noticias",
       featured: true,
     },
     {
       id: "project3",
-      title: "Weather Dashboard",
-      description: "A weather dashboard that displays current and forecasted weather data from multiple sources.",
-      tags: ["React", "APIs", "Chart.js"],
+      title: "Projeto Site Clube Atlético Tubarão",
+      description: "Website para o clube de futebol Atlético Tubarão com informações sobre o time, jogos e notícias.",
+      tags: ["HTML", "CSS", "JavaScript"],
       image: "",
-      demoUrl: "#",
-      codeUrl: "#",
-      featured: false,
+      codeUrl: "https://github.com/pepefcardoso/Projeto-Site-Clube-Atletico-Tubarao",
+      featured: true,
     },
     {
       id: "project4",
-      title: "Blogging Platform",
-      description: "A content management system for blogging with markdown support and SEO features.",
-      tags: ["Vue.js", "Express", "PostgreSQL"],
+      title: "Projeto Python Urna Eletrônica UFSC",
+      description: "Sistema de urna eletrônica desenvolvido em Python para o curso de Análise e Desenvolvimento de Sistemas.",
+      tags: ["Python", "Interface", "Sistema"],
       image: "",
-      demoUrl: "#",
-      codeUrl: "#",
+      codeUrl: "https://github.com/pepefcardoso/Projeto-Python-Urna-Eletronica-UFSC",
+      featured: false,
+    },
+    {
+      id: "project5",
+      title: "Aplicativo Flutter Blog",
+      description: "Aplicativo mobile de blog desenvolvido com Flutter.",
+      tags: ["Flutter", "Dart", "Mobile"],
+      image: "",
+      codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog",
+      featured: false,
+    },
+    {
+      id: "project6",
+      title: "Api Aplicativo Blog",
+      description: "API backend para aplicativo de blog desenvolvida com Laravel/PHP.",
+      tags: ["Laravel", "PHP", "API"],
+      image: "",
+      codeUrl: "https://github.com/pepefcardoso/Api-Aplicativo-Blog",
+      featured: false,
+    },
+    {
+      id: "project7",
+      title: "Aplicativo Flutter Blog Admin",
+      description: "Painel administrativo para o aplicativo de blog desenvolvido com Flutter.",
+      tags: ["Flutter", "Dart", "Admin"],
+      image: "",
+      codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog-Admin",
+      featured: false,
+    },
+    {
+      id: "project8",
+      title: "Api Site NextJs Receitas e Notícias",
+      description: "API backend para site de receitas e notícias desenvolvido com NextJS.",
+      tags: ["NextJS", "API", "JavaScript"],
+      image: "",
+      codeUrl: "https://github.com/pepefcardoso/Api-Site-NextJs-Receitas-e-Noticias",
+      featured: false,
+    },
+    {
+      id: "project9",
+      title: "Site NextJs Receitas e Notícias",
+      description: "Site de receitas e notícias desenvolvido com NextJS.",
+      tags: ["NextJS", "React", "JavaScript"],
+      image: "",
+      codeUrl: "https://github.com/pepefcardoso/Site-NextJs-Receitas-e-Noticias",
       featured: false,
     },
   ];
@@ -63,16 +105,16 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('projects.title')}</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">Projetos</h2>
         
         <div className="flex flex-wrap gap-2 mb-8">
           <Button 
             variant={filter === "all" ? "default" : "outline"}
             onClick={() => setFilter("all")}
           >
-            {t('projects.allFilter')}
+            Todos
           </Button>
-          {allTags.map(tag => (
+          {allTags.sort().map(tag => (
             <Button
               key={tag}
               variant={filter === tag ? "default" : "outline"}
@@ -94,7 +136,7 @@ const Projects = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-muted-foreground">{t('projects.imagePlaceholder')}</div>
+                  <div className="text-muted-foreground">Visualização do projeto</div>
                 )}
               </div>
               <CardHeader>
@@ -117,14 +159,14 @@ const Projects = () => {
                 {project.demoUrl && (
                   <Button variant="outline" size="sm" asChild>
                     <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                      {t('projects.liveDemo')}
+                      Demo
                     </a>
                   </Button>
                 )}
                 {project.codeUrl && (
                   <Button variant="outline" size="sm" asChild>
                     <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                      {t('projects.viewCode')}
+                      Código
                     </a>
                   </Button>
                 )}

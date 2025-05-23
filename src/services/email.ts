@@ -21,5 +21,5 @@ export const sendEmail = async (data: EmailData) => {
   };
   
   // Send email using EmailJS
-  return emailjs.send(serviceId, templateId, templateParams, userId);
+  return await emailjs.send(serviceId, templateId, templateParams, userId);
 };
