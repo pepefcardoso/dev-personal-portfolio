@@ -15,6 +15,24 @@ A modern, responsive developer portfolio built with React, TypeScript, Tailwind 
 - **Testimonials** - Showcase feedback from colleagues
 - **Blog Section** - Share your thoughts and knowledge
 
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── ui/          # Reusable UI components
+│   ├── layout/      # Layout components (Header, Footer)
+│   └── features/    # Feature-specific components
+├── pages/           # Page components
+├── services/        # External service integrations
+├── types/           # TypeScript type definitions
+├── hooks/           # Custom React hooks
+├── utils/           # Utility functions
+├── i18n/            # Internationalization
+├── lib/             # Utility libraries
+└── docs/            # Documentation
+```
+
 ## Getting Started
 
 ### Prerequisites
@@ -50,12 +68,12 @@ yarn dev
 
 ### Contact Form
 
-The contact form uses EmailJS. Follow the setup instructions in `src/components/EmailJSSetup.md`.
+The contact form uses EmailJS. Follow the setup instructions in `src/docs/EmailJSSetup.md`.
 
 ### Resume
 
 1. Add your resume PDF to the `public` folder as `resume.pdf`
-2. Update the name in the Footer.tsx file if needed
+2. Update the name in the Footer component if needed
 
 ### Personal Information
 
