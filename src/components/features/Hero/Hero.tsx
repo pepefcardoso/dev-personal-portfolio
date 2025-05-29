@@ -61,9 +61,9 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-              {/* Profile image - you can replace this with your actual photo */}
+              {/* Your personal profile image */}
               <img 
-                src="/api/placeholder/320/320" 
+                src="/lovable-uploads/1a45b1d8-1d4d-49b2-8d92-919545de0e30.png" 
                 alt={t('hero.name')}
                 className="absolute inset-0 w-full h-full object-cover"
                 onError={(e) => {
