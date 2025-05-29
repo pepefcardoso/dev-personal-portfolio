@@ -68,8 +68,12 @@ const Hero = () => {
                 className="absolute inset-0 w-full h-full object-cover"
                 onError={(e) => {
                   // Fallback if image fails to load
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                  const target = e.currentTarget as HTMLImageElement;
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  target.style.display = 'none';
+                  if (fallback) {
+                    fallback.style.display = 'flex';
+                  }
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white text-4xl font-bold" style={{display: 'none'}}>
