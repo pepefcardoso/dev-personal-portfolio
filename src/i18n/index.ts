@@ -22,10 +22,15 @@ i18n
       it: { translation: itTranslation },
       zh: { translation: zhTranslation },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'pt',
+    lng: 'pt', // Define português como idioma inicial
     debug: false,
     interpolation: {
       escapeValue: false, // React already escapes values
+    },
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
     },
   });
 

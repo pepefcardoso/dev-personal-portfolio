@@ -21,13 +21,62 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex gap-6">
-            <a href="#about" className="hover:text-primary transition-colors">{t('nav.about')}</a>
-            <a href="#skills" className="hover:text-primary transition-colors">{t('nav.skills')}</a>
-            <a href="#projects" className="hover:text-primary transition-colors">{t('nav.projects')}</a>
-            <a href="#timeline" className="hover:text-primary transition-colors">{t('nav.timeline')}</a>
-            <a href="#testimonials" className="hover:text-primary transition-colors">{t('nav.testimonials')}</a>
-            <a href="#blog" className="hover:text-primary transition-colors">{t('nav.blog')}</a>
-            <a href="#contact" className="hover:text-primary transition-colors">{t('nav.contact')}</a>
+            <a 
+              href="#about" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.about')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#skills" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.skills')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#projects" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.projects')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#timeline" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.timeline')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#testimonials" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.testimonials')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#blog" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.blog')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
+            <a 
+              href="#contact" 
+              className="relative px-3 py-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out group"
+            >
+              <span className="relative z-10">{t('nav.contact')}</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-out"></div>
+            </a>
           </nav>
           <div className="flex items-center gap-2">
             <LanguageSelector />

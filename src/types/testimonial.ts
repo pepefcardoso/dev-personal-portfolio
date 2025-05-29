@@ -6,4 +6,5 @@ export interface Testimonial {
   company: string;
   content: string;
   image?: string;
+  socialUrl?: string;
 }
