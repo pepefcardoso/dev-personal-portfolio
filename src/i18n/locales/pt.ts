@@ -19,10 +19,17 @@ export default {
   },
   about: {
     title: 'Sobre Mim',
-    bioTitle: 'Minha Jornada',
-    bio1: 'Sou um desenvolvedor fullstack apaixonado com ampla experiência na construção de aplicações web responsivas e serviços. Com uma base sólida em tecnologias front-end e back-end, crio experiências de usuário perfeitas que são funcionais e bonitas.',
-    bio2: 'Minha jornada no desenvolvimento web começou há mais de 6 anos, e trabalhei com várias empresas e clientes para entregar soluções digitais de alta qualidade que atendem às necessidades do negócio enquanto proporcionam excelentes experiências de usuário.',
-    skillsTitle: 'Minhas Habilidades',
+    bioTitle: 'Perfil profissional',
+    bio1: 'Sou desenvolvedor fullstack com proficiência em Flutter e Laravel, prática na criação e manutenção de aplicativos multiplataforma e API\'s. Atualmente trabalho com C# e JavaScript, utilizando EFCore, Vue e SQL, desenvolvendo aplicações de gerenciamento de atendimentos e relacionamentos com chat.',
+    bio2: 'Também possuo experiência com SQL em bancos de dados, Figma na criação de design, NextJs para projetos frontend e Python para análise de dados. Tenho conhecimento em metodologias ágeis, trabalho em equipe e comunicação eficiente.',
+    skillsTitle: 'Habilidades técnicas',
+    languagesTitle: 'Idiomas',
+    portuguese: 'Português Brasileiro',
+    english: 'Inglês',
+    spanish: 'Espanhol',
+    fluent: 'Fluente/Nativo',
+    intermediate: 'Intermediário',
+    basic: 'Básico',
   },
   skills: {
     categories: {
@@ -47,6 +54,9 @@ export default {
   testimonials: {
     title: 'Depoimentos',
     subtitle: 'O que outros dizem sobre meu trabalho',
+    testimonial1: 'Pedro é um desenvolvedor excepcional que consistentemente entrega código de alta qualidade. Sua atenção aos detalhes e habilidade para resolver problemas complexos o torna um ativo valioso para qualquer equipe.',
+    testimonial2: 'Trabalhar com Pedro foi uma experiência fantástica. Ele não apenas entendeu perfeitamente nossos requisitos técnicos, mas também sugeriu melhorias que aprimoraram significativamente a experiência do usuário.',
+    testimonial3: 'A expertise de Pedro em tecnologias frontend e backend permitiu o desenvolvimento perfeito de nossa plataforma. Ele é um profissional dedicado que realmente se preocupa em entregar trabalho de qualidade.',
   },
   blog: {
     title: 'Blog e Artigos',
@@ -57,7 +67,7 @@ export default {
   },
   contact: {
     title: 'Entre em Contato',
-    subtitle: 'Tem um projeto em mente ou quer discutir oportunidades potenciais? Fique à vontade para entrar em contato.',
+    subtitle: 'Fico à disposição para discutir oportunidades de colaboração, tirar dúvidas sobre meus projetos ou trocar ideias sobre desenvolvimento. Entre em contato comigo pelos meios abaixo ou através do formulário.',
     nameLabel: 'Nome',
     namePlaceholder: 'Seu nome',
     emailLabel: 'Email',
@@ -66,7 +76,7 @@ export default {
     messagePlaceholder: 'Sua mensagem aqui...',
     submit: 'Enviar Mensagem',
     submitting: 'Enviando...',
-    connectTitle: 'Conecte-se Comigo',
+    connectTitle: 'Conecte-se comigo',
     formSuccess: 'Mensagem Enviada!',
     formSuccessMessage: 'Obrigado por entrar em contato. Retornarei em breve.',
   },

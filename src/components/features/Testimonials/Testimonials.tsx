@@ -14,7 +14,7 @@ const Testimonials = () => {
       name: "Sarah Johnson",
       position: "CTO",
       company: "TechSolutions Inc",
-      content: "Pedro é um desenvolvedor excepcional que consistentemente entrega código de alta qualidade. Sua atenção aos detalhes e habilidade para resolver problemas complexos o torna um ativo valioso para qualquer equipe.",
+      content: t('testimonials.testimonial1'),
       socialUrl: "https://linkedin.com/in/sarah-johnson-example",
     },
     {
@@ -22,7 +22,7 @@ const Testimonials = () => {
       name: "Michael Chen",
       position: "Product Manager",
       company: "InnovateX",
-      content: "Trabalhar com Pedro foi uma experiência fantástica. Ele não apenas entendeu perfeitamente nossos requisitos técnicos, mas também sugeriu melhorias que aprimoraram significativamente a experiência do usuário.",
+      content: t('testimonials.testimonial2'),
       socialUrl: "https://linkedin.com/in/michael-chen-example",
     },
     {
@@ -30,7 +30,7 @@ const Testimonials = () => {
       name: "Emma Williams",
       position: "Frontend Lead",
       company: "WebCraft Studios",
-      content: "A expertise de Pedro em tecnologias frontend e backend permitiu o desenvolvimento perfeito de nossa plataforma. Ele é um profissional dedicado que realmente se preocupa em entregar trabalho de qualidade.",
+      content: t('testimonials.testimonial3'),
       socialUrl: "https://linkedin.com/in/emma-williams-example",
     },
   ];

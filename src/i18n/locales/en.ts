@@ -10,19 +10,26 @@ export default {
     timeline: 'Timeline',
   },
   hero: {
-    name: 'John Doe',
+    name: 'Pedro Paulo Fernandes Cardoso',
     title: 'Full Stack Developer',
-    description: 'I build exceptional and accessible digital experiences for the web.',
+    description: 'Developer proficient in Flutter, Laravel, C#, JavaScript, Vue, SQL and React. Experience in project management and development of cross-platform applications.',
     contactBtn: 'Contact me',
     resumeBtn: 'Download CV',
     imagePlaceholder: 'Photo',
   },
   about: {
     title: 'About Me',
-    bioTitle: 'My Journey',
-    bio1: 'I am a passionate full stack developer with extensive experience building responsive web applications and services. With a strong foundation in both front-end and back-end technologies, I create seamless user experiences that are both functional and beautiful.',
-    bio2: 'My journey in web development began over 6 years ago, and I\'ve worked with various companies and clients to deliver high-quality digital solutions that meet business needs while providing excellent user experiences.',
-    skillsTitle: 'My Skills',
+    bioTitle: 'Professional Profile',
+    bio1: 'I am a fullstack developer proficient in Flutter and Laravel, experienced in creating and maintaining cross-platform applications and APIs. Currently working with C# and JavaScript, using EFCore, Vue and SQL, developing customer service and relationship management applications with chat.',
+    bio2: 'I also have experience with SQL in databases, Figma for design creation, NextJs for frontend projects and Python for data analysis. I have knowledge in agile methodologies, teamwork and efficient communication.',
+    skillsTitle: 'Technical Skills',
+    languagesTitle: 'Languages',
+    portuguese: 'Brazilian Portuguese',
+    english: 'English',
+    spanish: 'Spanish',
+    fluent: 'Fluent/Native',
+    intermediate: 'Intermediate',
+    basic: 'Basic',
   },
   skills: {
     categories: {
@@ -47,6 +54,9 @@ export default {
   testimonials: {
     title: 'Testimonials',
     subtitle: 'What others say about my work',
+    testimonial1: 'Pedro is an exceptional developer who consistently delivers high-quality code. His attention to detail and ability to solve complex problems makes him a valuable asset to any team.',
+    testimonial2: 'Working with Pedro was a fantastic experience. He not only understood our technical requirements perfectly but also suggested improvements that significantly enhanced the user experience.',
+    testimonial3: 'Pedro\'s expertise in both frontend and backend technologies allowed for seamless development of our platform. He\'s a dedicated professional who truly cares about delivering quality work.',
   },
   blog: {
     title: 'Blog & Articles',
@@ -57,7 +67,7 @@ export default {
   },
   contact: {
     title: 'Get In Touch',
-    subtitle: 'Have a project in mind or want to discuss potential opportunities? Feel free to reach out.',
+    subtitle: 'I\'m available to discuss collaboration opportunities, answer questions about my projects, or exchange ideas about development. Feel free to contact me through the means below or through the form.',
     nameLabel: 'Name',
     namePlaceholder: 'Your name',
     emailLabel: 'Email',

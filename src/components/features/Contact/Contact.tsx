@@ -12,15 +12,15 @@ const Contact = () => {
     <section id="contact" className="py-20">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contato</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground mb-8">
-            Fico à disposição para discutir oportunidades de colaboração, tirar dúvidas sobre meus projetos ou trocar ideias sobre desenvolvimento. Entre em contato comigo pelos meios abaixo ou através do formulário.
+            {t('contact.subtitle')}
           </p>
           
           <ContactForm />
           
           <div className="mt-12 pt-12 border-t border-border">
-            <h3 className="text-xl font-semibold mb-6">Conecte-se comigo</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('contact.connectTitle')}</h3>
             <div className="flex flex-wrap gap-4">
               <Button variant="outline" className="gap-2" asChild>
                 <a href="https://github.com/pepefcardoso" target="_blank" rel="noopener noreferrer">
