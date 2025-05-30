@@ -45,11 +45,89 @@ export default {
     imagePlaceholder: 'Captura de pantalla del proyecto',
     liveDemo: 'Demo en Vivo',
     viewCode: 'Ver Código',
+    project1: {
+      title: 'Sitio Web Heladería Belatto',
+      description: 'Sitio web para heladería con información sobre productos, ubicación y contacto.',
+    },
+    project2: {
+      title: 'Proyecto Figma Sitio de Recetas y Noticias',
+      description: 'Diseño de interfaz para sitio de recetas y noticias desarrollado en Figma.',
+    },
+    project3: {
+      title: 'Proyecto Sitio Web Club Atlético Tubarão',
+      description: 'Sitio web para el club de fútbol Atlético Tubarão con información sobre el equipo, juegos y noticias.',
+    },
+    project4: {
+      title: 'Proyecto Python Urna Electrónica UFSC',
+      description: 'Sistema de urna electrónica desarrollado en Python para el curso de Análisis y Desarrollo de Sistemas.',
+    },
+    project5: {
+      title: 'Aplicación Flutter Blog',
+      description: 'Aplicación móvil de blog desarrollada con Flutter.',
+    },
+    project6: {
+      title: 'API Aplicación Blog',
+      description: 'API backend para aplicación de blog desarrollada con Laravel/PHP.',
+    },
+    project7: {
+      title: 'Aplicación Flutter Blog Admin',
+      description: 'Panel administrativo para aplicación de blog desarrollado con Flutter.',
+    },
+    project8: {
+      title: 'API Sitio NextJs Recetas y Noticias',
+      description: 'API backend para sitio de recetas y noticias desarrollado con NextJS.',
+    },
+    project9: {
+      title: 'Sitio NextJs Recetas y Noticias',
+      description: 'Sitio de recetas y noticias desarrollado con NextJS.',
+    },
   },
   timeline: {
     title: 'Timeline Profesional',
     education: 'Educación',
     experience: 'Experiencia',
+    exp1: {
+      title: 'Pasante de Desarrollo',
+      organization: 'News Soft House',
+      period: 'Agosto/2024 - presente',
+      description: 'Desarrollo de aplicación web con Javascript/Vue, C#/EFCore y SQL para relación con clientes y gestión de negocios. Migración de datos de clientes y optimización de rendimiento de API.',
+    },
+    exp2: {
+      title: 'Desarrollador Junior',
+      organization: 'Doutor-Ie',
+      period: 'Enero/2023 - Febrero/2024',
+      description: 'Desarrollo frontend en Dart/Flutter de aplicación multiplataforma para profesionales de reparación automotriz. Colaboración en aplicación Desktop con Dart/Flutter. Migración de API a PHP/Laravel y soporte en resolución de bugs y problemas de rendimiento.',
+    },
+    exp3: {
+      title: 'Asistente Contable',
+      organization: 'Doutor-Ie',
+      period: 'Septiembre/2019 - Diciembre/2022',
+      description: 'Control financiero, contable y fiscal de empresa de mediano/gran porte. Desarrollo de análisis e informes financieros. Consultoría de inversiones e implementación de prácticas de gestión empresarial.',
+    },
+    exp4: {
+      title: 'Consultor de Proyectos',
+      organization: 'Ação Júnior',
+      period: 'Julio/2018 - Agosto/2019',
+      description: 'Construcción de soluciones empresariales. Comunicación con clientes. Optimización de resultados, gestión empresarial y prácticas corporativas.',
+    },
+    edu1: {
+      title: 'Análisis y Desarrollo de Sistemas',
+      organization: 'IFSC',
+      period: '2024 - 2026',
+      description: 'Materias principales: Análisis de Sistemas, Diseño de Sistemas, Prácticas en POO, Testing de Software, Base de Datos, Interfaz Humano-Computadora.',
+    },
+    edu2: {
+      title: 'Educación Primaria y Secundaria',
+      organization: 'Colégio Dehon',
+      period: '2007 - 2017',
+      description: 'Educación básica y secundaria completa.',
+    },
+    edu3: {
+      title: 'Cursos Relevantes',
+      organization: 'Plataformas Online',
+      period: '2022 - 2024',
+      description: 'Programación en Python de básico a avanzado (Udemy/64hrs), Python Mega Course (Udemy/53hrs), SQL and PostgreSQL (Udemy/22hrs), Desarrollo Web Avanzado con PHP, Laravel y Vue.JS (Udemy/57hrs), PHP 8 (HCode/20hrs), Curso Completo del Desarrollador Web (HCode/14hrs), Introducción a C# (Microsoft Learn).',
+    },
   },
   testimonials: {
     title: 'Testimonios',
@@ -64,6 +142,21 @@ export default {
     readMore: 'Leer Más',
     published: 'Publicado',
     minutes: 'min de lectura',
+    post1: {
+      title: 'Construyendo Aplicaciones React Responsivas',
+      excerpt: 'Aprende cómo crear aplicaciones completamente responsivas usando React y técnicas modernas de CSS.',
+      category: 'Desarrollo',
+    },
+    post2: {
+      title: 'Optimizando Rendimiento en Aplicaciones Web',
+      excerpt: 'Descubre técnicas para mejorar el rendimiento de tus aplicaciones web y proporcionar una mejor experiencia de usuario.',
+      category: 'Rendimiento',
+    },
+    post3: {
+      title: 'Implementando Autenticación en Apps React',
+      excerpt: 'Una guía completa para implementar autenticación segura en tus aplicaciones React.',
+      category: 'Seguridad',
+    },
   },
   contact: {
     title: 'Ponte en Contacto',

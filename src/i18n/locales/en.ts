@@ -45,11 +45,89 @@ export default {
     imagePlaceholder: 'Project screenshot',
     liveDemo: 'Live Demo',
     viewCode: 'View Code',
+    project1: {
+      title: 'Belatto Ice Cream Website',
+      description: 'Website for ice cream shop with product information, location and contact details.',
+    },
+    project2: {
+      title: 'Figma Recipe and News Website Project',
+      description: 'Interface design for recipe and news website developed in Figma.',
+    },
+    project3: {
+      title: 'Atlético Tubarão Football Club Website Project',
+      description: 'Website for Atlético Tubarão football club with team information, games and news.',
+    },
+    project4: {
+      title: 'Python Electronic Voting System UFSC Project',
+      description: 'Electronic voting system developed in Python for the Systems Analysis and Development course.',
+    },
+    project5: {
+      title: 'Flutter Blog Application',
+      description: 'Mobile blog application developed with Flutter.',
+    },
+    project6: {
+      title: 'Blog Application API',
+      description: 'Backend API for blog application developed with Laravel/PHP.',
+    },
+    project7: {
+      title: 'Flutter Blog Admin Application',
+      description: 'Administrative panel for blog application developed with Flutter.',
+    },
+    project8: {
+      title: 'NextJs Recipe and News Website API',
+      description: 'Backend API for recipe and news website developed with NextJS.',
+    },
+    project9: {
+      title: 'NextJs Recipe and News Website',
+      description: 'Recipe and news website developed with NextJS.',
+    },
   },
   timeline: {
     title: 'Professional Timeline',
     education: 'Education',
     experience: 'Experience',
+    exp1: {
+      title: 'Development Intern',
+      organization: 'News Soft House',
+      period: 'August/2024 - present',
+      description: 'Web application development with Javascript/Vue, C#/EFCore and SQL for customer relationship and business management. Customer data migration and API performance optimization.',
+    },
+    exp2: {
+      title: 'Junior Developer',
+      organization: 'Doutor-Ie',
+      period: 'January/2023 - February/2024',
+      description: 'Frontend development in Dart/Flutter for cross-platform application for automotive repair professionals. Collaboration on Desktop application with Dart/Flutter. API migration to PHP/Laravel and support in bug resolution and performance issues.',
+    },
+    exp3: {
+      title: 'Accounting Assistant',
+      organization: 'Doutor-Ie',
+      period: 'September/2019 - December/2022',
+      description: 'Financial, accounting and fiscal control of medium/large company. Development of financial analysis and reports. Investment consulting and implementation of business management practices.',
+    },
+    exp4: {
+      title: 'Project Consultant',
+      organization: 'Ação Júnior',
+      period: 'July/2018 - August/2019',
+      description: 'Building business solutions. Customer communication. Results optimization, business management and corporate practices.',
+    },
+    edu1: {
+      title: 'Systems Analysis and Development',
+      organization: 'IFSC',
+      period: '2024 - 2026',
+      description: 'Main subjects: Systems Analysis, Systems Design, OOP Practices, Software Testing, Database, Human-Computer Interface.',
+    },
+    edu2: {
+      title: 'Elementary and High School',
+      organization: 'Colégio Dehon',
+      period: '2007 - 2017',
+      description: 'Basic education and complete high school.',
+    },
+    edu3: {
+      title: 'Relevant Courses',
+      organization: 'Online Platforms',
+      period: '2022 - 2024',
+      description: 'Python Programming from Basic to Advanced (Udemy/64hrs), Python Mega Course (Udemy/53hrs), SQL and PostgreSQL (Udemy/22hrs), Advanced Web Development with PHP, Laravel and Vue.JS (Udemy/57hrs), PHP 8 (HCode/20hrs), Complete Web Developer Course (HCode/14hrs), Introduction to C# (Microsoft Learn).',
+    },
   },
   testimonials: {
     title: 'Testimonials',
@@ -64,6 +142,21 @@ export default {
     readMore: 'Read More',
     published: 'Published',
     minutes: 'min read',
+    post1: {
+      title: 'Building Responsive React Applications',
+      excerpt: 'Learn how to create fully responsive applications using React and modern CSS techniques.',
+      category: 'Development',
+    },
+    post2: {
+      title: 'Optimizing Performance in Web Applications',
+      excerpt: 'Discover techniques to improve the performance of your web applications and provide a better user experience.',
+      category: 'Performance',
+    },
+    post3: {
+      title: 'Implementing Authentication in React Apps',
+      excerpt: 'A comprehensive guide to implementing secure authentication in your React applications.',
+      category: 'Security',
+    },
   },
   contact: {
     title: 'Get In Touch',

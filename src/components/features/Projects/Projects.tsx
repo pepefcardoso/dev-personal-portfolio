@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/Card";
@@ -12,8 +11,8 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: "project1",
-      title: "Site Sorveteria Belatto",
-      description: "Website para sorveteria com informações sobre os produtos, localização e contato.",
+      title: t('projects.project1.title'),
+      description: t('projects.project1.description'),
       tags: ["HTML", "CSS", "JavaScript"],
       image: "",
       demoUrl: "https://github.com/pepefcardoso/Site-Sorveteria-Belatto",
@@ -22,8 +21,8 @@ const Projects = () => {
     },
     {
       id: "project2",
-      title: "Projeto Figma Site de Receitas e Notícias",
-      description: "Design de interface para site de receitas e notícias desenvolvido no Figma.",
+      title: t('projects.project2.title'),
+      description: t('projects.project2.description'),
       tags: ["Figma", "UI/UX", "Design"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Projeto-Figma-Site-de-Receitas-e-Noticias",
@@ -31,8 +30,8 @@ const Projects = () => {
     },
     {
       id: "project3",
-      title: "Projeto Site Clube Atlético Tubarão",
-      description: "Website para o clube de futebol Atlético Tubarão com informações sobre o time, jogos e notícias.",
+      title: t('projects.project3.title'),
+      description: t('projects.project3.description'),
       tags: ["HTML", "CSS", "JavaScript"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Projeto-Site-Clube-Atletico-Tubarao",
@@ -40,8 +39,8 @@ const Projects = () => {
     },
     {
       id: "project4",
-      title: "Projeto Python Urna Eletrônica UFSC",
-      description: "Sistema de urna eletrônica desenvolvido em Python para o curso de Análise e Desenvolvimento de Sistemas.",
+      title: t('projects.project4.title'),
+      description: t('projects.project4.description'),
       tags: ["Python", "Interface", "Sistema"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Projeto-Python-Urna-Eletronica-UFSC",
@@ -49,8 +48,8 @@ const Projects = () => {
     },
     {
       id: "project5",
-      title: "Aplicativo Flutter Blog",
-      description: "Aplicativo mobile de blog desenvolvido com Flutter.",
+      title: t('projects.project5.title'),
+      description: t('projects.project5.description'),
       tags: ["Flutter", "Dart", "Mobile"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog",
@@ -58,8 +57,8 @@ const Projects = () => {
     },
     {
       id: "project6",
-      title: "Api Aplicativo Blog",
-      description: "API backend para aplicativo de blog desenvolvida com Laravel/PHP.",
+      title: t('projects.project6.title'),
+      description: t('projects.project6.description'),
       tags: ["Laravel", "PHP", "API"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Api-Aplicativo-Blog",
@@ -67,8 +66,8 @@ const Projects = () => {
     },
     {
       id: "project7",
-      title: "Aplicativo Flutter Blog Admin",
-      description: "Painel administrativo para o aplicativo de blog desenvolvido com Flutter.",
+      title: t('projects.project7.title'),
+      description: t('projects.project7.description'),
       tags: ["Flutter", "Dart", "Admin"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog-Admin",
@@ -76,8 +75,8 @@ const Projects = () => {
     },
     {
       id: "project8",
-      title: "Api Site NextJs Receitas e Notícias",
-      description: "API backend para site de receitas e notícias desenvolvido com NextJS.",
+      title: t('projects.project8.title'),
+      description: t('projects.project8.description'),
       tags: ["NextJS", "API", "JavaScript"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Api-Site-NextJs-Receitas-e-Noticias",
@@ -85,8 +84,8 @@ const Projects = () => {
     },
     {
       id: "project9",
-      title: "Site NextJs Receitas e Notícias",
-      description: "Site de receitas e notícias desenvolvido com NextJS.",
+      title: t('projects.project9.title'),
+      description: t('projects.project9.description'),
       tags: ["NextJS", "React", "JavaScript"],
       image: "",
       codeUrl: "https://github.com/pepefcardoso/Site-NextJs-Receitas-e-Noticias",
