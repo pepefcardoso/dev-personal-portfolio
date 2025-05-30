@@ -61,24 +61,11 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-              {/* Your personal profile image */}
               <img 
                 src="/lovable-uploads/1a45b1d8-1d4d-49b2-8d92-919545de0e30.png" 
                 alt={t('hero.name')}
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback if image fails to load
-                  const target = e.currentTarget as HTMLImageElement;
-                  const fallback = target.nextElementSibling as HTMLElement;
-                  target.style.display = 'none';
-                  if (fallback) {
-                    fallback.style.display = 'flex';
-                  }
-                }}
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white text-4xl font-bold" style={{display: 'none'}}>
-                PPFC
-              </div>
             </div>
           </div>
         </div>

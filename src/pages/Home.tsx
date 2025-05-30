@@ -1,6 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import Header from '@/components/layout/Header';
 import Hero from '@/components/features/Hero/Hero';
 import About from '@/components/features/About/About';
@@ -12,15 +11,8 @@ import Contact from '@/components/features/Contact/Contact';
 import Footer from '@/components/layout/Footer';
 
 const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Animation effect when component mounts
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
-    <div className={`min-h-screen bg-background transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className="min-h-screen bg-background">
       <Header />
 
       <main>
