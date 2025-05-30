@@ -79,6 +79,13 @@ export default {
     connectTitle: 'Conecte-se comigo',
     formSuccess: 'Mensagem Enviada!',
     formSuccessMessage: 'Obrigado por entrar em contato. Retornarei em breve.',
+    formError: 'Erro',
+    formErrorMessage: 'Falha ao enviar mensagem. Por favor, tente novamente mais tarde.',
+    validation: {
+      nameMin: 'Nome deve ter pelo menos 2 caracteres.',
+      emailInvalid: 'Por favor, insira um endereço de e-mail válido.',
+      messageMin: 'Mensagem deve ter pelo menos 10 caracteres.',
+    },
   },
   footer: {
     copyright: 'Todos os Direitos Reservados',

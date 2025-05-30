@@ -105,14 +105,14 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">Projetos</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('projects.title')}</h2>
         
         <div className="flex flex-wrap gap-2 mb-8">
           <Button 
             variant={filter === "all" ? "default" : "outline"}
             onClick={() => setFilter("all")}
           >
-            Todos
+            {t('projects.allFilter')}
           </Button>
           {allTags.sort().map(tag => (
             <Button
@@ -136,7 +136,7 @@ const Projects = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-muted-foreground">Visualização do projeto</div>
+                  <div className="text-muted-foreground">{t('projects.imagePlaceholder')}</div>
                 )}
               </div>
               <CardHeader>
@@ -159,14 +159,14 @@ const Projects = () => {
                 {project.demoUrl && (
                   <Button variant="outline" size="sm" asChild>
                     <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                      Demo
+                      {t('projects.liveDemo')}
                     </a>
                   </Button>
                 )}
                 {project.codeUrl && (
                   <Button variant="outline" size="sm" asChild>
                     <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                      Código
+                      {t('projects.viewCode')}
                     </a>
                   </Button>
                 )}

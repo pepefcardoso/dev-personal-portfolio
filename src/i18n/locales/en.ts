@@ -79,6 +79,13 @@ export default {
     connectTitle: 'Connect With Me',
     formSuccess: 'Message Sent!',
     formSuccessMessage: 'Thank you for reaching out. I\'ll get back to you soon.',
+    formError: 'Error',
+    formErrorMessage: 'Failed to send message. Please try again later.',
+    validation: {
+      nameMin: 'Name must be at least 2 characters.',
+      emailInvalid: 'Please enter a valid email address.',
+      messageMin: 'Message must be at least 10 characters.',
+    },
   },
   footer: {
     copyright: 'All Rights Reserved',
