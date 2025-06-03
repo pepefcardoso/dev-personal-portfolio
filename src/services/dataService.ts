@@ -2,10 +2,12 @@
 import { skillsData } from '@/data/skills';
 import { timelineData } from '@/data/timeline';
 import { blogData } from '@/data/blog';
+import { projectsData } from '@/data/projects';
 import { personalInfo, contactInfo } from '@/data/personal';
 import { SkillsData } from '@/types/skills';
 import { TimelineData } from '@/types/timeline';
 import { BlogData } from '@/types/blog';
+import { ProjectsData } from '@/types/projects';
 import { PersonalInfo, ContactInfo } from '@/types/contact';
 import { TranslatableString } from '@/types/common';
 
@@ -41,6 +43,13 @@ class DataService {
    */
   getBlogData(): BlogData {
     return blogData;
+  }
+
+  /**
+   * Obtém dados dos projetos
+   */
+  getProjectsData(): ProjectsData {
+    return projectsData;
   }
 
   /**
@@ -110,6 +119,35 @@ class DataService {
    */
   getFeaturedBlogPosts() {
     return this.getBlogPosts().filter(post => post.featured);
+  }
+
+  /**
+   * Obtém projetos ordenados
+   */
+  getProjects() {
+    return projectsData.projects.sort((a, b) => a.order - b.order);
+  }
+
+  /**
+   * Obtém projetos em destaque
+   */
+  getFeaturedProjects() {
+    return this.getProjects().filter(project => project.featured);
+  }
+
+  /**
+   * Obtém projetos por categoria
+   */
+  getProjectsByCategory(category?: string) {
+    if (!category) return this.getProjects();
+    return this.getProjects().filter(project => project.category === category);
+  }
+
+  /**
+   * Obtém projetos por tag
+   */
+  getProjectsByTag(tag: string) {
+    return this.getProjects().filter(project => project.tags.includes(tag));
   }
 }
 

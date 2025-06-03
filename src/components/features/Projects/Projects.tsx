@@ -1,105 +1,24 @@
+
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { Project } from "@/types/project";
+import { useProjectsData } from "@/hooks/useProjectsData";
 
 const Projects = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<string>("all");
   
-  const projects: Project[] = [
-    {
-      id: "project1",
-      title: t('projects.project1.title'),
-      description: t('projects.project1.description'),
-      tags: ["HTML", "CSS", "JavaScript"],
-      image: "",
-      demoUrl: "https://github.com/pepefcardoso/Site-Sorveteria-Belatto",
-      codeUrl: "https://github.com/pepefcardoso/Site-Sorveteria-Belatto",
-      featured: true,
-    },
-    {
-      id: "project2",
-      title: t('projects.project2.title'),
-      description: t('projects.project2.description'),
-      tags: ["Figma", "UI/UX", "Design"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Projeto-Figma-Site-de-Receitas-e-Noticias",
-      featured: true,
-    },
-    {
-      id: "project3",
-      title: t('projects.project3.title'),
-      description: t('projects.project3.description'),
-      tags: ["HTML", "CSS", "JavaScript"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Projeto-Site-Clube-Atletico-Tubarao",
-      featured: true,
-    },
-    {
-      id: "project4",
-      title: t('projects.project4.title'),
-      description: t('projects.project4.description'),
-      tags: ["Python", "Interface", "Sistema"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Projeto-Python-Urna-Eletronica-UFSC",
-      featured: false,
-    },
-    {
-      id: "project5",
-      title: t('projects.project5.title'),
-      description: t('projects.project5.description'),
-      tags: ["Flutter", "Dart", "Mobile"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog",
-      featured: false,
-    },
-    {
-      id: "project6",
-      title: t('projects.project6.title'),
-      description: t('projects.project6.description'),
-      tags: ["Laravel", "PHP", "API"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Api-Aplicativo-Blog",
-      featured: false,
-    },
-    {
-      id: "project7",
-      title: t('projects.project7.title'),
-      description: t('projects.project7.description'),
-      tags: ["Flutter", "Dart", "Admin"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Aplicativo-Flutter-Blog-Admin",
-      featured: false,
-    },
-    {
-      id: "project8",
-      title: t('projects.project8.title'),
-      description: t('projects.project8.description'),
-      tags: ["NextJS", "API", "JavaScript"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Api-Site-NextJs-Receitas-e-Noticias",
-      featured: false,
-    },
-    {
-      id: "project9",
-      title: t('projects.project9.title'),
-      description: t('projects.project9.description'),
-      tags: ["NextJS", "React", "JavaScript"],
-      image: "",
-      codeUrl: "https://github.com/pepefcardoso/Site-NextJs-Receitas-e-Noticias",
-      featured: false,
-    },
-  ];
-
-  // Get unique tags from all projects
-  const allTags = Array.from(new Set(projects.flatMap(project => project.tags)));
+  const { 
+    projects, 
+    getProjectsByTag, 
+    getAllTags 
+  } = useProjectsData();
   
   // Filter projects based on selected tag
   const filteredProjects = filter === "all" 
     ? projects 
-    : projects.filter(project => project.tags.includes(filter));
+    : getProjectsByTag(filter);
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
@@ -113,7 +32,7 @@ const Projects = () => {
           >
             {t('projects.allFilter')}
           </Button>
-          {allTags.sort().map(tag => (
+          {getAllTags.map(tag => (
             <Button
               key={tag}
               variant={filter === tag ? "default" : "outline"}
