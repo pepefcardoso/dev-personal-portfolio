@@ -1,9 +1,11 @@
 
 import { skillsData } from '@/data/skills';
 import { timelineData } from '@/data/timeline';
+import { blogData } from '@/data/blog';
 import { personalInfo, contactInfo } from '@/data/personal';
 import { SkillsData } from '@/types/skills';
 import { TimelineData } from '@/types/timeline';
+import { BlogData } from '@/types/blog';
 import { PersonalInfo, ContactInfo } from '@/types/contact';
 import { TranslatableString } from '@/types/common';
 
@@ -32,6 +34,13 @@ class DataService {
    */
   getTimelineData(): TimelineData {
     return timelineData;
+  }
+
+  /**
+   * Obtém dados do blog
+   */
+  getBlogData(): BlogData {
+    return blogData;
   }
 
   /**
@@ -85,6 +94,22 @@ class DataService {
    */
   getEducation() {
     return timelineData.education.sort((a, b) => a.order - b.order);
+  }
+
+  /**
+   * Obtém posts do blog ordenados
+   */
+  getBlogPosts() {
+    return blogData.posts
+      .filter(post => post.status === 'published')
+      .sort((a, b) => a.order - b.order);
+  }
+
+  /**
+   * Obtém posts do blog em destaque
+   */
+  getFeaturedBlogPosts() {
+    return this.getBlogPosts().filter(post => post.featured);
   }
 }
 

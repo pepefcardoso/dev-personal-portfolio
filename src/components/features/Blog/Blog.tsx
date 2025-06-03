@@ -4,46 +4,14 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter } from "@/components/ui/Card";
 import { Newspaper, Clock } from "lucide-react";
-import { BlogPost } from "@/types/blog";
+import { useBlogData } from "@/hooks/useBlogData";
 import BlogModal from "./BlogModal";
 
 const Blog = () => {
   const { t } = useTranslation();
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const { blogPosts } = useBlogData();
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const posts: BlogPost[] = [
-    {
-      id: "post1",
-      title: t('blog.post1.title'),
-      excerpt: t('blog.post1.excerpt'),
-      date: "2023-05-15",
-      readTime: 8,
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      url: "#",
-      category: t('blog.post1.category'),
-    },
-    {
-      id: "post2",
-      title: t('blog.post2.title'),
-      excerpt: t('blog.post2.excerpt'),
-      date: "2023-04-22",
-      readTime: 12,
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-      url: "#",
-      category: t('blog.post2.category'),
-    },
-    {
-      id: "post3",
-      title: t('blog.post3.title'),
-      excerpt: t('blog.post3.excerpt'),
-      date: "2023-03-10",
-      readTime: 15,
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      url: "#",
-      category: t('blog.post3.category'),
-    },
-  ];
 
   // Format date to readable format
   const formatDate = (dateString: string) => {
@@ -51,14 +19,14 @@ const Blog = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handlePostClick = (post: BlogPost) => {
-    setSelectedPost(post);
+  const handlePostClick = (postId: string) => {
+    setSelectedPostId(postId);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedPost(null);
+    setSelectedPostId(null);
   };
 
   return (
@@ -71,11 +39,11 @@ const Blog = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
+            {blogPosts.map((post) => (
               <Card 
                 key={post.id} 
                 className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-all duration-300 cursor-pointer group"
-                onClick={() => handlePostClick(post)}
+                onClick={() => handlePostClick(post.id)}
               >
                 <div className="h-48 bg-muted overflow-hidden">
                   {post.image ? (
@@ -116,7 +84,7 @@ const Blog = () => {
       </section>
 
       <BlogModal 
-        post={selectedPost}
+        postId={selectedPostId}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />

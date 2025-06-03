@@ -4,16 +4,19 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent } from "@/components/ui/Card";
 import { X, Clock, Calendar } from "lucide-react";
-import { BlogPost } from "@/types/blog";
+import { useBlogData } from "@/hooks/useBlogData";
 
 interface BlogModalProps {
-  post: BlogPost | null;
+  postId: string | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const BlogModal: React.FC<BlogModalProps> = ({ post, isOpen, onClose }) => {
+const BlogModal: React.FC<BlogModalProps> = ({ postId, isOpen, onClose }) => {
   const { t } = useTranslation();
+  const { getBlogPostById } = useBlogData();
+  
+  const post = postId ? getBlogPostById(postId) : null;
 
   if (!isOpen || !post) return null;
 
@@ -79,11 +82,10 @@ const BlogModal: React.FC<BlogModalProps> = ({ post, isOpen, onClose }) => {
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-muted-foreground mb-6">{post.excerpt}</p>
               
-              {/* Blog content - you can expand this with actual content */}
+              {/* Blog content */}
               <div className="space-y-4">
                 <p>
-                  Este é um exemplo de conteúdo completo do artigo. Aqui você pode adicionar o texto completo do seu blog post, 
-                  incluindo parágrafos, listas, códigos e outros elementos que compõem o artigo.
+                  {post.content || "Este é um exemplo de conteúdo completo do artigo. Aqui você pode adicionar o texto completo do seu blog post, incluindo parágrafos, listas, códigos e outros elementos que compõem o artigo."}
                 </p>
                 
                 <h2 className="text-2xl font-semibold mt-8 mb-4">Introdução</h2>
