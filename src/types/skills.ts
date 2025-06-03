@@ -1,6 +1,25 @@
 
-export interface Skill {
+import { SkillLevel, SkillCategory, OrderableItem } from './common';
+
+/**
+ * Tipos relacionados a habilidades técnicas
+ */
+export interface Skill extends OrderableItem {
   name: string;
-  level: number; // 1-5
-  category: "frontend" | "backend" | "tools" | "languages";
+  level: SkillLevel;
+  category: SkillCategory;
+  description?: string;
+  yearsOfExperience?: number;
+  certifications?: string[];
+}
+
+export interface SkillsData {
+  skills: Skill[];
+  categories: {
+    [key in SkillCategory]: {
+      name: string;
+      description?: string;
+      color?: string;
+    };
+  };
 }
