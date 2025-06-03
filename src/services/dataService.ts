@@ -1,7 +1,9 @@
 
 import { skillsData } from '@/data/skills';
+import { timelineData } from '@/data/timeline';
 import { personalInfo, contactInfo } from '@/data/personal';
 import { SkillsData } from '@/types/skills';
+import { TimelineData } from '@/types/timeline';
 import { PersonalInfo, ContactInfo } from '@/types/contact';
 import { TranslatableString } from '@/types/common';
 
@@ -23,6 +25,13 @@ class DataService {
    */
   getSkillsData(): SkillsData {
     return skillsData;
+  }
+
+  /**
+   * Obtém dados do timeline
+   */
+  getTimelineData(): TimelineData {
+    return timelineData;
   }
 
   /**
@@ -62,6 +71,20 @@ class DataService {
       default:
         return skills.sort((a, b) => a.order - b.order);
     }
+  }
+
+  /**
+   * Obtém experiências profissionais ordenadas
+   */
+  getExperiences() {
+    return timelineData.experience.sort((a, b) => a.order - b.order);
+  }
+
+  /**
+   * Obtém dados educacionais ordenados
+   */
+  getEducation() {
+    return timelineData.education.sort((a, b) => a.order - b.order);
   }
 }
 
