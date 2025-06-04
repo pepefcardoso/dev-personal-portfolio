@@ -26,56 +26,64 @@ export class DataFactory {
    * Valida e cria dados de habilidades
    */
   static createSkillsData(data: unknown): SkillsData {
-    return SkillsDataSchema.parse(data);
+    const validated = SkillsDataSchema.parse(data);
+    return validated as SkillsData;
   }
 
   /**
    * Valida e cria dados de timeline
    */
   static createTimelineData(data: unknown): TimelineData {
-    return TimelineDataSchema.parse(data);
+    const validated = TimelineDataSchema.parse(data);
+    return validated as TimelineData;
   }
 
   /**
    * Valida e cria dados de blog
    */
   static createBlogData(data: unknown): BlogData {
-    return BlogDataSchema.parse(data);
+    const validated = BlogDataSchema.parse(data);
+    return validated as BlogData;
   }
 
   /**
    * Valida e cria dados de projetos
    */
   static createProjectsData(data: unknown): ProjectsData {
-    return ProjectsDataSchema.parse(data);
+    const validated = ProjectsDataSchema.parse(data);
+    return validated as ProjectsData;
   }
 
   /**
    * Valida e cria dados de depoimentos
    */
   static createTestimonialsData(data: unknown): TestimonialsData {
-    return TestimonialsDataSchema.parse(data);
+    const validated = TestimonialsDataSchema.parse(data);
+    return validated as TestimonialsData;
   }
 
   /**
    * Valida e cria dados de idiomas
    */
   static createLanguagesData(data: unknown): LanguagesData {
-    return LanguagesDataSchema.parse(data);
+    const validated = LanguagesDataSchema.parse(data);
+    return validated as LanguagesData;
   }
 
   /**
    * Valida e cria informações pessoais
    */
   static createPersonalInfo(data: unknown): PersonalInfo {
-    return PersonalInfoSchema.parse(data);
+    const validated = PersonalInfoSchema.parse(data);
+    return validated as PersonalInfo;
   }
 
   /**
    * Valida e cria informações de contato
    */
   static createContactInfo(data: unknown): ContactInfo {
-    return ContactInfoSchema.parse(data);
+    const validated = ContactInfoSchema.parse(data);
+    return validated as ContactInfo;
   }
 
   /**
