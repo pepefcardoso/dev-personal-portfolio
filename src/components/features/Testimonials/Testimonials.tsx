@@ -2,43 +2,36 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/Card";
-import { MessageSquare, User, ExternalLink } from "lucide-react";
-import { Testimonial } from "@/types/testimonial";
+import { MessageSquare, User, ExternalLink, Star } from "lucide-react";
+import { useTestimonialsData } from "@/hooks/useTestimonialsData";
 
 const Testimonials = () => {
   const { t } = useTranslation();
-  
-  const testimonials: Testimonial[] = [
-    {
-      id: "testimonial1",
-      name: "Sarah Johnson",
-      position: "CTO",
-      company: "TechSolutions Inc",
-      content: t('testimonials.testimonial1'),
-      socialUrl: "https://linkedin.com/in/sarah-johnson-example",
-    },
-    {
-      id: "testimonial2",
-      name: "Michael Chen",
-      position: "Product Manager",
-      company: "InnovateX",
-      content: t('testimonials.testimonial2'),
-      socialUrl: "https://linkedin.com/in/michael-chen-example",
-    },
-    {
-      id: "testimonial3",
-      name: "Emma Williams",
-      position: "Frontend Lead",
-      company: "WebCraft Studios",
-      content: t('testimonials.testimonial3'),
-      socialUrl: "https://linkedin.com/in/emma-williams-example",
-    },
-  ];
+  const { testimonials } = useTestimonialsData();
 
   const handleTestimonialClick = (socialUrl?: string) => {
     if (socialUrl) {
       window.open(socialUrl, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const renderStars = (rating?: number) => {
+    if (!rating) return null;
+    
+    return (
+      <div className="flex items-center mb-2">
+        {Array.from({ length: 5 }, (_, index) => (
+          <Star
+            key={index}
+            className={`h-4 w-4 ${
+              index < rating 
+                ? 'text-yellow-400 fill-current' 
+                : 'text-gray-300'
+            }`}
+          />
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -59,9 +52,15 @@ const Testimonials = () => {
               <CardContent className="p-6">
                 <div className="mb-4 flex justify-between items-start">
                   <MessageSquare className="h-8 w-8 text-primary opacity-30" />
-                  <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {testimonial.socialUrl && (
+                    <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  )}
                 </div>
+                
+                {renderStars(testimonial.rating)}
+                
                 <p className="text-muted-foreground mb-6 italic">"{testimonial.content}"</p>
+                
                 <div className="flex items-center">
                   <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center mr-3">
                     {testimonial.image ? (
@@ -75,8 +74,20 @@ const Testimonials = () => {
                     )}
                   </div>
                   <div>
-                    <h4 className="font-semibold group-hover:text-primary transition-colors duration-300">{testimonial.name}</h4>
-                    <p className="text-xs text-muted-foreground">{testimonial.position}, {testimonial.company}</p>
+                    <h4 className="font-semibold group-hover:text-primary transition-colors duration-300">
+                      {testimonial.name}
+                      {testimonial.verified && (
+                        <span className="ml-1 text-green-500 text-xs">✓</span>
+                      )}
+                    </h4>
+                    <p className="text-xs text-muted-foreground">
+                      {testimonial.position}, {testimonial.company}
+                    </p>
+                    {testimonial.date && (
+                      <p className="text-xs text-muted-foreground opacity-70">
+                        {new Date(testimonial.date).toLocaleDateString()}
+                      </p>
+                    )}
                   </div>
                 </div>
               </CardContent>

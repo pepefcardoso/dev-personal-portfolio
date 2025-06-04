@@ -8,18 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const languages = [
-  { code: "en", name: "English" },
-  { code: "pt", name: "Português" },
-  { code: "es", name: "Español" },
-  { code: "fr", name: "Français" },
-  { code: "it", name: "Italiano" },
-  { code: "zh", name: "中文" },
-];
+import { useLanguagesData } from "@/hooks/useLanguagesData";
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
+  const { languages, currentLanguage } = useLanguagesData();
   const [currentLang, setCurrentLang] = useState(i18n.language || "pt");
 
   useEffect(() => {
@@ -33,14 +26,16 @@ const LanguageSelector = () => {
   };
 
   const getCurrentLanguageName = () => {
-    const lang = languages.find(lang => lang.code === currentLang);
-    return lang?.name || "Português";
+    return currentLanguage?.name || "Português";
   };
 
   return (
     <Select value={currentLang} onValueChange={handleLanguageChange}>
       <SelectTrigger className="w-[120px] border-none bg-transparent focus:ring-0 hover:bg-accent/50 transition-colors duration-200">
-        <SelectValue placeholder={getCurrentLanguageName()} />
+        <div className="flex items-center gap-2">
+          {currentLanguage?.flag && <span>{currentLanguage.flag}</span>}
+          <SelectValue placeholder={getCurrentLanguageName()} />
+        </div>
       </SelectTrigger>
       <SelectContent className="bg-background border border-border shadow-lg">
         {languages.map((lang) => (
@@ -49,7 +44,10 @@ const LanguageSelector = () => {
             value={lang.code}
             className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
           >
-            {lang.name}
+            <div className="flex items-center gap-2">
+              {lang.flag && <span>{lang.flag}</span>}
+              <span>{lang.name}</span>
+            </div>
           </SelectItem>
         ))}
       </SelectContent>
