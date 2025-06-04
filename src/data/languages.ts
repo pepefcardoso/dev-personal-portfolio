@@ -17,7 +17,8 @@ export const languagesData: LanguagesData = {
       nativeName: "English",
       flag: "🇺🇸",
       isDefault: false,
-      rtl: false
+      rtl: false,
+      order: 1
     },
     {
       id: "pt",
@@ -33,7 +34,8 @@ export const languagesData: LanguagesData = {
       nativeName: "Português",
       flag: "🇧🇷",
       isDefault: true,
-      rtl: false
+      rtl: false,
+      order: 2
     },
     {
       id: "es",
@@ -49,7 +51,8 @@ export const languagesData: LanguagesData = {
       nativeName: "Español",
       flag: "🇪🇸",
       isDefault: false,
-      rtl: false
+      rtl: false,
+      order: 3
     },
     {
       id: "fr",
@@ -65,7 +68,8 @@ export const languagesData: LanguagesData = {
       nativeName: "Français",
       flag: "🇫🇷",
       isDefault: false,
-      rtl: false
+      rtl: false,
+      order: 4
     },
     {
       id: "it",
@@ -81,7 +85,8 @@ export const languagesData: LanguagesData = {
       nativeName: "Italiano",
       flag: "🇮🇹",
       isDefault: false,
-      rtl: false
+      rtl: false,
+      order: 5
     },
     {
       id: "zh",
@@ -97,7 +102,8 @@ export const languagesData: LanguagesData = {
       nativeName: "中文",
       flag: "🇨🇳",
       isDefault: false,
-      rtl: false
+      rtl: false,
+      order: 6
     }
   ]
 };
