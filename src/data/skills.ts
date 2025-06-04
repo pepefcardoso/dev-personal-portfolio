@@ -2,9 +2,6 @@
 import { SkillsData, Skill } from '@/types/skills';
 import { SkillLevel, SkillCategory } from '@/types/common';
 
-/**
- * Dados de habilidades técnicas organizados por categoria
- */
 export const skillsData: SkillsData = {
   categories: {
     [SkillCategory.FRONTEND]: {
