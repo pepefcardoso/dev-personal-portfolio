@@ -4,9 +4,9 @@ import { SkillLevel, SkillCategory, TimelineType } from '@/types/common';
 
 // Schema base para strings traduzíveis - en e pt são obrigatórios
 export const TranslatableStringSchema = z.object({
-  en: z.string(),
-  pt: z.string(),
-  es: z.string(),
+  en: z.string().min(1),
+  pt: z.string().min(1),
+  es: z.string().min(1),
   fr: z.string().optional(),
   it: z.string().optional(),
   zh: z.string().optional()
@@ -14,7 +14,7 @@ export const TranslatableStringSchema = z.object({
 
 // Schema base para itens ordenáveis
 export const OrderableItemSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number()
 });
 
@@ -32,9 +32,9 @@ export const DateRangeItemSchema = z.object({
 
 // Schema para Habilidades
 export const SkillSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
-  name: z.string(),
+  name: z.string().min(1),
   level: z.nativeEnum(SkillLevel),
   category: z.nativeEnum(SkillCategory),
   description: z.string().optional(),
@@ -45,7 +45,7 @@ export const SkillSchema = z.object({
 export const SkillsDataSchema = z.object({
   skills: z.array(SkillSchema),
   categories: z.record(z.nativeEnum(SkillCategory), z.object({
-    name: z.string(),
+    name: z.string().min(1),
     description: z.string().optional(),
     color: z.string().optional()
   }))
@@ -53,7 +53,7 @@ export const SkillsDataSchema = z.object({
 
 // Schema para Timeline
 export const TimelineItemSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
   startDate: z.string().optional(),
   endDate: z.string().optional(),
@@ -66,8 +66,8 @@ export const TimelineItemSchema = z.object({
   achievements: z.array(TranslatableStringSchema).optional(),
   technologies: z.array(z.string()).optional(),
   links: z.array(z.object({
-    name: z.string(),
-    url: z.string()
+    name: z.string().min(1),
+    url: z.string().url()
   })).optional()
 });
 
@@ -78,20 +78,20 @@ export const TimelineDataSchema = z.object({
 
 // Schema para Blog
 export const BlogPostSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
   featured: z.boolean(),
   title: TranslatableStringSchema,
   excerpt: TranslatableStringSchema,
   content: TranslatableStringSchema.optional(),
-  date: z.string(),
+  date: z.string().min(1),
   readTime: z.number(),
   image: z.string().optional(),
   url: z.string().optional(),
   category: TranslatableStringSchema,
   tags: z.array(z.string()).optional(),
   author: z.object({
-    name: z.string(),
+    name: z.string().min(1),
     avatar: z.string().optional()
   }).optional(),
   status: z.enum(['published', 'draft', 'archived']).optional()
@@ -105,7 +105,7 @@ export const BlogDataSchema = z.object({
 
 // Schema para Projetos
 export const ProjectSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
   featured: z.boolean(),
   title: TranslatableStringSchema,
@@ -131,9 +131,9 @@ export const ProjectsDataSchema = z.object({
 
 // Schema para Depoimentos
 export const TestimonialSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
-  name: z.string(),
+  name: z.string().min(1),
   position: TranslatableStringSchema,
   company: TranslatableStringSchema,
   content: TranslatableStringSchema,
@@ -150,11 +150,11 @@ export const TestimonialsDataSchema = z.object({
 
 // Schema para Idiomas
 export const LanguageSchema = z.object({
-  id: z.string(),
+  id: z.string().min(1),
   order: z.number(),
-  code: z.string(),
+  code: z.string().min(1),
   name: TranslatableStringSchema,
-  nativeName: z.string(),
+  nativeName: z.string().min(1),
   flag: z.string().optional(),
   isDefault: z.boolean(),
   rtl: z.boolean()
@@ -172,7 +172,7 @@ export const LanguageSkillSchema = z.object({
 });
 
 export const PersonalInfoSchema = z.object({
-  name: z.string(),
+  name: z.string().min(1),
   title: TranslatableStringSchema,
   description: TranslatableStringSchema,
   avatar: z.string().optional(),
@@ -182,8 +182,8 @@ export const PersonalInfoSchema = z.object({
 });
 
 export const SocialMediaLinkSchema = z.object({
-  platform: z.string(),
-  url: z.string(),
+  platform: z.string().min(1),
+  url: z.string().url(),
   username: z.string().optional(),
   icon: z.string().optional()
 });
@@ -194,7 +194,7 @@ export const ContactInfoSchema = z.object({
   location: TranslatableStringSchema.optional(),
   socialMedia: z.array(SocialMediaLinkSchema),
   resume: z.object({
-    downloadUrl: z.string(),
+    downloadUrl: z.string().url(),
     filename: TranslatableStringSchema
   }).optional()
 });
