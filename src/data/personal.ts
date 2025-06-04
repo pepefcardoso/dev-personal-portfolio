@@ -82,7 +82,7 @@ export const contactInfo: ContactInfo = {
     }
   ],
   resume: {
-    downloadUrl: '#',
+    downloadUrl: 'https://example.com/resume.pdf',
     filename: {
       en: 'Pedro_Paulo_Resume_EN.pdf',
       pt: 'Pedro_Paulo_Curriculo_PT.pdf',
