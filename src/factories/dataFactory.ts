@@ -110,6 +110,58 @@ export class DataFactory {
       contact: this.createContactInfo(data.contact)
     };
   }
+
+  /**
+   * Valida dados parciais da aplicação
+   */
+  static validatePartialData(data: Partial<{
+    skills: unknown;
+    timeline: unknown;
+    blog: unknown;
+    projects: unknown;
+    testimonials: unknown;
+    languages: unknown;
+    personal: unknown;
+    contact: unknown;
+  }>) {
+    const result: Partial<{
+      skills: SkillsData;
+      timeline: TimelineData;
+      blog: BlogData;
+      projects: ProjectsData;
+      testimonials: TestimonialsData;
+      languages: LanguagesData;
+      personal: PersonalInfo;
+      contact: ContactInfo;
+    }> = {};
+
+    if (data.skills !== undefined) {
+      result.skills = this.createSkillsData(data.skills);
+    }
+    if (data.timeline !== undefined) {
+      result.timeline = this.createTimelineData(data.timeline);
+    }
+    if (data.blog !== undefined) {
+      result.blog = this.createBlogData(data.blog);
+    }
+    if (data.projects !== undefined) {
+      result.projects = this.createProjectsData(data.projects);
+    }
+    if (data.testimonials !== undefined) {
+      result.testimonials = this.createTestimonialsData(data.testimonials);
+    }
+    if (data.languages !== undefined) {
+      result.languages = this.createLanguagesData(data.languages);
+    }
+    if (data.personal !== undefined) {
+      result.personal = this.createPersonalInfo(data.personal);
+    }
+    if (data.contact !== undefined) {
+      result.contact = this.createContactInfo(data.contact);
+    }
+
+    return result;
+  }
 }
 
 /**
@@ -172,6 +224,6 @@ export class DataBuilder {
   }
 
   validate() {
-    return DataFactory.validateAllData(this.data);
+    return DataFactory.validatePartialData(this.data);
   }
 }
