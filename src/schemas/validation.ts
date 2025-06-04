@@ -31,9 +31,7 @@ export const DateRangeItemSchema = z.object({
 }).strict();
 
 // Schema para Habilidades
-export const SkillSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const SkillSchema = OrderableItemSchema.extend({
   name: z.string().min(1),
   level: z.nativeEnum(SkillLevel),
   category: z.nativeEnum(SkillCategory),
@@ -52,9 +50,7 @@ export const SkillsDataSchema = z.object({
 }).strict();
 
 // Schema para Timeline
-export const TimelineItemSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const TimelineItemSchema = OrderableItemSchema.extend({
   startDate: z.string().optional(),
   endDate: z.string().optional(),
   period: TranslatableStringSchema,
@@ -77,9 +73,7 @@ export const TimelineDataSchema = z.object({
 }).strict();
 
 // Schema para Blog
-export const BlogPostSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const BlogPostSchema = OrderableItemSchema.extend({
   featured: z.boolean(),
   title: TranslatableStringSchema,
   excerpt: TranslatableStringSchema,
@@ -104,9 +98,7 @@ export const BlogDataSchema = z.object({
 }).strict();
 
 // Schema para Projetos
-export const ProjectSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const ProjectSchema = OrderableItemSchema.extend({
   featured: z.boolean(),
   title: TranslatableStringSchema,
   description: TranslatableStringSchema,
@@ -130,9 +122,7 @@ export const ProjectsDataSchema = z.object({
 }).strict();
 
 // Schema para Depoimentos
-export const TestimonialSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const TestimonialSchema = OrderableItemSchema.extend({
   name: z.string().min(1),
   position: TranslatableStringSchema,
   company: TranslatableStringSchema,
@@ -149,9 +139,7 @@ export const TestimonialsDataSchema = z.object({
 }).strict();
 
 // Schema para Idiomas
-export const LanguageSchema = z.object({
-  id: z.string().min(1),
-  order: z.number(),
+export const LanguageSchema = OrderableItemSchema.extend({
   code: z.string().min(1),
   name: TranslatableStringSchema,
   nativeName: z.string().min(1),
