@@ -2,7 +2,7 @@
 import { z } from 'zod';
 import { SkillLevel, SkillCategory, TimelineType } from '@/types/common';
 
-// Schema base para strings traduzíveis
+// Schema base para strings traduzíveis - en e pt são obrigatórios
 export const TranslatableStringSchema = z.object({
   en: z.string(),
   pt: z.string(),
