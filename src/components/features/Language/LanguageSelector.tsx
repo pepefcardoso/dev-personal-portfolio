@@ -1,5 +1,3 @@
-
-import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Select,
@@ -12,35 +10,25 @@ import { useLanguagesData } from "@/hooks/useLanguagesData";
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
-  const { languages, currentLanguage } = useLanguagesData();
-  const [currentLang, setCurrentLang] = useState(i18n.language || "pt");
-
-  useEffect(() => {
-    // Update local state when i18n language changes
-    setCurrentLang(i18n.language || "pt");
-  }, [i18n.language]);
-
+  const { languages } = useLanguagesData();
   const handleLanguageChange = (value: string) => {
     i18n.changeLanguage(value);
-    setCurrentLang(value);
   };
 
-  const getCurrentLanguageName = () => {
-    return currentLanguage?.name || "Português";
-  };
+  const currentLanguageDetails = languages.find(lang => lang.code === i18n.language);
 
   return (
-    <Select value={currentLang} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[120px] border-none bg-transparent focus:ring-0 hover:bg-accent/50 transition-colors duration-200">
+    <Select value={i18n.language} onValueChange={handleLanguageChange}>
+      <SelectTrigger className="w-auto border-none bg-transparent focus:ring-0 hover:bg-accent/50 transition-colors duration-200">
         <div className="flex items-center gap-2">
-          {currentLanguage?.flag && <span>{currentLanguage.flag}</span>}
-          <SelectValue placeholder={getCurrentLanguageName()} />
+          {currentLanguageDetails?.flag && <span>{currentLanguageDetails.flag}</span>}
+          <SelectValue placeholder={currentLanguageDetails?.name || "Idioma"} />
         </div>
       </SelectTrigger>
       <SelectContent className="bg-background border border-border shadow-lg">
         {languages.map((lang) => (
-          <SelectItem 
-            key={lang.code} 
+          <SelectItem
+            key={lang.code}
             value={lang.code}
             className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
           >

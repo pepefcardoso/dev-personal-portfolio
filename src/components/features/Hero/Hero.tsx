@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
-import { File, Github, Linkedin, Mail } from "lucide-react";
+import { File, Mail } from "lucide-react";
 import { downloadFile } from "@/lib/utils";
+import { socialLinks } from "@/data/socials";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -35,18 +36,14 @@ const Hero = () => {
                 <File size={18} />
                 {t('hero.resumeBtn')}
               </Button>
-              <Button size="lg" variant="outline" className="gap-2" asChild>
-                <a href="https://github.com/pepefcardoso" target="_blank" rel="noopener noreferrer">
-                  <Github size={18} />
-                  GitHub
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2" asChild>
-                <a href="https://linkedin.com/in/pepefcardoso" target="_blank" rel="noopener noreferrer">
-                  <Linkedin size={18} />
-                  LinkedIn
-                </a>
-              </Button>
+              {socialLinks.map((link) => (
+                <Button key={link.name} size="lg" variant="outline" className="gap-2" asChild>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <link.icon size={18} />
+                    {link.name}
+                  </a>
+                </Button>
+              ))}
             </div>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
@@ -61,7 +58,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Decorative elements */}
       <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute -top-24 -right-24 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
     </section>

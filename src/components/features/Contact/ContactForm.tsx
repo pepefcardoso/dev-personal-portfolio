@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
   Form,
@@ -22,11 +22,11 @@ const ContactForm = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
 
-  const formSchema = z.object({
+  const formSchema = useMemo(() => z.object({
     name: z.string().min(2, { message: t('contact.validation.nameMin') }),
     email: z.string().email({ message: t('contact.validation.emailInvalid') }),
     message: z.string().min(10, { message: t('contact.validation.messageMin') }),
-  });
+  }), [t]);
 
   type FormValues = z.infer<typeof formSchema>;
 
@@ -131,9 +131,7 @@ const ContactForm = () => {
           className="w-full md:w-auto"
           disabled={isSubmitting}
         >
-          {isSubmitting ? (
-            <>{t('contact.submitting')}</>
-          ) : (
+          {isSubmitting ? t('contact.submitting') : (
             <>
               <Mail className="mr-2" size={16} />
               {t('contact.submit')}
