@@ -1,12 +1,9 @@
-
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
   Form,
@@ -18,13 +15,13 @@ import {
 } from "@/components/ui/form";
 import { Mail } from "lucide-react";
 import { sendEmail, EmailData } from "@/services/email";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const ContactForm = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Define form validation schema with translated messages
+
   const formSchema = z.object({
     name: z.string().min(2, { message: t('contact.validation.nameMin') }),
     email: z.string().email({ message: t('contact.validation.emailInvalid') }),
@@ -32,8 +29,7 @@ const ContactForm = () => {
   });
 
   type FormValues = z.infer<typeof formSchema>;
-  
-  // Initialize react-hook-form with zod validation
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,26 +39,23 @@ const ContactForm = () => {
     },
   });
 
+  const { isSubmitting } = form.formState;
+
   const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
-    
     try {
-      // Send email using our service - ensure data is complete
       const emailData: EmailData = {
         name: data.name,
         email: data.email,
         message: data.message,
       };
-      
+
       await sendEmail(emailData);
-      
-      // Show success toast
+
       toast({
         title: t('contact.formSuccess'),
         description: t('contact.formSuccessMessage'),
       });
-      
-      // Reset form
+
       form.reset();
     } catch (error) {
       console.error("Error sending email:", error);
@@ -71,8 +64,6 @@ const ContactForm = () => {
         description: t('contact.formErrorMessage'),
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -87,16 +78,16 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>{t('contact.nameLabel')}</FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder={t('contact.namePlaceholder')} 
-                    {...field} 
+                  <Input
+                    placeholder={t('contact.namePlaceholder')}
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
+
           <FormField
             control={form.control}
             name="email"
@@ -104,10 +95,10 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>{t('contact.emailLabel')}</FormLabel>
                 <FormControl>
-                  <Input 
+                  <Input
                     type="email"
-                    placeholder={t('contact.emailPlaceholder')} 
-                    {...field} 
+                    placeholder={t('contact.emailPlaceholder')}
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -115,7 +106,7 @@ const ContactForm = () => {
             )}
           />
         </div>
-        
+
         <FormField
           control={form.control}
           name="message"
@@ -134,9 +125,9 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        
-        <Button 
-          type="submit" 
+
+        <Button
+          type="submit"
           className="w-full md:w-auto"
           disabled={isSubmitting}
         >

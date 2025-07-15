@@ -1,33 +1,23 @@
-
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import { File } from "lucide-react";
+import { downloadFile } from "@/lib/utils";
 
 const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
-  
-  // This will be the URL to your resume file
-  const resumeURL = "/resume.pdf"; // You'll need to place this file in the public folder
 
   const handleResumeDownload = () => {
-    // Create an anchor element and trigger the download
-    const link = document.createElement('a');
-    link.href = resumeURL;
-    link.download = "John_Doe_Resume.pdf"; // Name of the file when downloaded
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    downloadFile('/resume.pdf', 'Pedro_Paulo_Fernandes_Cardoso_Resume.pdf');
   };
 
   return (
     <footer className="bg-muted/30 py-10">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center mb-8">
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             onClick={handleResumeDownload}
             className="flex items-center gap-2 mb-4"
           >

@@ -1,23 +1,13 @@
-
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import { File, Github, Linkedin, Mail } from "lucide-react";
+import { downloadFile } from "@/lib/utils";
 
 const Hero = () => {
   const { t } = useTranslation();
 
-  // This will be the URL to your resume file
-  const resumeURL = "/resume.pdf"; // You'll need to place this file in the public folder
-
   const handleResumeDownload = () => {
-    // Create an anchor element and trigger the download
-    const link = document.createElement('a');
-    link.href = resumeURL;
-    link.download = "Pedro_Paulo_Fernandes_Cardoso_Resume.pdf"; // Name of the file when downloaded
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    downloadFile('/resume.pdf', 'Pedro_Paulo_Fernandes_Cardoso_Resume.pdf');
   };
 
   return (
@@ -61,8 +51,8 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-              <img 
-                src="/lovable-uploads/1a45b1d8-1d4d-49b2-8d92-919545de0e30.png" 
+              <img
+                src="/lovable-uploads/1a45b1d8-1d4d-49b2-8d92-919545de0e30.png"
                 alt={t('hero.name')}
                 className="w-full h-full object-cover"
               />
@@ -70,7 +60,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Decorative elements */}
       <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute -top-24 -right-24 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
