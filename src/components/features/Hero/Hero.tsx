@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { File, Mail } from "lucide-react";
 import { downloadFile } from "@/lib/utils";
 import { socialLinks } from "@/data/socials";
