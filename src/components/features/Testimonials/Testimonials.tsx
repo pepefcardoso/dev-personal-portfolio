@@ -5,27 +5,10 @@ import { MessageSquare, User, ExternalLink, Star } from "lucide-react";
 import { useTestimonialsData } from "@/hooks/useTestimonialsData";
 import { Testimonial as TestimonialType } from "@/types/testimonials";
 
-type TranslatedTestimonial = Omit<TestimonialType, 'position' | 'company' | 'content'> & {
+type TranslatedTestimonial = Omit<TestimonialType, 'position' | 'content'> & {
   position: string;
-  company: string;
   content: string;
 };
-
-const StarRating = React.memo(({ rating }: { rating?: number }) => {
-  if (!rating) return null;
-
-  return (
-    <div className="flex items-center mb-2">
-      {Array.from({ length: 5 }, (_, index) => (
-        <Star
-          key={index}
-          className={`h-4 w-4 ${index < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-            }`}
-        />
-      ))}
-    </div>
-  );
-});
 
 interface TestimonialCardProps {
   testimonial: TranslatedTestimonial;
@@ -48,8 +31,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onClick 
         )}
       </div>
 
-      <StarRating rating={testimonial.rating} />
-
       <p className="text-muted-foreground mb-6 italic">"{testimonial.content}"</p>
 
       <div className="flex items-center">
@@ -67,18 +48,10 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onClick 
         <div>
           <h4 className="font-semibold group-hover:text-primary transition-colors duration-300">
             {testimonial.name}
-            {testimonial.verified && (
-              <span className="ml-1 text-green-500 text-xs">✓</span>
-            )}
           </h4>
           <p className="text-xs text-muted-foreground">
-            {testimonial.position}, {testimonial.company}
+            {testimonial.position}
           </p>
-          {testimonial.date && (
-            <p className="text-xs text-muted-foreground opacity-70">
-              {new Date(testimonial.date).toLocaleDateString()}
-            </p>
-          )}
         </div>
       </div>
     </CardContent>

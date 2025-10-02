@@ -7,7 +7,7 @@ export default {
     contact: '联系',
   },
   hero: {
-    name: 'John Doe',
+    name: 'Pedro Cardoso',
     title: '全栈开发者',
     description: '我为网络构建卓越且易于访问的数字体验。',
     contactBtn: '联系我',

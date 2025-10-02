@@ -105,14 +105,14 @@ export const contactInfo: ContactInfo = {
     },
   ],
   resume: {
-    downloadUrl: "https://example.com/resume.pdf",
+    downloadUrl: "/resumes",
     filename: {
       en: "Pedro_Paulo_Resume_EN.pdf",
       pt: "Pedro_Paulo_Curriculo_PT.pdf",
-      es: "Pedro_Paulo_CV_ES.pdf",
-      fr: "Pedro_Paulo_CV_FR.pdf",
-      it: "Pedro_Paulo_CV_IT.pdf",
-      zh: "Pedro_Paulo_简历_ZH.pdf",
+      es: "Pedro_Paulo_Resume_EN.pdf",
+      fr: "Pedro_Paulo_Resume_EN.pdf",
+      it: "Pedro_Paulo_Resume_EN.pdf",
+      zh: "Pedro_Paulo_Resume_EN.pdf",
     },
   },
 };

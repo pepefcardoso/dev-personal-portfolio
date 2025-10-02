@@ -13,15 +13,21 @@ const Contact = React.lazy(() => import('@/components/features/Contact/Contact')
 const Footer = React.lazy(() => import('@/components/layout/Footer'));
 
 const SectionSkeleton = () => (
-  <div className="py-20">
-    <div className="container px-4 mx-auto">
-      <Skeleton className="h-12 w-64 mb-8" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="space-y-4">
-            <Skeleton className="h-48 w-full" />
-            <Skeleton className="h-4 w-3/4" />
-            <Skeleton className="h-4 w-1/2" />
+  <div className="py-16 md:py-24">
+    <div className="container px-4 mx-auto max-w-6xl">
+      <div className="mb-12">
+        <Skeleton className="h-8 w-48 mb-3" />
+        <Skeleton className="h-px w-24 bg-primary/20" />
+      </div>
+      <div className="space-y-8">
+        {Array.from({ length: 2 }).map((_, i) => (
+          <div key={i} className="flex gap-6 items-start">
+            <Skeleton className="h-16 w-16 rounded-sm flex-shrink-0" />
+            <div className="flex-1 space-y-3">
+              <Skeleton className="h-5 w-3/4" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-5/6" />
+            </div>
           </div>
         ))}
       </div>
@@ -33,15 +39,14 @@ const PageLoader = () => (
   <div className="min-h-screen bg-background">
     <Header />
     <main>
-      <div className="container px-4 mx-auto py-20">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 space-y-4">
-            <Skeleton className="h-12 w-3/4" />
-            <Skeleton className="h-8 w-1/2" />
-            <Skeleton className="h-20 w-full" />
-          </div>
-          <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
-            <Skeleton className="h-80 w-80 rounded-full" />
+      <div className="container px-4 mx-auto py-24 md:py-32 max-w-6xl">
+        <div className="space-y-6 max-w-3xl">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-16 w-full" />
+          <Skeleton className="h-6 w-2/3" />
+          <div className="flex gap-4 pt-4">
+            <Skeleton className="h-12 w-32" />
+            <Skeleton className="h-12 w-32" />
           </div>
         </div>
       </div>
@@ -49,7 +54,6 @@ const PageLoader = () => (
     </main>
   </div>
 );
-
 
 const Home = () => {
   const { isLoadingCritical } = useDataPreloader();
@@ -61,8 +65,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
-      <main>
+      <main className="relative">
         <Hero />
 
         <Suspense fallback={<SectionSkeleton />}>
@@ -90,7 +93,7 @@ const Home = () => {
         </Suspense>
       </main>
 
-      <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+      <Suspense fallback={<div className="h-24 w-full bg-muted/30" />}>
         <Footer />
       </Suspense>
     </div>

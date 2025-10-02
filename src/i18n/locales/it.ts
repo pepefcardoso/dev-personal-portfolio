@@ -7,7 +7,7 @@ export default {
     contact: 'Contatti',
   },
   hero: {
-    name: 'John Doe',
+    name: 'Pedro Cardoso',
     title: 'Sviluppatore Full Stack',
     description: 'Costruisco esperienze digitali eccezionali e accessibili per il web.',
     contactBtn: 'Contattami',

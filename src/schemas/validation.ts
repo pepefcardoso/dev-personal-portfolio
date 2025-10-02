@@ -206,7 +206,7 @@ export const ContactInfoSchema = z.object({
   socialMedia: z.array(SocialMediaLinkSchema),
   resume: z
     .object({
-      downloadUrl: z.string().url(),
+      downloadUrl: z.string(),
       filename: TranslatableStringSchema,
     })
     .optional(),

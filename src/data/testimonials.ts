@@ -1,40 +1,99 @@
 import { TestimonialsData } from "@/types/testimonials";
 
 export const testimonialsData: TestimonialsData = {
-  testimonials: [],
+  testimonials: [
+    {
+      id: "101",
+      order: 1,
+      name: "Juarez Arce",
+      position: {
+        en: "Senior Software Developer",
+        pt: "Desenvolvedor de Software Sênior",
+        es: "Desarrollador de Software Senior",
+        fr: "Développeur logiciel senior",
+        it: "Sviluppatore software senior",
+        zh: "高级软件开发工程师",
+      },
+      content: {
+        en: "Great professional! There are few who truly enjoy programming, and Pepe is one of them. Dedicated, very committed and always eager to learn new things. He is constantly involved in personal projects using new technologies he wants to study, always updating himself and challenging his limits.",
+        pt: "Ótimo profissional! São poucos os que realmente gostam de programar de verdade, e o Pepe é um deles. Dedicado, muito empenhado e sempre em busca de aprender coisas novas. Ele está constantemente envolvido em algum projeto pessoal com alguma tecnologia nova que quer estudar, está sempre se atualizando e se desafiando.",
+        es: "¡Gran profesional! Pocos son los que realmente disfrutan programar de verdad, y Pepe es uno de ellos. Dedicado, muy comprometido y siempre en busca de aprender cosas nuevas. Está constantemente involucrado en proyectos personales con nuevas tecnologías que quiere estudiar, siempre actualizándose y desafiándose.",
+        fr: "Excellent professionnel ! Peu de personnes aiment vraiment programmer, et Pepe en fait partie. Dévoué, très appliqué et toujours en quête d'apprendre de nouvelles choses. Il est constamment impliqué dans des projets personnels avec de nouvelles technologies qu'il souhaite étudier, se tenant toujours à jour et se défiant.",
+        it: "Ottimo professionista! Sono pochi coloro che amano davvero programmare, e Pepe è uno di loro. Dedicato, molto impegnato e sempre desideroso di imparare cose nuove. È costantemente coinvolto in progetti personali con nuove tecnologie che vuole studiare, aggiornandosi e mettendosi sempre alla prova.",
+        zh: "非常专业！真正喜欢编程的人为数不多，Pepe就是其中之一。敬业、非常投入，并且总是渴望学习新事物。他不断参与个人项目，尝试想学习的新技术，总是在更新自我并挑战自己。",
+      },
+      socialUrl: "https://www.linkedin.com/in/juarez-franco/",
+      image: "/images/testimonials/juarez-arce.jpg",
+    },
+    {
+      id: "102",
+      order: 2,
+      name: "Bianca Santos",
+      position: {
+        en: "Product Designer",
+        pt: "Designer de Produtos",
+        es: "Diseñadora de Productos",
+        fr: "Designer produit",
+        it: "Product Designer",
+        zh: "产品设计师",
+      },
+      content: {
+        en: "I had the opportunity to work on the same team as Pedro and saw up close how dedicated, talented and committed he is to his professional growth! He approaches projects with enthusiasm and a genuine desire to make a difference wherever he goes.",
+        pt: "Tive a oportunidade de trabalhar no mesmo time do Pedro e pude ver de perto o quanto ele é dedicado, talentoso e comprometido com seu crescimento profissional! Se entrega aos projetos com entusiasmo e vontade genuína de fazer a diferença por onde passa!",
+        es: "Tuve la oportunidad de trabajar en el mismo equipo que Pedro y pude ver de cerca lo dedicado, talentoso y comprometido que está con su crecimiento profesional. Se entrega a los proyectos con entusiasmo y con un deseo genuino de marcar la diferencia dondequiera que esté.",
+        fr: "J'ai eu la chance de travailler dans la même équipe que Pedro et j'ai pu constater de près combien il est dévoué, talentueux et engagé dans son développement professionnel ! Il s'investit dans les projets avec enthousiasme et un désir sincère de faire la différence partout où il passe.",
+        it: "Ho avuto l'opportunità di lavorare nello stesso team di Pedro e ho potuto vedere da vicino quanto sia dedicato, talentuoso e impegnato nella sua crescita professionale! Si dedica ai progetti con entusiasmo e un genuino desiderio di fare la differenza ovunque vada.",
+        zh: "我有机会与Pedro在同一团队工作，亲眼见证了他对职业成长的投入、才华和承诺！他以热情投入项目，真诚希望在所到之处产生积极影响。",
+      },
+      socialUrl: "https://www.linkedin.com/in/biancatsantoss/",
+      image: "/images/testimonials/bianca-santos.jpg",
+    },
+    {
+      id: "103",
+      order: 3,
+      name: "Bruno Alvez",
+      position: {
+        en: "Mid-level Software Developer",
+        pt: "Desenvolvedor de Software Pleno",
+        es: "Desarrollador de Software Pleno",
+        fr: "Développeur logiciel intermédiaire",
+        it: "Sviluppatore software di livello intermedio",
+        zh: "中级软件开发工程师",
+      },
+      content: {
+        en: "An easy person to work with who always helped maintain a collaborative and relaxed environment. Always looking for more, whether knowledge or challenges, driven by curiosity and a real desire to evolve. Dedicated, hardworking and competent.",
+        pt: "Uma pessoa fácil de se trabalhar, que sempre ajudou a manter um ambiente colaborativo e leve. Sempre em busca de mais, seja em conhecimento ou desafios, movido pela sua curiosidade e vontade real de evoluir. Dedicado, esforçado e competente.",
+        es: "Una persona fácil de trabajar, que siempre ayudó a mantener un ambiente colaborativo y distendido. Siempre en busca de más, ya sea conocimiento o desafíos, movido por su curiosidad y genuino deseo de evolucionar. Dedicado, esforzado y competente.",
+        fr: "Une personne facile à travailler, qui a toujours contribué à maintenir une ambiance collaborative et détendue. Toujours en quête de plus, que ce soit en connaissances ou en défis, animé par sa curiosité et son désir réel d'évoluer. Dévoué, travailleur et compétent.",
+        it: "Una persona con cui è facile lavorare, che ha sempre contribuito a mantenere un ambiente collaborativo e leggero. Sempre alla ricerca di qualcosa in più, sia in termini di conoscenza che di sfide, guidato dalla sua curiosità e dal desiderio reale di migliorare. Dedicato, laborioso e competente.",
+        zh: "一个易于合作的人，始终帮助营造协作且轻松的氛围。总是追求更多，无论是知识还是挑战，由他的好奇心和真正想进步的愿望驱动。敬业、努力且称职。",
+      },
+      socialUrl: "https://www.linkedin.com/in/bruno-alvez-6681a5174/",
+      image: "/images/testimonials/bruno-alvez.jpg",
+    },
+    {
+      id: "104",
+      order: 4,
+      name: "Luiz Flores",
+      position: {
+        en: "Marketing Analyst",
+        pt: "Analista de Marketing",
+        es: "Analista de Marketing",
+        fr: "Analyste marketing",
+        it: "Analista di marketing",
+        zh: "市场分析师",
+      },
+      content: {
+        en: "Pedro is a very determined and dedicated professional. Through his own effort and study he changed departments in the company where I met him, moving from accounting to working as a developer — an area that is his greatest interest. Every time I interacted with his colleagues and leaders and the conversation touched on Pedro's performance, there were only positive comments, praising his qualities and reinforcing his ability to overcome problems.",
+        pt: "Pedro é um profissional muito determinado e dedicado, através do proprio esforço e estudo mudou de setor na empresa em que o conheci, saindo da contabilidade e indo atuar como desenvolvedor, área essa que é seu maior interesse e onde todas as vezes que interagi com seus colgas e lideres e o assunto permeava o desempenho de Pedro haviam apenas comentários positivos, enaltecendo suas qualidades e reforçando sua capacidade de superar os problemas.",
+        es: "Pedro es un profesional muy determinado y dedicado; mediante su propio esfuerzo y estudio cambió de área en la empresa donde lo conocí, pasando de contabilidad a desempeñarse como desarrollador, área que es su mayor interés. Cada vez que interactué con sus colegas y líderes y el tema giraba en torno al desempeño de Pedro, solo hubo comentarios positivos, ensalzando sus cualidades y reforzando su capacidad para superar los problemas.",
+        fr: "Pedro est un professionnel très déterminé et dévoué ; grâce à ses propres efforts et à ses études, il a changé de service dans l'entreprise où je l'ai rencontré, passant de la comptabilité au développement — domaine qui est son principal intérêt. Chaque fois que j'ai interagi avec ses collègues et ses supérieurs et que le sujet portait sur les performances de Pedro, il n'y avait que des commentaires positifs, louant ses qualités et soulignant sa capacité à surmonter les problèmes.",
+        it: "Pedro è un professionista molto determinato e dedicato; con il proprio impegno e studio ha cambiato reparto nell'azienda in cui l'ho conosciuto, passando dalla contabilità al ruolo di sviluppatore — ambito che è il suo principale interesse. Ogni volta che ho interagito con i suoi colleghi e i suoi capi e il tema riguardava le prestazioni di Pedro, ci sono stati solo commenti positivi, lodando le sue qualità e sottolineando la sua capacità di superare i problemi.",
+        zh: "Pedro 是一位非常有决心且敬业的专业人士；通过自己的努力和学习，他在我认识他的公司调换了部门，从会计转为开发岗位——这是他最感兴趣的领域。每次我与他的同事和领导交流时，只要话题涉及 Pedro 的表现，都会有正面评价，赞扬他的优点并强调他克服问题的能力。",
+      },
+      socialUrl: "https://www.linkedin.com/in/luiz-flores-231575283/",
+      image:
+        "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ],
 };
-
-// TESTIMONIAL EXAMPLE
-// {
-//   id: "testimonial1",
-//   order: 1,
-//   name: "Sarah Johnson",
-//   position: {
-//     en: "Chief Technology Officer",
-//     pt: "Diretora de Tecnologia",
-//     es: "Directora de Tecnología",
-//     fr: "Directrice Technique",
-//     it: "Direttore Tecnico",
-//     zh: "首席技术官"
-//   },
-//   company: {
-//     en: "TechSolutions Inc",
-//     pt: "TechSolutions Inc",
-//     es: "TechSolutions Inc",
-//     fr: "TechSolutions Inc",
-//     it: "TechSolutions Inc",
-//     zh: "TechSolutions Inc"
-//   },
-//   content: {
-//     en: "John is an exceptional developer who consistently delivers high-quality code. His attention to detail and ability to solve complex problems makes him an invaluable asset to any team.",
-//     pt: "John é um desenvolvedor excepcional que consistentemente entrega código de alta qualidade. Sua atenção aos detalhes e habilidade para resolver problemas complexos o torna um ativo inestimável para qualquer equipe.",
-//     es: "John es un desarrollador excepcional que consistentemente entrega código de alta calidad. Su atención al detalle y habilidad para resolver problemas complejos lo convierte en un activo invaluable para cualquier equipo.",
-//     fr: "John est un développeur exceptionnel qui livre constamment du code de haute qualité. Son attention aux détails et sa capacité à résoudre des problèmes complexes en font un atout inestimable pour toute équipe.",
-//     it: "John è uno sviluppatore eccezionale che fornisce costantemente codice di alta qualità. La sua attenzione ai dettagli e la capacità di risolvere problemi complessi lo rendono una risorsa inestimabile per qualsiasi team.",
-//     zh: "John是一位出色的开发者，始终交付高质量的代码。他对细节的关注和解决复杂问题的能力使他成为任何团队的宝贵资产。"
-//   },
-//   socialUrl: "https://linkedin.com/in/sarah-johnson-example",
-//   rating: 5,
-//   date: "2024-03-15",
-//   verified: true
-// }
