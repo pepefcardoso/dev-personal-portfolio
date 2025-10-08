@@ -1,9 +1,10 @@
+import {
+  TimelineType,
+  TranslatableString,
+  DateRangeItem,
+  OrderableItem,
+} from "./common";
 
-import { TimelineType, TranslatableString, DateRangeItem, OrderableItem } from './common';
-
-/**
- * Tipos relacionados ao timeline profissional e educacional
- */
 export interface TimelineItem extends OrderableItem, DateRangeItem {
   title: TranslatableString;
   organization: TranslatableString;

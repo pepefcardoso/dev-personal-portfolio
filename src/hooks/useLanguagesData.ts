@@ -1,84 +1,51 @@
+import { useMemo } from "react";
+import { languagesData } from "@/data/languages";
+import { useDataWithTranslation } from "./useDataWithTranslation";
+import { useTranslatedContent } from "./useTranslatedContent";
+import { Language } from "@/types/languages";
+import { TranslatableString } from "@/types/common";
 
-import { useMemo } from 'react';
-import { languagesData } from '@/data/languages';
-import { useTranslatedContent } from './useTranslatedContent';
-import { Language } from '@/types/languages';
-
-/**
- * Hook para gerenciar dados dos idiomas
- */
 export const useLanguagesData = () => {
-  const { translate, currentLanguage } = useTranslatedContent();
+  const { currentLanguage } = useTranslatedContent();
 
-  /**
-   * Traduz um idioma
-   */
-  const translateLanguage = (language: Language) => ({
+  const translateLanguage = (
+    language: Language,
+    translate: (content: TranslatableString) => string
+  ) => ({
     ...language,
-    name: translate(language.name)
+    name: translate(language.name),
   });
 
-  /**
-   * Obtém idiomas traduzidos
-   */
-  const getLanguages = useMemo(() => {
-    return languagesData.supported.map(translateLanguage);
-  }, [translate]);
+  const { data: languages, getById } = useDataWithTranslation({
+    data: languagesData.supported,
+    translateItem: translateLanguage,
+  });
 
-  /**
-   * Obtém idioma padrão
-   */
-  const getDefaultLanguage = useMemo(() => {
-    const defaultLang = languagesData.supported.find(lang => lang.isDefault);
-    return defaultLang ? translateLanguage(defaultLang) : null;
-  }, [translate]);
+  const defaultLanguage = useMemo(
+    () => languages.find((lang) => lang.isDefault) || null,
+    [languages]
+  );
 
-  /**
-   * Obtém idioma atual
-   */
-  const getCurrentLanguage = useMemo(() => {
-    const currentLang = languagesData.supported.find(lang => lang.code === currentLanguage);
-    return currentLang ? translateLanguage(currentLang) : null;
-  }, [currentLanguage, translate]);
+  const currentLang = useMemo(
+    () => languages.find((lang) => lang.code === currentLanguage) || null,
+    [languages, currentLanguage]
+  );
 
-  /**
-   * Obtém idioma por código
-   */
-  const getLanguageByCode = (code: string) => {
-    const language = languagesData.supported.find(lang => lang.code === code);
-    return language ? translateLanguage(language) : null;
-  };
+  const isLanguageSupported = (code: string) =>
+    languagesData.supported.some((lang) => lang.code === code);
 
-  /**
-   * Verifica se um idioma é suportado
-   */
-  const isLanguageSupported = (code: string) => {
-    return languagesData.supported.some(lang => lang.code === code);
-  };
+  const getSupportedLanguageCodes = () =>
+    languagesData.supported.map((lang) => lang.code);
 
-  /**
-   * Obtém códigos de idiomas suportados
-   */
-  const getSupportedLanguageCodes = () => {
-    return languagesData.supported.map(lang => lang.code);
-  };
-
-  /**
-   * Obtém idiomas RTL
-   */
-  const getRTLLanguages = () => {
-    return languagesData.supported
-      .filter(lang => lang.rtl)
-      .map(translateLanguage);
-  };
+  const getRTLLanguages = () => languages.filter((lang) => lang.rtl);
 
   return {
-    languages: getLanguages,
-    defaultLanguage: getDefaultLanguage,
-    currentLanguage: getCurrentLanguage,
-    getLanguageByCode,
+    languages,
+    defaultLanguage,
+    currentLanguage: currentLang,
+    getLanguageByCode: getById,
     isLanguageSupported,
     getSupportedLanguageCodes,
-    getRTLLanguages
+    getRTLLanguages,
   };
 };

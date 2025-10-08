@@ -1,24 +1,20 @@
-import { skillsData } from '@/data/skills';
-import { timelineData } from '@/data/timeline';
-import { blogData } from '@/data/blog';
-import { projectsData } from '@/data/projects';
-import { testimonialsData } from '@/data/testimonials';
-import { languagesData } from '@/data/languages';
-import { personalInfo, contactInfo } from '@/data/personal';
-import { SkillsData } from '@/types/skills';
-import { TimelineData } from '@/types/timeline';
-import { BlogData } from '@/types/blog';
-import { ProjectsData } from '@/types/projects';
-import { TestimonialsData } from '@/types/testimonials';
-import { LanguagesData } from '@/types/languages';
-import { PersonalInfo, ContactInfo } from '@/types/contact';
-import { TranslatableString } from '@/types/common';
-import { DataFactory } from '@/factories/dataFactory';
+import { skillsData } from "@/data/skills";
+import { timelineData } from "@/data/timeline";
+import { blogData } from "@/data/blog";
+import { projectsData } from "@/data/projects";
+import { testimonialsData } from "@/data/testimonials";
+import { languagesData } from "@/data/languages";
+import { personalInfo, contactInfo } from "@/data/personal";
+import { SkillsData } from "@/types/skills";
+import { TimelineData } from "@/types/timeline";
+import { BlogData } from "@/types/blog";
+import { ProjectsData } from "@/types/projects";
+import { TestimonialsData } from "@/types/testimonials";
+import { LanguagesData } from "@/types/languages";
+import { PersonalInfo, ContactInfo } from "@/types/contact";
+import { TranslatableString } from "@/types/common";
+import { DataFactory } from "@/factories/dataFactory";
 
-/**
- * Serviço centralizado para acesso aos dados da aplicação
- * Fornece uma camada de abstração para o acesso aos dados com validação
- */
 class DataService {
   private _skillsData: SkillsData | null = null;
   private _timelineData: TimelineData | null = null;
@@ -29,17 +25,17 @@ class DataService {
   private _personalInfo: PersonalInfo | null = null;
   private _contactInfo: ContactInfo | null = null;
 
-  /**
-   * Obtém uma string traduzível no idioma especificado
-   */
   getTranslatedString(content: TranslatableString, language: string): string {
     const lang = language as keyof TranslatableString;
-    return content[lang] || content.en || content.pt || Object.values(content)[0] || '';
+    return (
+      content[lang] ||
+      content.en ||
+      content.pt ||
+      Object.values(content)[0] ||
+      ""
+    );
   }
 
-  /**
-   * Obtém dados de habilidades com validação
-   */
   getSkillsData(): SkillsData {
     if (!this._skillsData) {
       this._skillsData = DataFactory.createSkillsData(skillsData);
@@ -47,9 +43,6 @@ class DataService {
     return this._skillsData;
   }
 
-  /**
-   * Obtém dados do timeline com validação
-   */
   getTimelineData(): TimelineData {
     if (!this._timelineData) {
       this._timelineData = DataFactory.createTimelineData(timelineData);
@@ -57,9 +50,6 @@ class DataService {
     return this._timelineData;
   }
 
-  /**
-   * Obtém dados do blog com validação
-   */
   getBlogData(): BlogData {
     if (!this._blogData) {
       this._blogData = DataFactory.createBlogData(blogData);
@@ -67,9 +57,6 @@ class DataService {
     return this._blogData;
   }
 
-  /**
-   * Obtém dados dos projetos com validação
-   */
   getProjectsData(): ProjectsData {
     if (!this._projectsData) {
       this._projectsData = DataFactory.createProjectsData(projectsData);
@@ -77,19 +64,14 @@ class DataService {
     return this._projectsData;
   }
 
-  /**
-   * Obtém dados dos depoimentos com validação
-   */
   getTestimonialsData(): TestimonialsData {
     if (!this._testimonialsData) {
-      this._testimonialsData = DataFactory.createTestimonialsData(testimonialsData);
+      this._testimonialsData =
+        DataFactory.createTestimonialsData(testimonialsData);
     }
     return this._testimonialsData;
   }
 
-  /**
-   * Obtém dados dos idiomas com validação
-   */
   getLanguagesData(): LanguagesData {
     if (!this._languagesData) {
       this._languagesData = DataFactory.createLanguagesData(languagesData);
@@ -97,9 +79,6 @@ class DataService {
     return this._languagesData;
   }
 
-  /**
-   * Obtém informações pessoais com validação
-   */
   getPersonalInfo(): PersonalInfo {
     if (!this._personalInfo) {
       this._personalInfo = DataFactory.createPersonalInfo(personalInfo);
@@ -107,9 +86,6 @@ class DataService {
     return this._personalInfo;
   }
 
-  /**
-   * Obtém informações de contato com validação
-   */
   getContactInfo(): ContactInfo {
     if (!this._contactInfo) {
       this._contactInfo = DataFactory.createContactInfo(contactInfo);
@@ -117,121 +93,76 @@ class DataService {
     return this._contactInfo;
   }
 
-  /**
-   * Obtém habilidades filtradas por categoria
-   */
   getSkillsByCategory(category?: string) {
     if (!category) return skillsData.skills;
-    return skillsData.skills.filter(skill => skill.category === category);
+    return skillsData.skills.filter((skill) => skill.category === category);
   }
 
-  /**
-   * Obtém habilidades ordenadas por nível ou ordem
-   */
-  getSkillsSorted(sortBy: 'level' | 'order' | 'name' = 'order') {
+  getSkillsSorted(sortBy: "level" | "order" | "name" = "order") {
     const skills = [...skillsData.skills];
-    
+
     switch (sortBy) {
-      case 'level':
+      case "level":
         return skills.sort((a, b) => b.level - a.level);
-      case 'name':
+      case "name":
         return skills.sort((a, b) => a.name.localeCompare(b.name));
-      case 'order':
+      case "order":
       default:
         return skills.sort((a, b) => a.order - b.order);
     }
   }
 
-  /**
-   * Obtém experiências profissionais ordenadas
-   */
   getExperiences() {
     return timelineData.experience.sort((a, b) => a.order - b.order);
   }
 
-  /**
-   * Obtém dados educacionais ordenados
-   */
   getEducation() {
     return timelineData.education.sort((a, b) => a.order - b.order);
   }
 
-  /**
-   * Obtém posts do blog ordenados
-   */
   getBlogPosts() {
     return blogData.posts
-      .filter(post => post.status === 'published')
+      .filter((post) => post.status === "published")
       .sort((a, b) => a.order - b.order);
   }
 
-  /**
-   * Obtém posts do blog em destaque
-   */
   getFeaturedBlogPosts() {
-    return this.getBlogPosts().filter(post => post.featured);
+    return this.getBlogPosts().filter((post) => post.featured);
   }
 
-  /**
-   * Obtém projetos ordenados
-   */
   getProjects() {
     return projectsData.projects.sort((a, b) => a.order - b.order);
   }
 
-  /**
-   * Obtém projetos em destaque
-   */
   getFeaturedProjects() {
-    return this.getProjects().filter(project => project.featured);
+    return this.getProjects().filter((project) => project.featured);
   }
 
-  /**
-   * Obtém projetos por categoria
-   */
   getProjectsByCategory(category?: string) {
     if (!category) return this.getProjects();
-    return this.getProjects().filter(project => project.category === category);
+    return this.getProjects().filter(
+      (project) => project.category === category
+    );
   }
 
-  /**
-   * Obtém projetos por tag
-   */
   getProjectsByTag(tag: string) {
-    return this.getProjects().filter(project => project.tags.includes(tag));
+    return this.getProjects().filter((project) => project.tags.includes(tag));
   }
 
-  /**
-   * Obtém depoimentos ordenados
-   */
   getTestimonials() {
-    return this.getTestimonialsData().testimonials.sort((a, b) => a.order - b.order);
+    return this.getTestimonialsData().testimonials.sort(
+      (a, b) => a.order - b.order
+    );
   }
 
-  /**
-   * Obtém depoimentos verificados
-   */
-  getVerifiedTestimonials() {
-    return this.getTestimonials().filter(testimonial => testimonial.verified);
-  }
-
-  /**
-   * Obtém idiomas suportados
-   */
   getSupportedLanguages() {
     return this.getLanguagesData().supported;
   }
 
-  /**
-   * Obtém idioma padrão
-   */
   getDefaultLanguage() {
-    return this.getSupportedLanguages().find(lang => lang.isDefault);
+    return this.getSupportedLanguages().find((lang) => lang.isDefault);
   }
 
-  /**
-   * Valida todos os dados da aplicação
-   */
   validateAllData() {
     try {
       DataFactory.validateAllData({
@@ -242,20 +173,20 @@ class DataService {
         testimonials: testimonialsData,
         languages: languagesData,
         personal: personalInfo,
-        contact: contactInfo
+        contact: contactInfo,
       });
       return { isValid: true, errors: [] };
     } catch (error) {
-      return { 
-        isValid: false, 
-        errors: error instanceof Error ? [error.message] : ['Erro de validação desconhecido']
+      return {
+        isValid: false,
+        errors:
+          error instanceof Error
+            ? [error.message]
+            : ["Erro de validação desconhecido"],
       };
     }
   }
 
-  /**
-   * Limpa cache de dados
-   */
   clearCache() {
     this._skillsData = null;
     this._timelineData = null;
@@ -268,5 +199,4 @@ class DataService {
   }
 }
 
-// Exporta uma instância singleton do serviço
 export const dataService = new DataService();

@@ -1,9 +1,5 @@
+import { TranslatableString, OrderableItem } from "./common";
 
-import { TranslatableString, OrderableItem } from './common';
-
-/**
- * Tipos relacionados a idiomas suportados na aplicação
- */
 export interface Language extends OrderableItem {
   code: string;
   name: TranslatableString;

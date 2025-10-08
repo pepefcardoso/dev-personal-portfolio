@@ -1,96 +1,71 @@
+import { useMemo } from "react";
+import { projectsData } from "@/data/projects";
+import { useFeaturedData } from "./useDataWithTranslation";
+import { Project } from "@/types/projects";
+import { TranslatableString } from "@/types/common";
 
-import { useMemo } from 'react';
-import { projectsData } from '@/data/projects';
-import { useTranslatedContent } from './useTranslatedContent';
-import { Project } from '@/types/projects';
+export type TranslatedProject = Omit<
+  Project,
+  "title" | "description" | "responsibilities"
+> & {
+  title: string;
+  description: string;
+  responsibilities?: string[];
+};
 
-/**
- * Hook para gerenciar dados dos projetos
- */
 export const useProjectsData = () => {
-  const { translate } = useTranslatedContent();
-
-  /**
-   * Traduz um projeto
-   */
-  const translateProject = (project: Project) => ({
+  const translateProject = (
+    project: Project,
+    translate: (content: TranslatableString) => string
+  ): TranslatedProject => ({
     ...project,
     title: translate(project.title),
     description: translate(project.description),
-    responsibilities: project.responsibilities ? project.responsibilities.map(translate) : undefined
+    responsibilities: project.responsibilities?.map((r) => translate(r)),
   });
 
-  /**
-   * Obtém projetos traduzidos e ordenados
-   */
-  const getProjects = useMemo(() => {
-    return projectsData.projects
-      .sort((a, b) => a.order - b.order)
-      .map(translateProject);
-  }, [translate]);
+  const {
+    data: projects,
+    featured: featuredProjects,
+    getById,
+  } = useFeaturedData<Project, TranslatedProject>(
+    projectsData.projects,
+    translateProject
+  );
 
-  /**
-   * Obtém projetos em destaque
-   */
-  const getFeaturedProjects = useMemo(() => {
-    return getProjects.filter(project => project.featured);
-  }, [getProjects]);
+  const getProjectsByCategory = (category?: string) =>
+    category ? projects.filter((p) => p.category === category) : projects;
 
-  /**
-   * Obtém projetos por categoria
-   */
-  const getProjectsByCategory = (category?: string) => {
-    if (!category) return getProjects;
-    return getProjects.filter(project => project.category === category);
-  };
+  const getProjectsByTag = (tag: string) =>
+    projects.filter((p) => p.tags.includes(tag));
 
-  /**
-   * Obtém projetos filtrados por tag
-   */
-  const getProjectsByTag = (tag: string) => {
-    return getProjects.filter(project => project.tags.includes(tag));
-  };
+  const getAllTags = useMemo(
+    () =>
+      Array.from(new Set(projectsData.projects.flatMap((p) => p.tags))).sort(),
+    []
+  );
 
-  /**
-   * Obtém todas as tags únicas dos projetos
-   */
-  const getAllTags = useMemo(() => {
-    return Array.from(new Set(projectsData.projects.flatMap(project => project.tags))).sort();
-  }, []);
-
-  /**
-   * Obtém todas as categorias disponíveis
-   */
-  const getCategories = () => projectsData.categories;
-
-  /**
-   * Obtém projeto por ID
-   */
-  const getProjectById = (id: string) => {
-    const project = projectsData.projects.find(project => project.id === id);
-    return project ? translateProject(project) : null;
-  };
-
-  /**
-   * Obtém estatísticas dos projetos
-   */
   const getProjectStats = () => ({
     totalProjects: projectsData.projects.length,
-    featuredProjects: projectsData.projects.filter(project => project.featured).length,
+    featuredProjects: projectsData.projects.filter((p) => p.featured).length,
     categories: projectsData.categories.length,
     tags: projectsData.tags.length,
-    completedProjects: projectsData.projects.filter(project => project.status === 'completed').length,
-    inProgressProjects: projectsData.projects.filter(project => project.status === 'in-progress').length
+    completedProjects: projectsData.projects.filter(
+      (p) => p.status === "completed"
+    ).length,
+    inProgressProjects: projectsData.projects.filter(
+      (p) => p.status === "in-progress"
+    ).length,
   });
 
   return {
-    projects: getProjects,
-    featuredProjects: getFeaturedProjects,
+    projects,
+    featuredProjects,
     getProjectsByCategory,
     getProjectsByTag,
     getAllTags,
-    getCategories,
-    getProjectById,
-    getProjectStats
+    getCategories: () => projectsData.categories,
+    getProjectById: getById,
+    getProjectStats,
   };
 };

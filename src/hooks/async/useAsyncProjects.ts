@@ -1,105 +1,79 @@
+import { useMemo } from "react";
+import { useAsyncData } from "./useAsyncData";
+import { useTranslatedContent } from "../useTranslatedContent";
+import { ProjectsData, Project } from "@/types/projects";
 
-import { useQuery } from '@tanstack/react-query';
-import { useQueryClient } from '@tanstack/react-query';
-import { getAsyncDataLoader } from '@/services/asyncDataLoader';
-import { ProjectsData, Project } from '@/types/projects';
-import { useTranslatedContent } from '../useTranslatedContent';
-
-/**
- * Hook para carregamento assíncrono de dados de projetos
- */
 export const useAsyncProjects = () => {
-  const queryClient = useQueryClient();
   const { translate } = useTranslatedContent();
-  const dataLoader = getAsyncDataLoader(queryClient);
 
   const {
     data: projectsData,
     isLoading,
     error,
-    refetch
-  } = useQuery({
-    queryKey: ['projects'],
-    queryFn: () => dataLoader.loadProjectsData(),
-    staleTime: 5 * 60 * 1000,
-    gcTime: 30 * 60 * 1000,
+    refetch,
+  } = useAsyncData<ProjectsData>({
+    queryKey: ["projects"],
+    queryFn: (loader) => loader.loadProjectsData(),
   });
 
-  /**
-   * Traduz um projeto
-   */
   const translateProject = (project: Project) => ({
     ...project,
     title: translate(project.title),
     description: translate(project.description),
-    responsibilities: project.responsibilities ? project.responsibilities.map(translate) : undefined
+    responsibilities: project.responsibilities
+      ? project.responsibilities.map(translate)
+      : undefined,
   });
 
-  /**
-   * Obtém projetos traduzidos e ordenados
-   */
-  const getProjects = () => {
+  const projects = useMemo(() => {
     if (!projectsData) return [];
-    
     return projectsData.projects
       .sort((a, b) => a.order - b.order)
       .map(translateProject);
-  };
+  }, [projectsData, translate]);
 
-  /**
-   * Obtém projetos em destaque
-   */
-  const getFeaturedProjects = () => {
-    return getProjects().filter(project => project.featured);
-  };
+  const featuredProjects = useMemo(() => {
+    return projects.filter((project) => project.featured);
+  }, [projects]);
 
-  /**
-   * Obtém projetos por categoria
-   */
-  const getProjectsByCategory = (category?: string) => {
-    const projects = getProjects();
-    if (!category) return projects;
-    return projects.filter(project => project.category === category);
-  };
-
-  /**
-   * Obtém projetos filtrados por tag
-   */
-  const getProjectsByTag = (tag: string) => {
-    return getProjects().filter(project => project.tags.includes(tag));
-  };
-
-  /**
-   * Obtém todas as tags únicas dos projetos
-   */
-  const getAllTags = () => {
+  const allTags = useMemo(() => {
     if (!projectsData) return [];
-    return Array.from(new Set(projectsData.projects.flatMap(project => project.tags))).sort();
-  };
+    return Array.from(
+      new Set(projectsData.projects.flatMap((project) => project.tags))
+    ).sort();
+  }, [projectsData]);
 
-  /**
-   * Obtém projeto por ID
-   */
-  const getProjectById = (id: string) => {
+  const projectStats = useMemo(() => {
     if (!projectsData) return null;
-    const project = projectsData.projects.find(project => project.id === id);
-    return project ? translateProject(project) : null;
-  };
-
-  /**
-   * Obtém estatísticas dos projetos
-   */
-  const getProjectStats = () => {
-    if (!projectsData) return null;
-    
     return {
       totalProjects: projectsData.projects.length,
-      featuredProjects: projectsData.projects.filter(project => project.featured).length,
+      featuredProjects: projectsData.projects.filter(
+        (project) => project.featured
+      ).length,
       categories: projectsData.categories.length,
       tags: projectsData.tags.length,
-      completedProjects: projectsData.projects.filter(project => project.status === 'completed').length,
-      inProgressProjects: projectsData.projects.filter(project => project.status === 'in-progress').length
+      completedProjects: projectsData.projects.filter(
+        (project) => project.status === "completed"
+      ).length,
+      inProgressProjects: projectsData.projects.filter(
+        (project) => project.status === "in-progress"
+      ).length,
     };
+  }, [projectsData]);
+
+  const getProjectsByCategory = (category?: string) => {
+    if (!category) return projects;
+    return projects.filter((project) => project.category === category);
+  };
+
+  const getProjectsByTag = (tag: string) => {
+    return projects.filter((project) => project.tags.includes(tag));
+  };
+
+  const getProjectById = (id: string) => {
+    if (!projectsData) return null;
+    const project = projectsData.projects.find((project) => project.id === id);
+    return project ? translateProject(project) : null;
   };
 
   return {
@@ -107,12 +81,12 @@ export const useAsyncProjects = () => {
     isLoading,
     error,
     refetch,
-    projects: getProjects(),
-    featuredProjects: getFeaturedProjects(),
+    projects,
+    featuredProjects,
+    allTags,
+    projectStats,
     getProjectsByCategory,
     getProjectsByTag,
-    getAllTags,
     getProjectById,
-    getProjectStats
   };
 };

@@ -1,9 +1,5 @@
+import { TranslatableString } from "./common";
 
-import { TranslatableString } from './common';
-
-/**
- * Tipos relacionados ao contato e informações pessoais
- */
 export interface ContactInfo {
   email: string;
   phone?: string;
@@ -35,5 +31,5 @@ export interface PersonalInfo {
 export interface LanguageSkill {
   language: TranslatableString;
   level: TranslatableString;
-  proficiency: 'native' | 'fluent' | 'advanced' | 'intermediate' | 'basic';
+  proficiency: "native" | "fluent" | "advanced" | "intermediate" | "basic";
 }

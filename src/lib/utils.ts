@@ -6,9 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Função reutilizável para forçar o download de um arquivo no navegador.
- * @param url O caminho para o arquivo a ser baixado.
- * @param filename O nome que o arquivo terá ao ser salvo.
+ * @param url
+ * @param filename
  */
 export function downloadFile(url: string, filename: string) {
   const link = document.createElement("a");

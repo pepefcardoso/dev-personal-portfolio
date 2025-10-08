@@ -1,9 +1,5 @@
+import { TranslatableString, FeaturedItem, OrderableItem } from "./common";
 
-import { TranslatableString, FeaturedItem, OrderableItem } from './common';
-
-/**
- * Tipos relacionados a projetos
- */
 export interface Project extends OrderableItem, FeaturedItem {
   title: TranslatableString;
   description: TranslatableString;
@@ -13,7 +9,7 @@ export interface Project extends OrderableItem, FeaturedItem {
   demoUrl?: string;
   codeUrl?: string;
   category?: string;
-  status?: 'completed' | 'in-progress' | 'planned';
+  status?: "completed" | "in-progress" | "planned";
   startDate?: string;
   endDate?: string;
   responsibilities?: TranslatableString[];

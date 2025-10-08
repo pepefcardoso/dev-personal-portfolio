@@ -1,14 +1,13 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-
-import enTranslation from './locales/en';
-import ptTranslation from './locales/pt';
-import esTranslation from './locales/es';
-import frTranslation from './locales/fr';
-import itTranslation from './locales/it';
-import zhTranslation from './locales/zh';
+import enTranslation from "./locales/en";
+import ptTranslation from "./locales/pt";
+import esTranslation from "./locales/es";
+import frTranslation from "./locales/fr";
+import itTranslation from "./locales/it";
+import zhTranslation from "./locales/zh";
 
 i18n
   .use(LanguageDetector)
@@ -22,15 +21,15 @@ i18n
       it: { translation: itTranslation },
       zh: { translation: zhTranslation },
     },
-    fallbackLng: 'pt',
-    lng: 'pt', // Define português como idioma inicial
+    fallbackLng: "pt",
+    lng: "pt",
     debug: false,
     interpolation: {
-      escapeValue: false, // React already escapes values
+      escapeValue: false,
     },
     detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
+      order: ["localStorage", "navigator"],
+      caches: ["localStorage"],
     },
   });
 

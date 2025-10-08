@@ -1,9 +1,5 @@
+import { TranslatableString, OrderableItem } from "./common";
 
-import { TranslatableString, OrderableItem } from './common';
-
-/**
- * Tipos relacionados a depoimentos
- */
 export interface Testimonial extends OrderableItem {
   name: string;
   position: TranslatableString;

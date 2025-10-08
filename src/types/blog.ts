@@ -1,9 +1,5 @@
+import { TranslatableString, FeaturedItem, OrderableItem } from "./common";
 
-import { TranslatableString, FeaturedItem, OrderableItem } from './common';
-
-/**
- * Tipos relacionados ao blog e artigos
- */
 export interface BlogPost extends OrderableItem, FeaturedItem {
   title: TranslatableString;
   excerpt: TranslatableString;
@@ -18,7 +14,7 @@ export interface BlogPost extends OrderableItem, FeaturedItem {
     name: string;
     avatar?: string;
   };
-  status?: 'published' | 'draft' | 'archived';
+  status?: "published" | "draft" | "archived";
 }
 
 export interface BlogData {

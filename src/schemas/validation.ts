@@ -1,11 +1,6 @@
 import { z } from "zod";
 import { SkillLevel, SkillCategory, TimelineType } from "@/types/common";
 
-// =================================================================
-// ==                      SCHEMAS BASE                           ==
-// =================================================================
-
-// Schema base para strings traduzíveis - en e pt são obrigatórios
 export const TranslatableStringSchema = z.object({
   en: z.string().min(1),
   pt: z.string().min(1),
@@ -15,29 +10,21 @@ export const TranslatableStringSchema = z.object({
   zh: z.string().optional(),
 });
 
-// Schema base para itens ordenáveis
 export const OrderableItemSchema = z.object({
   id: z.string().min(1),
   order: z.number(),
 });
 
-// Schema para itens com destaque
 export const FeaturedItemSchema = z.object({
   featured: z.boolean(),
 });
 
-// Schema para itens com intervalo de datas
 export const DateRangeItemSchema = z.object({
   startDate: z.string().optional(),
   endDate: z.string().optional(),
   period: TranslatableStringSchema,
 });
 
-// =================================================================
-// ==                   SCHEMAS DE DADOS                          ==
-// =================================================================
-
-// Schema para Habilidades
 export const SkillSchema = OrderableItemSchema.extend({
   name: z.string().min(1),
   level: z.nativeEnum(SkillLevel),
@@ -59,7 +46,6 @@ export const SkillsDataSchema = z.object({
   ),
 });
 
-// Schema para Timeline (Usando .merge() para compor schemas base)
 export const TimelineItemSchema = OrderableItemSchema.merge(
   DateRangeItemSchema
 ).extend({
@@ -85,7 +71,6 @@ export const TimelineDataSchema = z.object({
   education: z.array(TimelineItemSchema),
 });
 
-// Schema para Blog (Usando .merge() para compor schemas base)
 export const BlogPostSchema = OrderableItemSchema.merge(
   FeaturedItemSchema
 ).extend({
@@ -113,7 +98,6 @@ export const BlogDataSchema = z.object({
   tags: z.array(z.string()),
 });
 
-// Schema para Projetos (Usando .merge() para compor schemas base)
 export const ProjectSchema = OrderableItemSchema.merge(
   FeaturedItemSchema
 ).extend({
@@ -138,7 +122,6 @@ export const ProjectsDataSchema = z.object({
   tags: z.array(z.string()),
 });
 
-// Schema para Depoimentos
 export const TestimonialSchema = OrderableItemSchema.extend({
   name: z.string().min(1),
   position: TranslatableStringSchema,
@@ -155,7 +138,6 @@ export const TestimonialsDataSchema = z.object({
   testimonials: z.array(TestimonialSchema),
 });
 
-// Schema para Idiomas
 export const LanguageSchema = OrderableItemSchema.extend({
   code: z.string().min(1),
   name: TranslatableStringSchema,
@@ -169,7 +151,6 @@ export const LanguagesDataSchema = z.object({
   supported: z.array(LanguageSchema),
 });
 
-// Schema para Informações Pessoais e Contato
 export const LanguageSkillSchema = z.object({
   language: TranslatableStringSchema,
   level: TranslatableStringSchema,

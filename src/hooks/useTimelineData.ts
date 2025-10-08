@@ -1,78 +1,52 @@
+import { useMemo } from "react";
+import { timelineData } from "@/data/timeline";
+import { useOrderedData } from "./useDataWithTranslation";
+import { TimelineItem } from "@/types/timeline";
+import { TimelineType, TranslatableString } from "@/types/common";
 
-import { useMemo } from 'react';
-import { timelineData } from '@/data/timeline';
-import { useTranslatedContent } from './useTranslatedContent';
-import { TimelineItem, TimelineData } from '@/types/timeline';
-import { TimelineType } from '@/types/common';
-
-/**
- * Hook para gerenciar dados do timeline
- */
 export const useTimelineData = () => {
-  const { translate } = useTranslatedContent();
-
-  /**
-   * Traduz um item do timeline
-   */
-  const translateTimelineItem = (item: TimelineItem) => ({
+  const translateTimelineItem = (
+    item: TimelineItem,
+    translate: (content: TranslatableString) => string
+  ) => ({
     ...item,
     title: translate(item.title),
     organization: translate(item.organization),
     description: translate(item.description),
     period: translate(item.period),
     location: item.location ? translate(item.location) : undefined,
-    achievements: item.achievements ? item.achievements.map(translate) : undefined
+    achievements: item.achievements?.map((a) => translate(a)),
   });
 
-  /**
-   * Obtém dados de experiência traduzidos e ordenados
-   */
-  const getExperienceData = useMemo(() => {
-    return timelineData.experience
-      .sort((a, b) => a.order - b.order)
-      .map(translateTimelineItem);
-  }, [translate]);
+  const { data: experience } = useOrderedData(
+    timelineData.experience,
+    translateTimelineItem
+  );
 
-  /**
-   * Obtém dados de educação traduzidos e ordenados
-   */
-  const getEducationData = useMemo(() => {
-    return timelineData.education
-      .sort((a, b) => a.order - b.order)
-      .map(translateTimelineItem);
-  }, [translate]);
+  const { data: education } = useOrderedData(
+    timelineData.education,
+    translateTimelineItem
+  );
 
-  /**
-   * Obtém todos os dados do timeline traduzidos
-   */
-  const getAllTimelineData = useMemo(() => {
-    return {
-      experience: getExperienceData,
-      education: getEducationData
-    };
-  }, [getExperienceData, getEducationData]);
+  const allTimelineData = useMemo(
+    () => ({ experience, education }),
+    [experience, education]
+  );
 
-  /**
-   * Obtém itens do timeline por tipo
-   */
-  const getTimelineByType = (type: TimelineType) => {
-    return type === TimelineType.EXPERIENCE ? getExperienceData : getEducationData;
-  };
+  const getTimelineByType = (type: TimelineType) =>
+    type === TimelineType.EXPERIENCE ? experience : education;
 
-  /**
-   * Obtém estatísticas do timeline
-   */
   const getTimelineStats = () => ({
     totalExperience: timelineData.experience.length,
     totalEducation: timelineData.education.length,
-    totalItems: timelineData.experience.length + timelineData.education.length
+    totalItems: timelineData.experience.length + timelineData.education.length,
   });
 
   return {
-    timelineData: getAllTimelineData,
-    getExperienceData,
-    getEducationData,
+    timelineData: allTimelineData,
+    getExperienceData: experience,
+    getEducationData: education,
     getTimelineByType,
-    getTimelineStats
+    getTimelineStats,
   };
 };
