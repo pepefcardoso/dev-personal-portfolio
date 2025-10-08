@@ -112,31 +112,13 @@ class DataService {
     }
   }
 
-  // getExperiences() {
-  //   return timelineData.experience.sort((a, b) => a.order - b.order);
-  // }
-
   getEducation() {
     return timelineData.education.sort((a, b) => a.order - b.order);
   }
 
-  // getBlogPosts() {
-  //   return blogData.posts
-  //     .filter((post) => post.status === "published")
-  //     .sort((a, b) => a.order - b.order);
-  // }
-
-  // getFeaturedBlogPosts() {
-  //   return this.getBlogPosts().filter((post) => post.featured);
-  // }
-
   getProjects() {
     return projectsData.projects.sort((a, b) => a.order - b.order);
   }
-
-  // getFeaturedProjects() {
-  //   return this.getProjects().filter((project) => project.featured);
-  // }
 
   getProjectsByCategory(category?: string) {
     if (!category) return this.getProjects();
@@ -148,20 +130,6 @@ class DataService {
   getProjectsByTag(tag: string) {
     return this.getProjects().filter((project) => project.tags.includes(tag));
   }
-
-  // getTestimonials() {
-  //   return this.getTestimonialsData().testimonials.sort(
-  //     (a, b) => a.order - b.order
-  //   );
-  // }
-
-  // getSupportedLanguages() {
-  //   return this.getLanguagesData().supported;
-  // }
-
-  // getDefaultLanguage() {
-  //   return this.getSupportedLanguages().find((lang) => lang.isDefault);
-  // }
 
   validateAllData() {
     try {
