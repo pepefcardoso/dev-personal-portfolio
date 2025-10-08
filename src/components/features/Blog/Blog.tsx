@@ -70,7 +70,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onClick, t, locale })
 
 const Blog = () => {
   const { t, i18n } = useTranslation();
-  const { blogPosts } = useBlogData();
+  const { posts } = useBlogData();
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
 
   const handlePostClick = useCallback((postId: string) => {
@@ -91,7 +91,7 @@ const Blog = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <BlogPostCard
                 key={post.id}
                 post={post as TranslatedBlogPost}

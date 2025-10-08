@@ -43,6 +43,8 @@ export default {
     namePlaceholder: 'Votre nom',
     emailLabel: 'Email',
     emailPlaceholder: 'votre.email@exemple.com',
+    phoneLabel: 'Téléphone',
+    phonePlaceholder: 'Votre numéro de téléphone',
     messageLabel: 'Message',
     messagePlaceholder: 'Votre message ici...',
     submit: 'Envoyer le Message',

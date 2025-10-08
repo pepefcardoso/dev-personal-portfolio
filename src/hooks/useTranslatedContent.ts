@@ -1,16 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { TranslatableString } from "@/types/common";
-import { dataService } from "@/services/dataService";
+
+export function translate(content: TranslatableString, lang: string): string {
+  const key = lang as keyof TranslatableString;
+  return (
+    content[key] || content.en || content.pt || Object.values(content)[0] || ""
+  );
+}
 
 export const useTranslatedContent = () => {
   const { i18n } = useTranslation();
 
-  const translate = (content: TranslatableString): string => {
-    return dataService.getTranslatedString(content, i18n.language);
+  const translateContent = (content: TranslatableString): string => {
+    return translate(content, i18n.language);
   };
 
   const translateMultiple = (contents: TranslatableString[]): string[] => {
-    return contents.map((content) => translate(content));
+    return contents.map(translateContent);
   };
 
   const hasTranslation = (content: TranslatableString): boolean => {
@@ -19,7 +25,7 @@ export const useTranslatedContent = () => {
   };
 
   return {
-    translate,
+    translate: translateContent,
     translateMultiple,
     hasTranslation,
     currentLanguage: i18n.language,

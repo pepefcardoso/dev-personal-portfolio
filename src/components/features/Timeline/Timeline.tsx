@@ -51,7 +51,7 @@ const TimelineCard: React.FC<{ item: TranslatedTimelineItem }> = ({ item }) => (
 
 const Timeline = () => {
   const { t } = useTranslation();
-  const { getExperienceData, getEducationData } = useTimelineData();
+  const { experience, education } = useTimelineData();
 
   return (
     <section id="timeline" className="py-20 bg-muted/30">
@@ -64,7 +64,7 @@ const Timeline = () => {
               <Calendar size={20} />
               {t('timeline.experience')}
             </h3>
-            {getExperienceData.map(item => (
+            {experience.map(item => (
               <TimelineCard key={item.id} item={item as unknown as TranslatedTimelineItem} />
             ))}
           </div>
@@ -74,7 +74,7 @@ const Timeline = () => {
               <Book size={20} />
               {t('timeline.education')}
             </h3>
-            {getEducationData.map(item => (
+            {education.map(item => (
               <TimelineCard key={item.id} item={item as unknown as TranslatedTimelineItem} />
             ))}
           </div>

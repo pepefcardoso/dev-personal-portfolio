@@ -1,48 +1,38 @@
-import { useMemo } from "react";
-import { dataService } from "@/services/dataService";
+import { skillsData } from "@/data/skills";
 import { SkillCategory } from "@/types/common";
-import { Skill } from "@/types/skills";
+import { useMemo } from "react";
 
-export const useSkillsData = () => {
-  const skillsData = useMemo(() => dataService.getSkillsData(), []);
+export function useSkillsData() {
+  const skills = skillsData.skills;
 
-  const getSkillsByCategory = (category: SkillCategory): Skill[] => {
-    return dataService.getSkillsByCategory(category);
+  const getByCategory = (category: SkillCategory) =>
+    skills.filter((s) => s.category === category);
+
+  const getSorted = (by: "level" | "order" | "name" = "order") => {
+    const sorted = [...skills];
+    if (by === "level") return sorted.sort((a, b) => b.level - a.level);
+    if (by === "name")
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    return sorted.sort((a, b) => a.order - b.order);
   };
 
-  const getSortedSkills = (
-    sortBy: "level" | "order" | "name" = "order"
-  ): Skill[] => {
-    return dataService.getSkillsSorted(sortBy);
-  };
-
-  const getSkillsGroupedByCategory = () => {
-    return Object.values(SkillCategory).reduce((acc, category) => {
-      acc[category] = getSkillsByCategory(category);
-      return acc;
-    }, {} as Record<SkillCategory, Skill[]>);
-  };
-
-  const getSkillsStats = () => {
-    const skills = skillsData.skills;
-    return {
-      total: skills.length,
-      byCategory: Object.values(SkillCategory).reduce((acc, category) => {
-        acc[category] = skills.filter(
-          (skill) => skill.category === category
-        ).length;
+  const grouped = useMemo(
+    () =>
+      Object.values(SkillCategory).reduce((acc, cat) => {
+        acc[cat] = getByCategory(cat);
         return acc;
-      }, {} as Record<SkillCategory, number>),
-      averageLevel:
-        skills.reduce((sum, skill) => sum + skill.level, 0) / skills.length,
-    };
-  };
+      }, {} as Record<SkillCategory, typeof skills>),
+    []
+  );
 
   return {
-    skillsData,
-    getSkillsByCategory,
-    getSortedSkills,
-    getSkillsGroupedByCategory,
-    getSkillsStats,
+    skills: getSorted(),
+    getByCategory,
+    getSorted,
+    grouped,
+    stats: {
+      total: skills.length,
+      avgLevel: skills.reduce((sum, s) => sum + s.level, 0) / skills.length,
+    },
   };
-};
+}

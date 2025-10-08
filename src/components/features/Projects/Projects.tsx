@@ -67,14 +67,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, t }) => (
 const Projects = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<string>("all");
-  const { projects, getProjectsByTag, getAllTags } = useProjectsData();
+  const { projects, getByTag, tags } = useProjectsData();
 
   const filteredProjects = useMemo(() => {
     if (filter === "all") {
       return projects;
     }
-    return getProjectsByTag(filter);
-  }, [projects, filter, getProjectsByTag]);
+    return getByTag(filter);
+  }, [projects, filter, getByTag]);
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
@@ -88,7 +88,7 @@ const Projects = () => {
           >
             {t('projects.allFilter')}
           </Button>
-          {getAllTags.map(tag => (
+          {tags.map(tag => (
             <Button
               key={tag}
               variant={filter === tag ? "default" : "outline"}

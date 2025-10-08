@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Hero from '@/components/features/Hero/Hero';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useDataPreloader } from '@/hooks/async/useDataPreloader';
 
 const About = React.lazy(() => import('@/components/features/About/About'));
 const Projects = React.lazy(() => import('@/components/features/Projects/Projects'));
@@ -56,12 +55,6 @@ const PageLoader = () => (
 );
 
 const Home = () => {
-  const { isLoadingCritical } = useDataPreloader();
-
-  if (isLoadingCritical) {
-    return <PageLoader />;
-  }
-
   return (
     <div className="min-h-screen bg-background">
       <Header />

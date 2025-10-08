@@ -33,10 +33,10 @@ const SkillCard: React.FC<{ skill: Skill; categoryName: string }> = ({ skill, ca
 
 const About = () => {
   const { t } = useTranslation();
-  const { getSortedSkills } = useSkillsData();
-  const { getTranslatedPersonalInfo } = usePersonalData();
-  const skills = useMemo(() => getSortedSkills('level'), [getSortedSkills]);
-  const personalInfo = useMemo(() => getTranslatedPersonalInfo(), [getTranslatedPersonalInfo]);
+  const { getSorted } = useSkillsData();
+  const { personal } = usePersonalData();
+  const skills = useMemo(() => getSorted('level'), [getSorted]);
+  const personalInfo = useMemo(() => personal, [personal]);
 
   return (
     <section id="about" className="py-20 relative">

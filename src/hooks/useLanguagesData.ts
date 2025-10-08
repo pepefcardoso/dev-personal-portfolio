@@ -1,49 +1,47 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { languagesData } from "@/data/languages";
-import { useDataWithTranslation } from "./useDataWithTranslation";
-import { useTranslatedContent } from "./useTranslatedContent";
-import { Language } from "@/types/languages";
-import { TranslatableString } from "@/types/common";
+import { translate } from "./useTranslatedContent";
 
 export const useLanguagesData = () => {
-  const { currentLanguage } = useTranslatedContent();
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
 
-  const translateLanguage = (
-    language: Language,
-    translate: (content: TranslatableString) => string
-  ) => ({
-    ...language,
-    name: translate(language.name),
-  });
-
-  const { data: languages, getById } = useDataWithTranslation({
-    data: languagesData.supported,
-    translateItem: translateLanguage,
-  });
+  const languages = useMemo(
+    () =>
+      languagesData.supported.map((language) => ({
+        ...language,
+        name: translate(language.name, lang),
+      })),
+    [lang]
+  );
 
   const defaultLanguage = useMemo(
-    () => languages.find((lang) => lang.isDefault) || null,
+    () => languages.find((l) => l.isDefault) || null,
     [languages]
   );
 
-  const currentLang = useMemo(
-    () => languages.find((lang) => lang.code === currentLanguage) || null,
-    [languages, currentLanguage]
+  const currentLanguage = useMemo(
+    () => languages.find((l) => l.code === lang) || null,
+    [languages, lang]
   );
 
+  const getLanguageByCode = (code: string) =>
+    languages.find((l) => l.code === code) || null;
+
   const isLanguageSupported = (code: string) =>
-    languagesData.supported.some((lang) => lang.code === code);
+    languagesData.supported.some((l) => l.code === code);
 
   const getSupportedLanguageCodes = () =>
-    languagesData.supported.map((lang) => lang.code);
+    languagesData.supported.map((l) => l.code);
 
-  const getRTLLanguages = () => languages.filter((lang) => lang.rtl);
+  const getRTLLanguages = () => languages.filter((l) => l.rtl);
 
   return {
     languages,
     defaultLanguage,
-    currentLanguage: currentLang,
-    getLanguageByCode: getById,
+    currentLanguage,
+    getLanguageByCode,
     isLanguageSupported,
     getSupportedLanguageCodes,
     getRTLLanguages,

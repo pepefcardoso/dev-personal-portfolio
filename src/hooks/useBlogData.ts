@@ -1,54 +1,25 @@
-import { useMemo } from "react";
 import { blogData } from "@/data/blog";
-import { useOrderedData } from "./useDataWithTranslation";
 import { BlogPost } from "@/types/blog";
-import { TranslatableString } from "@/types/common";
+import { translate, useTranslatedData } from "./useData";
+import { useMemo } from "react";
 
-export type TranslatedBlogPost = Omit<
-  BlogPost,
-  "title" | "excerpt" | "content" | "category"
-> & {
-  title: string;
-  excerpt: string;
-  content?: string;
-  category: string;
-};
-
-export const useBlogData = () => {
-  const translateBlogPost = (
-    post: BlogPost,
-    translate: (content: TranslatableString) => string
-  ): TranslatedBlogPost => ({
+export function useBlogData() {
+  const translatePost = (post: BlogPost, lang: string) => ({
     ...post,
-    title: translate(post.title),
-    excerpt: translate(post.excerpt),
-    content: post.content ? translate(post.content) : undefined,
-    category: translate(post.category),
+    title: translate(post.title, lang),
+    excerpt: translate(post.excerpt, lang),
+    content: post.content ? translate(post.content, lang) : undefined,
+    category: translate(post.category, lang),
   });
 
-  const { data: blogPosts, getById } = useOrderedData<
-    BlogPost,
-    TranslatedBlogPost
-  >(blogData.posts, translateBlogPost, (post) => post.status === "published");
-
-  const featuredPosts = useMemo(
-    () => blogPosts.filter((item) => item.featured),
-    [blogPosts]
-  );
-
-  const getBlogStats = () => ({
-    totalPosts: blogData.posts.filter((p) => p.status === "published").length,
-    featuredPosts: blogData.posts.filter(
-      (p) => p.featured && p.status === "published"
-    ).length,
-    categories: blogData.categories.length,
-    tags: blogData.tags.length,
+  const posts = useTranslatedData(blogData.posts, translatePost, {
+    filter: (p) => p.status === "published",
+    sort: (a, b) => a.order - b.order,
   });
 
-  return {
-    blogPosts,
-    featuredPosts,
-    getBlogPostById: getById,
-    getBlogStats,
-  };
-};
+  const featured = useMemo(() => posts.filter((p) => p.featured), [posts]);
+
+  const getById = (id: string) => posts.find((p) => p.id === id) || null;
+
+  return { posts, featured, getById };
+}

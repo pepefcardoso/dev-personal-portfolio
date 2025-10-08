@@ -1,52 +1,29 @@
-import { useMemo } from "react";
 import { timelineData } from "@/data/timeline";
-import { useOrderedData } from "./useDataWithTranslation";
 import { TimelineItem } from "@/types/timeline";
-import { TimelineType, TranslatableString } from "@/types/common";
+import { TimelineType } from "@/types/common";
+import { translate, useTranslatedData } from "./useData";
 
-export const useTimelineData = () => {
-  const translateTimelineItem = (
-    item: TimelineItem,
-    translate: (content: TranslatableString) => string
-  ) => ({
+export function useTimelineData() {
+  const translateItem = (item: TimelineItem, lang: string) => ({
     ...item,
-    title: translate(item.title),
-    organization: translate(item.organization),
-    description: translate(item.description),
-    period: translate(item.period),
-    location: item.location ? translate(item.location) : undefined,
-    achievements: item.achievements?.map((a) => translate(a)),
+    title: translate(item.title, lang),
+    organization: translate(item.organization, lang),
+    description: translate(item.description, lang),
+    period: translate(item.period, lang),
+    location: item.location ? translate(item.location, lang) : undefined,
+    achievements: item.achievements?.map((a) => translate(a, lang)),
   });
 
-  const { data: experience } = useOrderedData(
-    timelineData.experience,
-    translateTimelineItem
-  );
+  const experience = useTranslatedData(timelineData.experience, translateItem, {
+    sort: (a, b) => a.order - b.order,
+  });
 
-  const { data: education } = useOrderedData(
-    timelineData.education,
-    translateTimelineItem
-  );
+  const education = useTranslatedData(timelineData.education, translateItem, {
+    sort: (a, b) => a.order - b.order,
+  });
 
-  const allTimelineData = useMemo(
-    () => ({ experience, education }),
-    [experience, education]
-  );
-
-  const getTimelineByType = (type: TimelineType) =>
+  const getByType = (type: TimelineType) =>
     type === TimelineType.EXPERIENCE ? experience : education;
 
-  const getTimelineStats = () => ({
-    totalExperience: timelineData.experience.length,
-    totalEducation: timelineData.education.length,
-    totalItems: timelineData.experience.length + timelineData.education.length,
-  });
-
-  return {
-    timelineData: allTimelineData,
-    getExperienceData: experience,
-    getEducationData: education,
-    getTimelineByType,
-    getTimelineStats,
-  };
-};
+  return { experience, education, getByType };
+}

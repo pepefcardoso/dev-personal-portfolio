@@ -1,25 +1,22 @@
 import { testimonialsData } from "@/data/testimonials";
-import { useOrderedData } from "./useDataWithTranslation";
 import { Testimonial } from "@/types/testimonials";
-import { TranslatableString } from "@/types/common";
+import { translate, useTranslatedData } from "./useData";
 
-export const useTestimonialsData = () => {
-  const translateTestimonial = (
-    testimonial: Testimonial,
-    translate: (content: TranslatableString) => string
-  ) => ({
-    ...testimonial,
-    position: translate(testimonial.position),
-    content: translate(testimonial.content),
+export function useTestimonialsData() {
+  const translateTestimonial = (t: Testimonial, lang: string) => ({
+    ...t,
+    position: translate(t.position, lang),
+    content: translate(t.content, lang),
   });
 
-  const { data: testimonials, getById } = useOrderedData(
+  const testimonials = useTranslatedData(
     testimonialsData.testimonials,
-    translateTestimonial
+    translateTestimonial,
+    { sort: (a, b) => a.order - b.order }
   );
 
   return {
     testimonials,
-    getTestimonialById: getById,
+    getById: (id: string) => testimonials.find((t) => t.id === id) || null,
   };
-};
+}

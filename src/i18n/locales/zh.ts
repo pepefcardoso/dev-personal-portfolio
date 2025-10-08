@@ -43,6 +43,8 @@ export default {
     namePlaceholder: '您的姓名',
     emailLabel: '邮箱',
     emailPlaceholder: '您的邮箱@例子.com',
+    phoneLabel: '电话',
+    phonePlaceholder: '您的电话号码',
     messageLabel: '留言',
     messagePlaceholder: '在这里输入您的留言...',
     submit: '发送留言',

@@ -1,71 +1,40 @@
-import { useMemo } from "react";
 import { projectsData } from "@/data/projects";
-import { useFeaturedData } from "./useDataWithTranslation";
 import { Project } from "@/types/projects";
-import { TranslatableString } from "@/types/common";
+import { translate, useTranslatedData } from "./useData";
+import { useMemo } from "react";
 
-export type TranslatedProject = Omit<
-  Project,
-  "title" | "description" | "responsibilities"
-> & {
-  title: string;
-  description: string;
-  responsibilities?: string[];
-};
-
-export const useProjectsData = () => {
-  const translateProject = (
-    project: Project,
-    translate: (content: TranslatableString) => string
-  ): TranslatedProject => ({
+export function useProjectsData() {
+  const translateProject = (project: Project, lang: string) => ({
     ...project,
-    title: translate(project.title),
-    description: translate(project.description),
-    responsibilities: project.responsibilities?.map((r) => translate(r)),
+    title: translate(project.title, lang),
+    description: translate(project.description, lang),
+    responsibilities: project.responsibilities?.map((r) => translate(r, lang)),
   });
 
-  const {
-    data: projects,
-    featured: featuredProjects,
-    getById,
-  } = useFeaturedData<Project, TranslatedProject>(
-    projectsData.projects,
-    translateProject
+  const projects = useTranslatedData(projectsData.projects, translateProject, {
+    sort: (a, b) => a.order - b.order,
+  });
+
+  const featured = useMemo(
+    () => projects.filter((p) => p.featured),
+    [projects]
+  );
+  const tags = useMemo(
+    () => [...new Set(projects.flatMap((p) => p.tags))].sort(),
+    [projects]
   );
 
-  const getProjectsByCategory = (category?: string) =>
-    category ? projects.filter((p) => p.category === category) : projects;
-
-  const getProjectsByTag = (tag: string) =>
+  const getByTag = (tag: string) =>
     projects.filter((p) => p.tags.includes(tag));
-
-  const getAllTags = useMemo(
-    () =>
-      Array.from(new Set(projectsData.projects.flatMap((p) => p.tags))).sort(),
-    []
-  );
-
-  const getProjectStats = () => ({
-    totalProjects: projectsData.projects.length,
-    featuredProjects: projectsData.projects.filter((p) => p.featured).length,
-    categories: projectsData.categories.length,
-    tags: projectsData.tags.length,
-    completedProjects: projectsData.projects.filter(
-      (p) => p.status === "completed"
-    ).length,
-    inProgressProjects: projectsData.projects.filter(
-      (p) => p.status === "in-progress"
-    ).length,
-  });
+  const getByCategory = (cat?: string) =>
+    cat ? projects.filter((p) => p.category === cat) : projects;
 
   return {
     projects,
-    featuredProjects,
-    getProjectsByCategory,
-    getProjectsByTag,
-    getAllTags,
-    getCategories: () => projectsData.categories,
-    getProjectById: getById,
-    getProjectStats,
+    featured,
+    tags,
+    getByTag,
+    getByCategory,
+    getById: (id: string) => projects.find((p) => p.id === id) || null,
   };
-};
+}

@@ -1,46 +1,30 @@
+import { personalInfo, contactInfo } from "@/data/personal";
 import { useMemo } from "react";
-import { dataService } from "@/services/dataService";
-import { useTranslatedContent } from "./useTranslatedContent";
+import { useTranslation } from "react-i18next";
+import { translate } from "./useData";
 
-export const usePersonalData = () => {
-  const personalInfo = useMemo(() => dataService.getPersonalInfo(), []);
-  const contactInfo = useMemo(() => dataService.getContactInfo(), []);
-  const { translate } = useTranslatedContent();
+export function usePersonalData() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
 
-  const getTranslatedPersonalInfo = () => ({
-    ...personalInfo,
-    title: translate(personalInfo.title),
-    description: translate(personalInfo.description),
-    bio: translate(personalInfo.bio),
-    languages: personalInfo.languages.map((lang) => ({
-      ...lang,
-      language: translate(lang.language),
-      level: translate(lang.level),
-    })),
-  });
-
-  const getTranslatedContactInfo = () => ({
-    ...contactInfo,
-    resume: contactInfo.resume
-      ? {
-          ...contactInfo.resume,
-          filename: translate(contactInfo.resume.filename),
-        }
-      : undefined,
-  });
-
-  const getSocialMediaLinks = () => {
-    return contactInfo.socialMedia.map((link) => ({
-      ...link,
-      displayName: link.username || link.platform,
-    }));
-  };
+  const translated = useMemo(
+    () => ({
+      ...personalInfo,
+      title: translate(personalInfo.title, lang),
+      description: translate(personalInfo.description, lang),
+      bio: translate(personalInfo.bio, lang),
+      languages: personalInfo.languages.map((l) => ({
+        ...l,
+        language: translate(l.language, lang),
+        level: translate(l.level, lang),
+      })),
+    }),
+    [lang]
+  );
 
   return {
-    personalInfo,
-    contactInfo,
-    getTranslatedPersonalInfo,
-    getTranslatedContactInfo,
-    getSocialMediaLinks,
+    personal: translated,
+    contact: contactInfo,
+    socials: contactInfo.socialMedia,
   };
-};
+}

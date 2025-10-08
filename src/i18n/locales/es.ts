@@ -165,6 +165,8 @@ export default {
     namePlaceholder: 'Tu nombre',
     emailLabel: 'Email',
     emailPlaceholder: 'tu.email@ejemplo.com',
+    phoneLabel: 'Teléfono',
+    phonePlaceholder: 'Tu número de teléfono',
     messageLabel: 'Mensaje',
     messagePlaceholder: 'Tu mensaje aquí...',
     submit: 'Enviar Mensaje',

@@ -13,9 +13,9 @@ interface BlogModalProps {
 
 const BlogModal: React.FC<BlogModalProps> = ({ postId, isOpen, onClose }) => {
   const { t } = useTranslation();
-  const { getBlogPostById } = useBlogData();
+  const { getById } = useBlogData();
 
-  const post = postId ? getBlogPostById(postId) : null;
+  const post = postId ? getById(postId) : null;
 
   if (!isOpen || !post) return null;
 
