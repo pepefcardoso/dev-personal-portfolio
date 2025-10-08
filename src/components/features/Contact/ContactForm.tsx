@@ -24,6 +24,7 @@ const ContactForm = () => {
 
   const formSchema = useMemo(() => z.object({
     name: z.string().min(2, { message: t('contact.validation.nameMin') }),
+    phone: z.string().min(10, { message: t('contact.validation.phoneMin') }),
     email: z.string().email({ message: t('contact.validation.emailInvalid') }),
     message: z.string().min(10, { message: t('contact.validation.messageMin') }),
   }), [t]);
@@ -35,6 +36,7 @@ const ContactForm = () => {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       message: "",
     },
   });
@@ -46,6 +48,7 @@ const ContactForm = () => {
       const emailData: EmailData = {
         name: data.name,
         email: data.email,
+        phone: data.phone,
         message: data.message,
       };
 
@@ -98,6 +101,23 @@ const ContactForm = () => {
                   <Input
                     type="email"
                     placeholder={t('contact.emailPlaceholder')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('contact.phoneLabel')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder={t('contact.phonePlaceholder')}
                     {...field}
                   />
                 </FormControl>

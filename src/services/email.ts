@@ -1,8 +1,9 @@
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 export interface EmailData {
   name: string;
   email: string;
+  phone: string;
   message: string;
 }
 
@@ -17,8 +18,9 @@ export const sendEmail = async (data: EmailData) => {
   }
 
   const templateParams = {
-    from_name: data.name,
-    from_email: data.email,
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
     message: data.message,
   };
 
