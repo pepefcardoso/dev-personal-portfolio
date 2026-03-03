@@ -1,8 +1,5 @@
 ### 🔴 P1 — Bugs & Broken Things
 
-**1. Fix missing `phoneMin` validation key in all locales**
-The contact form schema references `t('contact.validation.phoneMin')` but this key doesn't exist in any locale file. Silent validation failure.
-
 **2. Fix wrong icon for Phone in `contactLinks`**
 `src/data/socials.ts` uses the `Mail` icon for the Phone entry. Import and use `Phone` from lucide-react.
 
