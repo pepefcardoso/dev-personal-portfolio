@@ -28,7 +28,7 @@ export const projectsData: ProjectsData = {
       category: "frontend",
       status: "completed",
       featured: true,
-      order: 1,
+      order: 4,
     },
     {
       id: "project_02",
@@ -84,7 +84,7 @@ export const projectsData: ProjectsData = {
       category: "frontend",
       status: "completed",
       featured: true,
-      order: 3,
+      order: 1,
     },
     {
       id: "project_04",
@@ -112,7 +112,7 @@ export const projectsData: ProjectsData = {
       category: "mobile",
       status: "in-progress",
       featured: true,
-      order: 4,
+      order: 5,
     },
     {
       id: "project_05",
@@ -140,7 +140,7 @@ export const projectsData: ProjectsData = {
       category: "backend",
       status: "completed",
       featured: true,
-      order: 5,
+      order: 6,
     },
     {
       id: "project_06",
@@ -168,7 +168,7 @@ export const projectsData: ProjectsData = {
       category: "backend",
       status: "in-progress",
       featured: true,
-      order: 6,
+      order: 3,
     },
   ],
   categories: ["frontend", "backend", "mobile", "design"],

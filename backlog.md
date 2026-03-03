@@ -1,8 +1,5 @@
 ### 🟠 P2 — Content Alignment (Web Developer Focus)
 
-**5. Reorder and reframe projects toward web**
-The Flutter mobile projects (project_04) are featured alongside web projects. Reorder to lead with web projects (Next.js, Laravel API, Vue). Consider adding a note or category label to distinguish web vs. mobile.
-
 **6. Update personal `description` and `bio` to reflect web focus**
 Both still lead with "Flutter and Laravel." The pitch should lead with TypeScript, React, Next.js given the career direction.
 

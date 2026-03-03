@@ -29,9 +29,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, t }) => (
         <div className="text-muted-foreground">{t('projects.imagePlaceholder')}</div>
       )}
     </div>
-    <CardHeader>
-      <h3 className="text-xl font-semibold">{project.title}</h3>
+    <CardHeader className="pb-2">
+      <div className="flex justify-between items-start gap-4">
+        <h3 className="text-xl font-semibold leading-tight">{project.title}</h3>
+        {project.category && (
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary capitalize shrink-0">
+            {project.category}
+          </span>
+        )}
+      </div>
     </CardHeader>
+
     <CardContent>
       <p className="text-muted-foreground mb-4">{project.description}</p>
       <div className="flex flex-wrap gap-2">
