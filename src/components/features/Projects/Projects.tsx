@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { useProjectsData } from "@/hooks/useProjectsData";
-import { TranslatedProject } from "@/types/projects";
+import { TranslatedProject } from "@/hooks/useProjectsData";
 
 interface ProjectCardProps {
   project: TranslatedProject;

@@ -1,18 +1,17 @@
 import { testimonialsData } from "@/data/testimonials";
-import { Testimonial, TranslatedTestimonial } from "@/types/testimonials";
+import { Testimonial } from "@/types/testimonials";
 import { translate, useTranslatedData } from "./useData";
 
-export function useTestimonialsData() {
-  const translateTestimonial = (
-    t: Testimonial,
-    lang: string,
-  ): TranslatedTestimonial => ({
-    ...t,
-    position: translate(t.position, lang),
-    content: translate(t.content, lang),
-  });
+const translateTestimonial = (t: Testimonial, lang: string) => ({
+  ...t,
+  position: translate(t.position, lang),
+  content: translate(t.content, lang),
+});
 
-  const testimonials = useTranslatedData<Testimonial, TranslatedTestimonial>(
+export type TranslatedTestimonial = ReturnType<typeof translateTestimonial>;
+
+export function useTestimonialsData() {
+  const testimonials = useTranslatedData(
     testimonialsData.testimonials,
     translateTestimonial,
     { sort: (a, b) => a.order - b.order },

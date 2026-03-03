@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
-import { useSkillsData } from "@/hooks/useSkillsData";
 import { usePersonalData } from "@/hooks/usePersonalData";
+import { skillsData } from "@/data/skills";
 import { SkillLevel } from "@/types/common";
 import { Skill } from '@/types/skills';
 
@@ -33,9 +33,11 @@ const SkillCard: React.FC<{ skill: Skill; categoryName: string }> = ({ skill, ca
 
 const About = () => {
   const { t } = useTranslation();
-  const { getSorted } = useSkillsData();
   const { personal } = usePersonalData();
-  const skills = useMemo(() => getSorted('level'), [getSorted]);
+
+  const skills = useMemo(() => {
+    return [...skillsData.skills].sort((a, b) => b.level - a.level);
+  }, []);
 
   return (
     <section id="about" className="py-20 relative">

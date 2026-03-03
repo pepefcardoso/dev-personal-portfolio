@@ -19,12 +19,11 @@ export function usePersonalData() {
         level: translate(l.level, lang),
       })),
     }),
-    [lang]
+    [lang],
   );
 
   return {
     personal: translated,
     contact: contactInfo,
-    socials: contactInfo.socialMedia,
   };
 }

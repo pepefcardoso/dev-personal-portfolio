@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { File } from "lucide-react";
 import { downloadFile } from "@/lib/utils";
+import { usePersonalData } from "@/hooks/usePersonalData";
+import { translate } from "@/hooks/useTranslatedContent";
 
 const currentYear = new Date().getFullYear();
 
@@ -14,11 +16,16 @@ const footerNavItems = [
 ];
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { contact } = usePersonalData();
 
   const handleResumeDownload = useCallback(() => {
-    downloadFile('/resume.pdf', 'Pedro_Paulo_Fernandes_Cardoso_Resume.pdf');
-  }, []);
+    if (contact.resume) {
+      const filename = translate(contact.resume.filename, i18n.language);
+      const url = `${contact.resume.downloadUrl}/${filename}`;
+      downloadFile(url, filename);
+    }
+  }, [contact.resume, i18n.language]);
 
   return (
     <footer className="bg-muted/30 py-10">

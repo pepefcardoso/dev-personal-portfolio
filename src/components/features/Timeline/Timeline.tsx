@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Book } from "lucide-react";
 import { useTimelineData } from "@/hooks/useTimelineData";
-import { TranslatedTimelineItem } from "@/types/timeline";
+import { TranslatedTimelineItem } from "@/hooks/useTimelineData";
 
 const TimelineCard: React.FC<{ item: TranslatedTimelineItem }> = ({ item }) => (
   <Card className="mb-4 border-l-4 hover:shadow-md transition-shadow duration-300">

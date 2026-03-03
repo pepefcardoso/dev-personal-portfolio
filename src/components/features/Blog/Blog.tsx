@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Newspaper, Clock } from "lucide-react";
 import { useBlogData } from "@/hooks/useBlogData";
 import BlogModal from "./BlogModal";
-import { TranslatedBlogPost } from "@/types/blog";
+import { TranslatedBlogPost } from "@/hooks/useBlogData";
 
 const formatDate = (dateString: string, locale?: string) => {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };

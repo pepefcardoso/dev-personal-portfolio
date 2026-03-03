@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageSquare, User, ExternalLink } from "lucide-react";
 import { useTestimonialsData } from "@/hooks/useTestimonialsData";
-import { TranslatedTestimonial } from "@/types/testimonials";
+import { TranslatedTestimonial } from "@/hooks/useTestimonialsData";
 
 interface TestimonialCardProps {
   testimonial: TranslatedTestimonial;

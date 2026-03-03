@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { File, Mail, Github, Linkedin } from "lucide-react";
 import { downloadFile } from "@/lib/utils";
 import { usePersonalData } from "@/hooks/usePersonalData";
+import { translate } from "@/hooks/useTranslatedContent";
 
 const iconMap: Record<string, React.FC<any>> = {
   Github,
@@ -10,11 +11,15 @@ const iconMap: Record<string, React.FC<any>> = {
 };
 
 const Hero = () => {
-  const { t } = useTranslation();
-  const { socials } = usePersonalData();
+  const { t, i18n } = useTranslation();
+  const { contact } = usePersonalData();
 
   const handleResumeDownload = () => {
-    downloadFile('/resume.pdf', 'Pedro_Paulo_Fernandes_Cardoso_Resume.pdf');
+    if (contact.resume) {
+      const filename = translate(contact.resume.filename, i18n.language);
+      const url = `${contact.resume.downloadUrl}/${filename}`;
+      downloadFile(url, filename);
+    }
   };
 
   return (
@@ -53,7 +58,7 @@ const Hero = () => {
               </div>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                {socials.map((link) => {
+                {contact.socialMedia.map((link) => {
                   const Icon = iconMap[link.icon || ''];
                   return (
                     <Button

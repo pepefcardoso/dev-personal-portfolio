@@ -1,13 +1,5 @@
 import { TranslatableString, FeaturedItem, OrderableItem } from "./common";
 
-export interface TranslatedBlogPost
-  extends Omit<BlogPost, "title" | "excerpt" | "category" | "content"> {
-  title: string;
-  excerpt: string;
-  category: string;
-  content?: string;
-}
-
 export interface BlogPost extends OrderableItem, FeaturedItem {
   title: TranslatableString;
   excerpt: TranslatableString;

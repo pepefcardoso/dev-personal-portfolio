@@ -13,10 +13,10 @@ const iconMap: Record<string, React.FC<any>> = {
 
 const Contact = () => {
   const { t } = useTranslation();
-  const { contact, socials } = usePersonalData();
+  const { contact } = usePersonalData();
 
   const contactLinks = [
-    ...socials,
+    ...contact.socialMedia,
     { platform: "Email", url: `mailto:${contact.email}`, username: contact.email, icon: "Mail" },
     { platform: "Phone", url: `tel:${contact.phone}`, username: contact.phone, icon: "Phone" },
   ];
