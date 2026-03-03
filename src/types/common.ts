@@ -31,6 +31,7 @@ export enum SkillCategory {
   BACKEND = "backend",
   TOOLS = "tools",
   LANGUAGES = "languages",
+  MOBILE = "mobile",
 }
 
 export enum TimelineType {

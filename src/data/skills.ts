@@ -1,134 +1,162 @@
-
-import { SkillsData, Skill } from '@/types/skills';
-import { SkillLevel, SkillCategory } from '@/types/common';
+import { SkillsData, Skill } from "@/types/skills";
+import { SkillLevel, SkillCategory } from "@/types/common";
 
 export const skillsData: SkillsData = {
   categories: {
     [SkillCategory.FRONTEND]: {
-      name: 'Frontend',
-      description: 'User interface and client-side technologies',
-      color: '#3B82F6'
+      name: "Frontend",
+      description: "User interface and client-side technologies",
+      color: "#3B82F6",
     },
     [SkillCategory.BACKEND]: {
-      name: 'Backend',
-      description: 'Server-side and database technologies',
-      color: '#10B981'
+      name: "Backend",
+      description: "Server-side and database technologies",
+      color: "#10B981",
     },
     [SkillCategory.TOOLS]: {
-      name: 'Tools',
-      description: 'Development tools and utilities',
-      color: '#F59E0B'
+      name: "Tools",
+      description: "Development tools and utilities",
+      color: "#F59E0B",
     },
     [SkillCategory.LANGUAGES]: {
-      name: 'Languages',
-      description: 'Programming languages',
-      color: '#8B5CF6'
-    }
+      name: "Languages",
+      description: "Programming languages",
+      color: "#8B5CF6",
+    },
+    [SkillCategory.MOBILE]: {
+      name: "Mobile",
+      description: "Cross-platform mobile development",
+      color: "#EC4899",
+    },
   },
   skills: [
     {
-      id: 'flutter',
-      name: 'Flutter',
+      id: "typescript",
+      name: "TypeScript",
       level: SkillLevel.EXPERT,
-      category: SkillCategory.FRONTEND,
+      category: SkillCategory.LANGUAGES,
       order: 1,
-      yearsOfExperience: 3
+      yearsOfExperience: 3,
     },
     {
-      id: 'javascript',
-      name: 'JavaScript',
+      id: "html",
+      name: "HTML",
+      level: SkillLevel.EXPERT,
+      category: SkillCategory.FRONTEND,
+      order: 2,
+      yearsOfExperience: 5,
+    },
+    {
+      id: "javascript",
+      name: "JavaScript",
       level: SkillLevel.EXPERT,
       category: SkillCategory.LANGUAGES,
-      order: 2,
-      yearsOfExperience: 4
+      order: 3,
+      yearsOfExperience: 4,
     },
     {
-      id: 'vue',
-      name: 'Vue',
+      id: "react",
+      name: "React",
       level: SkillLevel.ADVANCED,
       category: SkillCategory.FRONTEND,
-      order: 3,
-      yearsOfExperience: 2
-    },
-    {
-      id: 'laravel',
-      name: 'Laravel',
-      level: SkillLevel.ADVANCED,
-      category: SkillCategory.BACKEND,
       order: 4,
-      yearsOfExperience: 3
+      yearsOfExperience: 2,
     },
     {
-      id: 'csharp',
-      name: 'C#',
+      id: "nextjs",
+      name: "Next.js",
       level: SkillLevel.ADVANCED,
-      category: SkillCategory.LANGUAGES,
+      category: SkillCategory.FRONTEND,
       order: 5,
-      yearsOfExperience: 2
+      yearsOfExperience: 2,
     },
     {
-      id: 'sql',
-      name: 'SQL',
+      id: "vue",
+      name: "Vue",
       level: SkillLevel.ADVANCED,
-      category: SkillCategory.BACKEND,
+      category: SkillCategory.FRONTEND,
       order: 6,
-      yearsOfExperience: 4
+      yearsOfExperience: 2,
     },
     {
-      id: 'dart',
-      name: 'Dart',
-      level: SkillLevel.EXPERT,
-      category: SkillCategory.LANGUAGES,
+      id: "css",
+      name: "CSS",
+      level: SkillLevel.ADVANCED,
+      category: SkillCategory.FRONTEND,
       order: 7,
-      yearsOfExperience: 3
+      yearsOfExperience: 5,
     },
     {
-      id: 'efcore',
-      name: 'EFCore',
+      id: "nodejs",
+      name: "Node.js",
       level: SkillLevel.ADVANCED,
       category: SkillCategory.BACKEND,
       order: 8,
-      yearsOfExperience: 2
+      yearsOfExperience: 2,
     },
     {
-      id: 'html',
-      name: 'HTML',
-      level: SkillLevel.EXPERT,
-      category: SkillCategory.FRONTEND,
-      order: 9,
-      yearsOfExperience: 5
-    },
-    {
-      id: 'css',
-      name: 'CSS',
+      id: "laravel",
+      name: "Laravel",
       level: SkillLevel.ADVANCED,
-      category: SkillCategory.FRONTEND,
+      category: SkillCategory.BACKEND,
+      order: 9,
+      yearsOfExperience: 3,
+    },
+    {
+      id: "sql",
+      name: "SQL",
+      level: SkillLevel.ADVANCED,
+      category: SkillCategory.BACKEND,
       order: 10,
-      yearsOfExperience: 5
+      yearsOfExperience: 4,
     },
     {
-      id: 'react',
-      name: 'React',
-      level: SkillLevel.INTERMEDIATE,
-      category: SkillCategory.FRONTEND,
-      order: 11,
-      yearsOfExperience: 1
-    },
-    {
-      id: 'python',
-      name: 'Python',
-      level: SkillLevel.INTERMEDIATE,
+      id: "csharp",
+      name: "C#",
+      level: SkillLevel.ADVANCED,
       category: SkillCategory.LANGUAGES,
-      order: 12,
-      yearsOfExperience: 2
+      order: 11,
+      yearsOfExperience: 2,
     },
     {
-      id: 'git',
-      name: 'Git',
+      id: "efcore",
+      name: "EFCore",
+      level: SkillLevel.ADVANCED,
+      category: SkillCategory.BACKEND,
+      order: 12,
+      yearsOfExperience: 2,
+    },
+    {
+      id: "git",
+      name: "Git",
       level: SkillLevel.ADVANCED,
       category: SkillCategory.TOOLS,
       order: 13,
-      yearsOfExperience: 4
-    }
-  ]
+      yearsOfExperience: 4,
+    },
+    {
+      id: "python",
+      name: "Python",
+      level: SkillLevel.INTERMEDIATE,
+      category: SkillCategory.LANGUAGES,
+      order: 14,
+      yearsOfExperience: 2,
+    },
+    {
+      id: "flutter",
+      name: "Flutter",
+      level: SkillLevel.INTERMEDIATE,
+      category: SkillCategory.MOBILE,
+      order: 15,
+      yearsOfExperience: 3,
+    },
+    {
+      id: "dart",
+      name: "Dart",
+      level: SkillLevel.INTERMEDIATE,
+      category: SkillCategory.MOBILE,
+      order: 16,
+      yearsOfExperience: 3,
+    },
+  ],
 };

@@ -34,12 +34,11 @@ export default {
   },
   skills: {
     categories: {
-      frontend:
-        "HTML | CSS | Javascript | Typescript | React | Next.js | Tailwind CSS | Shadcn UI | Vue",
-      backend: "Node.js | PHP | Laravel | REST Api | C#",
-      tools:
-        "SQL | PostgreSQL | MySQL | MongoDB | Redis | Docker | CI/CD | AWS | Vercel | Linux | Unit Testing | E2E Testing | Playwright | Git | GitHub | Agile Development | Scrum",
-      languages: "Python | C# | Dart/Flutter",
+      frontend: "Frontend",
+      backend: "Backend",
+      tools: "Tools",
+      languages: "Languages",
+      mobile: "Mobile",
     },
   },
   projects: {

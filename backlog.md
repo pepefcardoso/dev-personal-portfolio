@@ -1,8 +1,5 @@
 ### 🟠 P2 — Content Alignment (Web Developer Focus)
 
-**4. Rebalance skills data toward web development**
-Flutter and Dart are marked as `EXPERT` and lead the skills list. Since you're focusing on web, TypeScript, React, Next.js and Node.js should be elevated. Flutter/Dart can be removed or placed at a lower level/separate category.
-
 **5. Reorder and reframe projects toward web**
 The Flutter mobile projects (project_04) are featured alongside web projects. Reorder to lead with web projects (Next.js, Laravel API, Vue). Consider adding a note or category label to distinguish web vs. mobile.
 
