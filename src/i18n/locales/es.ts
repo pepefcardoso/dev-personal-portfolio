@@ -12,7 +12,7 @@ export default {
     name: "Pedro Paulo Fernandes Cardoso",
     title: "Desarrollador Full Stack",
     description:
-      "Desarrollador con competencia en Flutter, Laravel, C#, JavaScript, Vue, SQL y React. Experiencia en gestión de proyectos y desarrollo de aplicaciones multiplataforma.",
+      "Desarrollador Web Full-Stack orientado a resultados, con 4 años de experiencia en la construcción de aplicaciones escalables de extremo a extremo. Experto en el ecosistema web moderno y en el desarrollo backend.",
     contactBtn: "Contáctame",
     resumeBtn: "Descargar CV",
     imagePlaceholder: "Foto",
@@ -20,14 +20,16 @@ export default {
   about: {
     title: "Sobre Mí",
     bioTitle: "Perfil Profesional",
-    bio1: "Soy un desarrollador fullstack competente en Flutter y Laravel, con experiencia en la creación y mantenimiento de aplicaciones multiplataforma y APIs. Actualmente trabajo con C# y JavaScript, utilizando EFCore, Vue y SQL, desarrollando aplicaciones de gestión de atención al cliente y relaciones con chat.",
-    bio2: "También tengo experiencia con SQL en bases de datos, Figma para creación de diseños, NextJs para proyectos frontend y Python para análisis de datos. Tengo conocimiento en metodologías ágiles, trabajo en equipe y comunicación eficiente.",
+    bio1: "Soy un Desarrollador Web Full-Stack orientado a resultados, con 4 años de experiencia en la construcción de aplicaciones escalables de extremo a extremo. Soy experto en cerrar la brecha entre las interfaces front-end y la arquitectura back-end.",
+    bio2: "Tengo una profunda experiencia en el ecosistema web moderno (TypeScript, React, Next.js), combinada con una sólida base en el desarrollo backend (Node.js, PHP/Laravel, C#) y bases de datos relacionales. Soy un practicante ágil con un fuerte compromiso con el código limpio, CI/CD y revisiones de código por pares, y actualmente curso la carrera de Análisis y Desarrollo de Sistemas en el IFSC.",
     skillsTitle: "Habilidades Técnicas",
     languagesTitle: "Idiomas",
     portuguese: "Portugués Brasileño",
     english: "Inglés",
     spanish: "Español",
+    italian: "Italiano",
     fluent: "Fluido/Nativo",
+    proficient: "Competente",
     intermediate: "Intermedio",
     basic: "Básico",
   },
@@ -92,54 +94,54 @@ export default {
   timeline: {
     title: "Timeline Profesional",
     education: "Educación",
-    experience: "Experiencia",
+    experience: "Experiencia Profesional",
     exp1: {
-      title: "Pasante de Desarrollo",
+      title: "Desarrollador Pasante",
       organization: "News Soft House",
-      period: "Agosto/2024 - presente",
+      period: "08/2024 - Presente",
       description:
-        "Desarrollo de aplicación web con Javascript/Vue, C#/EFCore y SQL para relación con clientes y gestión de negocios. Migración de datos de clientes y optimización de rendimiento de API.",
+        "Desarrollo de aplicación web con Javascript/Vue, C#/EFCore y SQL para la gestión de relaciones con clientes y negocios. Migración de datos de clientes y optimización del rendimiento de API.",
     },
     exp2: {
       title: "Desarrollador Junior",
-      organization: "Doutor-Ie",
-      period: "Enero/2023 - Febrero/2024",
+      organization: "Doutor-le",
+      period: "01/2023 - 02/2024",
       description:
-        "Desarrollo frontend en Dart/Flutter de aplicación multiplataforma para profesionales de reparación automotriz. Colaboración en aplicación Desktop con Dart/Flutter. Migración de API a PHP/Laravel y soporte en resolución de bugs y problemas de rendimiento.",
+        "Desarrollo de aplicación multiplataforma en Dart/Flutter para profesionales de reparación automotriz. Colaboración en el desarrollo de una aplicación Desktop de gestión interna con Dart/Flutter. Participación en el proceso de migración de API a PHP/Laravel, creación y estructuración de proyectos, y soporte en la resolución de errores y problemas de rendimiento.",
     },
     exp3: {
       title: "Asistente Contable",
-      organization: "Doutor-Ie",
-      period: "Septiembre/2019 - Diciembre/2022",
+      organization: "Doutor-le",
+      period: "09/2019 - 12/2022",
       description:
-        "Control financiero, contable y fiscal de empresa de mediano/gran porte. Desarrollo de análisis e informes financieros. Consultoría de inversiones e implementación de prácticas de gestión empresarial.",
+        "Gestión del control financiero, contable y fiscal para una empresa de mediano/gran tamaño. Desarrollo de análisis e informes financieros. Consultoría de inversiones e implementación de prácticas de gestión empresarial.",
     },
     exp4: {
       title: "Consultor de Proyectos",
       organization: "Ação Júnior",
-      period: "Julio/2018 - Agosto/2019",
+      period: "07/2018 - 08/2019",
       description:
-        "Construcción de soluciones empresariales. Comunicación con clientes. Optimización de resultados, gestión empresarial y prácticas corporativas.",
+        "Desarrollo de soluciones empresariales. Comunicación con clientes. Optimización de resultados, gestión de negocios e implementación de prácticas empresariales.",
     },
     edu1: {
-      title: "Análisis y Desarrollo de Sistemas",
+      title: "Tecnicatura en Análisis y Desarrollo de Sistemas",
       organization: "IFSC",
-      period: "2024 - 2026",
+      period: "01/2024 - 12/2026",
       description:
-        "Materias principales: Análisis de Sistemas, Diseño de Sistemas, Prácticas en POO, Testing de Software, Base de Datos, Interfaz Humano-Computadora.",
+        "Materias principales: Análisis de Sistemas, Diseño de Sistemas, Prácticas de Programación Orientada a Objetos, Pruebas de Software, Bases de Datos, Interacción Humano-Computadora, Desarrollo Web.",
     },
     edu2: {
       title: "Educación Primaria y Secundaria",
       organization: "Colégio Dehon",
-      period: "2007 - 2017",
+      period: "01/2007 - 12/2017",
       description: "Educación básica y secundaria completa.",
     },
     edu3: {
-      title: "Cursos Relevantes",
-      organization: "Plataformas Online",
-      period: "2022 - 2024",
+      title: "Cursos y Certificados Relevantes",
+      organization: "Múltiples Plataformas",
+      period: "N/A",
       description:
-        "Programación en Python de básico a avanzado (Udemy/64hrs), Python Mega Course (Udemy/53hrs), SQL and PostgreSQL (Udemy/22hrs), Desarrollo Web Avanzado con PHP, Laravel y Vue.JS (Udemy/57hrs), PHP 8 (HCode/20hrs), Curso Completo del Desarrollador Web (HCode/14hrs), Introducción a C# (Microsoft Learn).",
+        "Programación en Python (64hrs), Python Mega Course (53hrs). SQL y PostgreSQL (22hrs), Desarrollo Web con PHP, Laravel y Vue.JS (57hrs). Curso PHP 8 (20hrs) y Desarrollador Web Completo (14hrs). Introducción a C# (Microsoft Learn). Certificado Google Cloud Computing Foundations (40hrs), Bootcamp Node.js/Express/MongoDB (40hrs) y TypeScript (20hrs).",
     },
   },
   testimonials: {

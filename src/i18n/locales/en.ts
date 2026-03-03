@@ -12,7 +12,7 @@ export default {
     name: "Pedro Paulo Fernandes Cardoso",
     title: "Full Stack Developer",
     description:
-      "Developer proficient in Flutter, Laravel, C#, JavaScript, Vue, SQL and React. Experience in project management and development of cross-platform applications.",
+      "Results-driven Full-Stack Web Developer with 4 years of experience building scalable, end-to-end applications. Adept at bridging the gap between front-end interfaces and back-end architecture.",
     contactBtn: "Contact me",
     resumeBtn: "Download CV",
     imagePlaceholder: "Photo",
@@ -20,23 +20,26 @@ export default {
   about: {
     title: "About Me",
     bioTitle: "Professional Profile",
-    bio1: "I am a fullstack developer proficient in Flutter and Laravel, experienced in creating and maintaining cross-platform applications and APIs. Currently working with C# and JavaScript, using EFCore, Vue and SQL, developing customer service and relationship management applications with chat.",
-    bio2: "I also have experience with SQL in databases, Figma for design creation, NextJs for frontend projects and Python for data analysis. I have knowledge in agile methodologies, teamwork and efficient communication.",
+    bio1: "Results-driven Full-Stack Web Developer with 4 years of experience building scalable, end-to-end applications. Adept at bridging the gap between front-end interfaces and back-end architecture.",
+    bio2: "Deep expertise in the modern web ecosystem (TypeScript, React, Next.js) combined with a strong foundation in backend development (Node.js, PHP/Laravel, C#) and relational databases. Agile practitioner with a strong commitment to clean code, CI/CD, and peer code reviews. Currently pursuing a degree in Systems Analysis and Development at IFSC.",
     skillsTitle: "Technical Skills",
     languagesTitle: "Languages",
     portuguese: "Brazilian Portuguese",
     english: "English",
     spanish: "Spanish",
+    italian: "Italian",
     fluent: "Fluent/Native",
-    intermediate: "Intermediate",
+    intermediate: "Proficient",
     basic: "Basic",
   },
   skills: {
     categories: {
-      frontend: "Frontend",
-      backend: "Backend",
-      tools: "Tools",
-      languages: "Languages",
+      frontend:
+        "HTML | CSS | Javascript | Typescript | React | Next.js | Tailwind CSS | Shadcn UI | Vue",
+      backend: "Node.js | PHP | Laravel | REST Api | C#",
+      tools:
+        "SQL | PostgreSQL | MySQL | MongoDB | Redis | Docker | CI/CD | AWS | Vercel | Linux | Unit Testing | E2E Testing | Playwright | Git | GitHub | Agile Development | Scrum",
+      languages: "Python | C# | Dart/Flutter",
     },
   },
   projects: {
@@ -96,50 +99,50 @@ export default {
     exp1: {
       title: "Development Intern",
       organization: "News Soft House",
-      period: "August/2024 - present",
+      period: "08/2024 - Present",
       description:
-        "Web application development with Javascript/Vue, C#/EFCore and SQL for customer relationship and business management. Customer data migration and API performance optimization.",
+        "Developed a web application with Javascript/Vue, C#/EFCore, and SQL for customer relationship and business management. Migrated client data. Optimized API performance.",
     },
     exp2: {
       title: "Junior Developer",
-      organization: "Doutor-Ie",
-      period: "January/2023 - February/2024",
+      organization: "Doutor-le",
+      period: "01/2023 - 02/2024",
       description:
-        "Frontend development in Dart/Flutter for cross-platform application for automotive repair professionals. Collaboration on Desktop application with Dart/Flutter. API migration to PHP/Laravel and support in bug resolution and performance issues.",
+        "Developed a cross-platform application in Dart/Flutter for automotive repair professionals. Collaborated on the development of an internal company management Desktop application with Dart/Flutter. Participated in the API migration process to PHP/Laravel. Involved in the project creation and structuring process. Supported bug resolution and performance issue troubleshooting.",
     },
     exp3: {
       title: "Accounting Assistant",
-      organization: "Doutor-Ie",
-      period: "September/2019 - December/2022",
+      organization: "Doutor-le",
+      period: "09/2019 - 12/2022",
       description:
-        "Financial, accounting and fiscal control of medium/large company. Development of financial analysis and reports. Investment consulting and implementation of business management practices.",
+        "Managed financial, accounting, and tax control for a medium/large-sized company. Developed financial analysis and reports. Provided investment consultancy. Implemented business management practices.",
     },
     exp4: {
       title: "Project Consultant",
       organization: "Ação Júnior",
-      period: "July/2018 - August/2019",
+      period: "07/2018 - 08/2019",
       description:
-        "Building business solutions. Customer communication. Results optimization, business management and corporate practices.",
+        "Developed business solutions. Communicated with clients. Optimized results, managed businesses, and implemented business practices.",
     },
     edu1: {
-      title: "Systems Analysis and Development",
+      title: "Associate Degree in Systems Analysis and Development",
       organization: "IFSC",
-      period: "2024 - 2026",
+      period: "01/2024 - 12/2026",
       description:
-        "Main subjects: Systems Analysis, Systems Design, OOP Practices, Software Testing, Database, Human-Computer Interface.",
+        "Key subjects: Systems Analysis, Systems Design, Object-Oriented Programming Practices, Software Testing, Databases, Human-Computer Interaction, Web Development",
     },
     edu2: {
       title: "Elementary and High School",
       organization: "Colégio Dehon",
-      period: "2007 - 2017",
-      description: "Basic education and complete high school.",
+      period: "01/2007 - 12/2017",
+      description: "Elementary and High School",
     },
     edu3: {
-      title: "Relevant Courses",
-      organization: "Online Platforms",
-      period: "2022 - 2024",
+      title: "Relevant Courses and Certificates",
+      organization: "Various Platforms",
+      period: "",
       description:
-        "Python Programming from Basic to Advanced (Udemy/64hrs), Python Mega Course (Udemy/53hrs), SQL and PostgreSQL (Udemy/22hrs), Advanced Web Development with PHP, Laravel and Vue.JS (Udemy/57hrs), PHP 8 (HCode/20hrs), Complete Web Developer Course (HCode/14hrs), Introduction to C# (Microsoft Learn).",
+        "Python Programming from Basic to Advanced - Geek University (64hrs), Python Mega Course - Ardit Sulce (53hrs), SQL and PostgreSQL: The Complete Developer's Guide - Stephen Grinder (22hrs), Advanced Web Development with PHP, Laravel and Vue.JS - Jorge Santana (57hrs), PHP 8 Course - The Language - HCode (20hrs), Complete Web Developer Course - HCode (14hrs), Introduction to C# - Microsoft Learn, Google Cloud Computing Foundations Certificate - Google Cloud (40hrs), Node.js, Express, MongoDB & More: The Complete Bootcamp - Jonas Schmedtmann (40hrs), Understanding TypeScript - Maximilian Schwarzmüller (20hrs)",
     },
   },
   testimonials: {
