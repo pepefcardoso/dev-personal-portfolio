@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '@/components/features/Theme/ThemeToggle';
 import LanguageSelector from '@/components/features/Language/LanguageSelector';
@@ -6,11 +5,6 @@ import NavLink from './NavLink';
 
 const Header = () => {
   const { t } = useTranslation();
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const navItems = [
     { href: '#about', labelKey: 'nav.about' },

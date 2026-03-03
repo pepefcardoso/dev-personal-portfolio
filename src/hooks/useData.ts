@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { TranslatableString } from "@/types/common";
+import { translate } from "./useTranslatedContent";
 
 function useTranslatedData<T extends { id: string }, U = T>(
   data: T[],
@@ -8,7 +8,7 @@ function useTranslatedData<T extends { id: string }, U = T>(
   options?: {
     filter?: (item: T) => boolean;
     sort?: (a: T, b: T) => number;
-  }
+  },
 ) {
   const { i18n } = useTranslation();
 
@@ -27,11 +27,4 @@ function useTranslatedData<T extends { id: string }, U = T>(
   }, [data, translator, i18n.language, options?.filter, options?.sort]);
 }
 
-export function translate(content: TranslatableString, lang: string): string {
-  const key = lang as keyof TranslatableString;
-  return (
-    content[key] || content.en || content.pt || Object.values(content)[0] || ""
-  );
-}
-
-export { useTranslatedData };
+export { useTranslatedData, translate };

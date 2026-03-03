@@ -1,17 +1,4 @@
-### 🟠 P2 — Content Alignment (Web Developer Focus)
-
-**6. Update personal `description` and `bio` to reflect web focus**
-Both still lead with "Flutter and Laravel." The pitch should lead with TypeScript, React, Next.js given the career direction.
-
----
-
 ### 🟡 P3 — Duplicate & Dead Code
-
-**7. Remove duplicate `translate` function**
-The exact same function is defined in both `src/hooks/useData.ts` and `src/hooks/useTranslatedContent.ts`. One should be the single source of truth, and the other should import from it.
-
-**8. Remove `isLoaded` state from `Header`**
-`setIsLoaded(true)` is called in `useEffect` but `isLoaded` is never read or used anywhere in the component. Dead code.
 
 **9. Remove useless `useMemo(() => personal, [personal])` in `About.tsx`**
 `const personalInfo = useMemo(() => personal, [personal])` does nothing — it memoizes an already-memoized value and returns it as-is. Just use `personal` directly.
