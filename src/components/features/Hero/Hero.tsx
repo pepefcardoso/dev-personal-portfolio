@@ -1,11 +1,17 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { File, Mail } from "lucide-react";
+import { File, Mail, Github, Linkedin } from "lucide-react";
 import { downloadFile } from "@/lib/utils";
-import { socialLinks } from "@/data/socials";
+import { usePersonalData } from "@/hooks/usePersonalData";
+
+const iconMap: Record<string, React.FC<any>> = {
+  Github,
+  Linkedin,
+};
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { socials } = usePersonalData();
 
   const handleResumeDownload = () => {
     downloadFile('/resume.pdf', 'Pedro_Paulo_Fernandes_Cardoso_Resume.pdf');
@@ -47,20 +53,23 @@ const Hero = () => {
               </div>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                {socialLinks.map((link) => (
-                  <Button
-                    key={link.name}
-                    size="default"
-                    variant="ghost"
-                    className="gap-2 text-muted-foreground hover:text-foreground"
-                    asChild
-                  >
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                      <link.icon className="h-4 w-4" />
-                      {link.name}
-                    </a>
-                  </Button>
-                ))}
+                {socials.map((link) => {
+                  const Icon = iconMap[link.icon || ''];
+                  return (
+                    <Button
+                      key={link.platform}
+                      size="default"
+                      variant="ghost"
+                      className="gap-2 text-muted-foreground hover:text-foreground"
+                      asChild
+                    >
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        {Icon && <Icon className="h-4 w-4" />}
+                        {link.platform}
+                      </a>
+                    </Button>
+                  );
+                })}
               </div>
             </div>
           </div>

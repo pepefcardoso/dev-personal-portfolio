@@ -1,10 +1,25 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import ContactForm from "./ContactForm";
-import { contactLinks } from "@/data/socials";
+import { usePersonalData } from "@/hooks/usePersonalData";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
+
+const iconMap: Record<string, React.FC<any>> = {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+};
 
 const Contact = () => {
   const { t } = useTranslation();
+  const { contact, socials } = usePersonalData();
+
+  const contactLinks = [
+    ...socials,
+    { platform: "Email", url: `mailto:${contact.email}`, username: contact.email, icon: "Mail" },
+    { platform: "Phone", url: `tel:${contact.phone}`, username: contact.phone, icon: "Phone" },
+  ];
 
   return (
     <section id="contact" className="py-20">
@@ -20,14 +35,17 @@ const Contact = () => {
           <div className="mt-12 pt-12 border-t border-border">
             <h3 className="text-xl font-semibold mb-6">{t('contact.connectTitle')}</h3>
             <div className="flex flex-wrap gap-4">
-              {contactLinks.map((link) => (
-                <Button key={link.name} variant="outline" className="gap-2" asChild>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    <link.icon size={18} />
-                    {link.username || link.name}
-                  </a>
-                </Button>
-              ))}
+              {contactLinks.map((link) => {
+                const Icon = iconMap[link.icon || ''];
+                return (
+                  <Button key={link.platform} variant="outline" className="gap-2" asChild>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      {Icon && <Icon size={18} />}
+                      {link.username || link.platform}
+                    </a>
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>

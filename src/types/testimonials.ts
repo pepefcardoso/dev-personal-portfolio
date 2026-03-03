@@ -8,6 +8,12 @@ export interface Testimonial extends OrderableItem {
   socialUrl?: string;
 }
 
+export interface TranslatedTestimonial
+  extends Omit<Testimonial, "position" | "content"> {
+  position: string;
+  content: string;
+}
+
 export interface TestimonialsData {
   testimonials: Testimonial[];
 }

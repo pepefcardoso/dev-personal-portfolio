@@ -3,13 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { useProjectsData } from "@/hooks/useProjectsData";
-import { Project as ProjectType } from "@/types/projects";
-
-type TranslatedProject = Omit<ProjectType, 'title' | 'description' | 'responsibilities'> & {
-  title: string;
-  description: string;
-  responsibilities?: string[];
-};
+import { TranslatedProject } from "@/types/projects";
 
 interface ProjectCardProps {
   project: TranslatedProject;
@@ -111,7 +105,7 @@ const Projects = () => {
           {filteredProjects.map(project => (
             <ProjectCard
               key={project.id}
-              project={project as TranslatedProject}
+              project={project}
               t={t}
             />
           ))}

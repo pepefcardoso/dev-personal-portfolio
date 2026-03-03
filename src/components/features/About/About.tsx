@@ -36,7 +36,6 @@ const About = () => {
   const { getSorted } = useSkillsData();
   const { personal } = usePersonalData();
   const skills = useMemo(() => getSorted('level'), [getSorted]);
-  const personalInfo = useMemo(() => personal, [personal]);
 
   return (
     <section id="about" className="py-20 relative">
@@ -54,7 +53,7 @@ const About = () => {
             <div className="pt-4">
               <h3 className="text-xl font-semibold mb-3">{t('about.languagesTitle')}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                {personalInfo.languages.map((lang, index) => (
+                {personal.languages.map((lang, index) => (
                   <li key={index} className="flex justify-between">
                     <span>{lang.language}</span>
                     <span className="font-medium">{lang.level}</span>

@@ -1,14 +1,9 @@
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageSquare, User, ExternalLink, Star } from "lucide-react";
+import { MessageSquare, User, ExternalLink } from "lucide-react";
 import { useTestimonialsData } from "@/hooks/useTestimonialsData";
-import { Testimonial as TestimonialType } from "@/types/testimonials";
-
-type TranslatedTestimonial = Omit<TestimonialType, 'position' | 'content'> & {
-  position: string;
-  content: string;
-};
+import { TranslatedTestimonial } from "@/types/testimonials";
 
 interface TestimonialCardProps {
   testimonial: TranslatedTestimonial;
@@ -81,7 +76,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <TestimonialCard
               key={testimonial.id}
-              testimonial={testimonial as unknown as TranslatedTestimonial}
+              testimonial={testimonial}
               onClick={handleTestimonialClick}
             />
           ))}

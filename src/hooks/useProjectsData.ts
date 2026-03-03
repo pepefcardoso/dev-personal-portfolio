@@ -1,27 +1,34 @@
 import { projectsData } from "@/data/projects";
-import { Project } from "@/types/projects";
+import { Project, TranslatedProject } from "@/types/projects";
 import { translate, useTranslatedData } from "./useData";
 import { useMemo } from "react";
 
 export function useProjectsData() {
-  const translateProject = (project: Project, lang: string) => ({
+  const translateProject = (
+    project: Project,
+    lang: string,
+  ): TranslatedProject => ({
     ...project,
     title: translate(project.title, lang),
     description: translate(project.description, lang),
     responsibilities: project.responsibilities?.map((r) => translate(r, lang)),
   });
 
-  const projects = useTranslatedData(projectsData.projects, translateProject, {
-    sort: (a, b) => a.order - b.order,
-  });
+  const projects = useTranslatedData<Project, TranslatedProject>(
+    projectsData.projects,
+    translateProject,
+    {
+      sort: (a, b) => a.order - b.order,
+    },
+  );
 
   const featured = useMemo(
     () => projects.filter((p) => p.featured),
-    [projects]
+    [projects],
   );
   const tags = useMemo(
     () => [...new Set(projects.flatMap((p) => p.tags))].sort(),
-    [projects]
+    [projects],
   );
 
   const getByTag = (tag: string) =>

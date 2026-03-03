@@ -3,16 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Book } from "lucide-react";
 import { useTimelineData } from "@/hooks/useTimelineData";
-import { TimelineItem as TimelineItemType } from "@/types/timeline";
-
-type TranslatedTimelineItem = Omit<TimelineItemType, 'title' | 'organization' | 'description' | 'period' | 'location' | 'achievements'> & {
-  title: string;
-  organization: string;
-  description: string;
-  period: string;
-  location?: string;
-  achievements?: string[];
-};
+import { TranslatedTimelineItem } from "@/types/timeline";
 
 const TimelineCard: React.FC<{ item: TranslatedTimelineItem }> = ({ item }) => (
   <Card className="mb-4 border-l-4 hover:shadow-md transition-shadow duration-300">
@@ -65,7 +56,7 @@ const Timeline = () => {
               {t('timeline.experience')}
             </h3>
             {experience.map(item => (
-              <TimelineCard key={item.id} item={item as unknown as TranslatedTimelineItem} />
+              <TimelineCard key={item.id} item={item} />
             ))}
           </div>
 
@@ -75,7 +66,7 @@ const Timeline = () => {
               {t('timeline.education')}
             </h3>
             {education.map(item => (
-              <TimelineCard key={item.id} item={item as unknown as TranslatedTimelineItem} />
+              <TimelineCard key={item.id} item={item} />
             ))}
           </div>
         </div>

@@ -1,10 +1,10 @@
 import { blogData } from "@/data/blog";
-import { BlogPost } from "@/types/blog";
 import { translate, useTranslatedData } from "./useData";
 import { useMemo } from "react";
+import { BlogPost, TranslatedBlogPost } from "@/types/blog";
 
 export function useBlogData() {
-  const translatePost = (post: BlogPost, lang: string) => ({
+  const translatePost = (post: BlogPost, lang: string): TranslatedBlogPost => ({
     ...post,
     title: translate(post.title, lang),
     excerpt: translate(post.excerpt, lang),
@@ -12,10 +12,14 @@ export function useBlogData() {
     category: translate(post.category, lang),
   });
 
-  const posts = useTranslatedData(blogData.posts, translatePost, {
-    filter: (p) => p.status === "published",
-    sort: (a, b) => a.order - b.order,
-  });
+  const posts = useTranslatedData<BlogPost, TranslatedBlogPost>(
+    blogData.posts,
+    translatePost,
+    {
+      filter: (p) => p.status === "published",
+      sort: (a, b) => a.order - b.order,
+    },
+  );
 
   const featured = useMemo(() => posts.filter((p) => p.featured), [posts]);
 

@@ -1,17 +1,4 @@
-### 🟡 P3 — Duplicate & Dead Code
-
-**9. Remove useless `useMemo(() => personal, [personal])` in `About.tsx`**
-`const personalInfo = useMemo(() => personal, [personal])` does nothing — it memoizes an already-memoized value and returns it as-is. Just use `personal` directly.
-
-**10. Consolidate social media data — remove `src/data/socials.ts`**
-`src/data/socials.ts` duplicates social links already defined in `src/data/personal.ts` (`contactInfo.socialMedia`). `Contact.tsx` and `Hero.tsx` consume from `socials.ts` while `usePersonalData` exposes the same data from `personal.ts`. One source of truth is enough.
-
----
-
 ### 🟡 P4 — Overengineering & Architecture
-
-**11. Fix broken generic typing — eliminate `as unknown as Translated*` casts**
-`Testimonials.tsx`, `Timeline.tsx`, and `Projects.tsx` all do `testimonial as unknown as TranslatedTestimonial`. This means the translation hooks return `any`-like types. The `useTranslatedData` generic should be typed so the translator's return type flows correctly, eliminating all forced casts.
 
 **12. Inline repeated `Translated*` type definitions into their hooks**
 `TranslatedBlogPost`, `TranslatedProject`, `TranslatedTimelineItem`, `TranslatedTestimonial` are all defined inline inside their respective component files. They should be derived types exported from the hooks or types files instead.

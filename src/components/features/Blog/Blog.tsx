@@ -4,15 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Newspaper, Clock } from "lucide-react";
 import { useBlogData } from "@/hooks/useBlogData";
-import { BlogPost as BlogPostType } from "@/types/blog";
 import BlogModal from "./BlogModal";
-
-type TranslatedBlogPost = Omit<BlogPostType, 'title' | 'excerpt' | 'category' | 'content'> & {
-  title: string;
-  excerpt: string;
-  category: string;
-  content?: string;
-};
+import { TranslatedBlogPost } from "@/types/blog";
 
 const formatDate = (dateString: string, locale?: string) => {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -94,7 +87,7 @@ const Blog = () => {
             {posts.map((post) => (
               <BlogPostCard
                 key={post.id}
-                post={post as TranslatedBlogPost}
+                post={post}
                 onClick={() => handlePostClick(post.id)}
                 t={t}
                 locale={i18n.language}

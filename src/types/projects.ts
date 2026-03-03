@@ -1,5 +1,11 @@
 import { TranslatableString, FeaturedItem, OrderableItem } from "./common";
 
+export interface TranslatedProject extends Omit<Project, 'title' | 'description' | 'responsibilities'> {
+  title: string;
+  description: string;
+  responsibilities?: string[];
+}
+
 export interface Project extends OrderableItem, FeaturedItem {
   title: TranslatableString;
   description: TranslatableString;
