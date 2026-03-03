@@ -1,13 +1,3 @@
-### 🔴 P1 — Bugs & Broken Things
-
-**2. Fix wrong icon for Phone in `contactLinks`**
-`src/data/socials.ts` uses the `Mail` icon for the Phone entry. Import and use `Phone` from lucide-react.
-
-**3. Complete incomplete locale files (fr, it, zh)**
-French, Italian and Chinese are missing: `nav.blog`, `nav.testimonials`, `nav.timeline`, the entire `timeline` section, `blog` section, `testimonials` section, `about.languagesTitle`, `contact.validation`, and `footer.downloadResume`. Fallback silently shows raw keys.
-
----
-
 ### 🟠 P2 — Content Alignment (Web Developer Focus)
 
 **4. Rebalance skills data toward web development**

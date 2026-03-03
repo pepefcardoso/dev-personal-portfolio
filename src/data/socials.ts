@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import { FC } from "react";
 
 export interface SocialLink {
@@ -34,7 +34,7 @@ export const contactLinks: SocialLink[] = [
   {
     name: "Phone",
     url: "tel:+5548991155026",
-    icon: Mail,
+    icon: Phone,
     username: "(48) 99115-5026",
   },
 ];
